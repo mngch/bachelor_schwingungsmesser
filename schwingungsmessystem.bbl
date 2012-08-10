@@ -1,0 +1,52 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[ADXL05(1996)]{Devices:1996pd}
+Datasheet ADXL05.
+\newblock \emph{1g to 5g Single Chip Accelerometer with Signal Conditioning},
+  1996.
+
+\bibitem[Components(2010)]{Components:2010fk}
+RS~Components.
+\newblock \emph{Datasheet Polyurethane}, 2010.
+
+\bibitem[Kanda(1991)]{Kanda:1991gf}
+Yozo Kanda.
+\newblock Piezoresistance effect of silicon.
+\newblock \emph{Sensors and Actuators A: Physical}, 28\penalty0 (2):\penalty0
+  83--91, July 1991.
+
+\bibitem[Klingbeil(2006)]{Klingbeil:2006qy}
+Lasse Klingbeil.
+\newblock \emph{Entwicklung eines modularen und skalierbaren Sensorsystems zur
+  Erfassung von Position und Orientierung bewegter Objekte}.
+\newblock PhD thesis, Universit{\"a}t Bonn, 2006.
+
+\bibitem[NXP(2012)]{:2012fj}
+NXP.
+\newblock \emph{UM10204 I2C-bus specification and user manual}.
+\newblock NXP, rev4 edition, February 2012.
+
+\bibitem[Schmidt(2002)]{:2002fk}
+Schmidt.
+\newblock \emph{Sensorschaltungstechnik}.
+\newblock Vogel, 2002.
+
+\bibitem[Sensortec(2009)]{Sensortec:2009rt}
+Bosch Sensortec.
+\newblock \emph{BMA180 Digital, triaxial acceleration sensor Data sheet}, 2.1
+  edition, December 2009.
+
+\bibitem[Sherman et~al.(1992)Sherman, Tsang, Core, Payne, Quinn, Chau, Farash,
+  and Baum]{S.J.-Sherman:1992ul}
+S.J. Sherman, W.K. Tsang, T.A. Core, R.S. Payne, D.E. Quinn, K.H.-L. Chau, J.A.
+  Farash, and S.K. Baum.
+\newblock A low cost monolithic accelerometer; product/technology update.
+\newblock In \emph{Electron Devices Meeting, 1992. IEDM '92. Technical Digest.,
+  International}, pages 501--504, 1992.
+
+\end{thebibliography}

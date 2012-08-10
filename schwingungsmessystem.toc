@@ -1,0 +1,16 @@
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Abstrakt}{3}
+\contentsline {section}{\numberline {2}Motivation und Hintergrund}{4}
+\contentsline {section}{\numberline {3}Hintergrund: Beschleunigungssensoren}{5}
+\contentsline {subsection}{\numberline {3.1}Piezoresistive Sensoren}{6}
+\contentsline {subsection}{\numberline {3.2}Kapazitative Sensoren}{6}
+\contentsline {section}{\numberline {4}Entwicklung des ersten Schwingunsmesssystems (BMA180)}{9}
+\contentsline {subsection}{\numberline {4.1}Bosch BMA180}{9}
+\contentsline {subsection}{\numberline {4.2}Arduino}{9}
+\contentsline {subsection}{\numberline {4.3}Schnittstellen}{10}
+\contentsline {subsubsection}{\numberline {4.3.1}I$^2$C}{10}
+\contentsline {subsubsection}{\numberline {4.3.2}Serieller Port}{10}
+\contentsline {subsection}{\numberline {4.4}Aufbau und Schaltung}{11}
+\contentsline {subsubsection}{\numberline {4.4.1}Testaufbau}{11}
+\contentsline {subsubsection}{\numberline {4.4.2}Fester Aufbau}{12}
+\contentsline {subsection}{\numberline {4.5}Software}{12}
