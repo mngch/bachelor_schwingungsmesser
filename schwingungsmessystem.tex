@@ -27,7 +27,7 @@
 %========================================================================================
 %FARBEN
 
-%\usepackage[usenames,dvipsnames]{color}	
+\usepackage[usenames,dvipsnames]{color}	
 
 									%Apricot 	Aquamarine 	Bittersweet 	Black
 									%Blue 	BlueGreen 	BlueViolet 	BrickRed
@@ -59,13 +59,14 @@
 				
 \usepackage{listings}
 \lstset{ %
-language=Matlab,                			% the language of the code
+language=C,                			% the language of the code
 basicstyle=\footnotesize,       			% the size of the fonts that are used for the code
 numbers=left,                   				% where to put the line-numbers
 numberstyle=\footnotesize,      			% the size of the fonts that are used for the line-numbers
-stepnumber=2,                   				% the step between two line-numbers. If it's 1, each line 
-                                					% will be numbered
-numbersep=5pt,                  			% how far the line-numbers are from the code
+stepnumber=1,                   				% the step between two line-numbers. If it's 1, each line 
+                                					% will be numbered			
+commentstyle=\color{PineGreen},					
+numbersep=-7pt,                  			% how far the line-numbers are from the code
 backgroundcolor=\color{white},  		% choose the background color. You must add \usepackage{color}
 showspaces=false,               			% show spaces adding particular underscores
 showstringspaces=false,        		 	% underline spaces within strings
@@ -187,7 +188,7 @@ Piezoresistive Sensoren machen sich den Piezoelektrischen Effekt zunutze. In der
 
 
 Die Auslenkung lässt sich auch über eine Kapazitätsmessung bestimmen, wenn man je eine Elektrode an der Testmasse und eine am fixen Referenzpunkt anbringt.\citep{S.J.-Sherman:1992ul} Eine mögliche Realisierung ist in Abbildung \ref{adxl_ruhe} und Abbildung \ref{adxl_action} zu sehen: Es handelt sich um einen sogenannten Differentialkondensatorsensor. Der Vorteil bei dieser Art von Sensoren ist die Möglichkeit zur Linearisierung und Kompensation \citep{:2002fk}. (ERKLÄREN??) \\
-Die seismische Masse befindet sich zwischen zwei fest verankerten Platten, die zusammen zwei Kondensatoren $C_1$ und $C_2$ bilden (Abbildung \ref{adxl_ruhe}). Eine auftretende Beschleunigung führt also zu einer Auslenkung der Mittelelektrode des Kondensatorenpaares (seismische Masse) um die Länge $\pm \Delta l$ und damit zu einer symmetrischen Kapazitätsänderung um $\pm \Delta C$ (Abbildung \ref{adxl_action}).
+Die seismische Masse befindet sich zwischen zwei fest verankerten Platten, die zusammen zwei Kondensatoren $C_1$ und $C_2$ bilden (Abbildung \ref{adxl_ruhe}). Eine auftretende Beschleunigung führt also zu einer Auslenkung der Mittelelektrode des Kondensatorenpaares (seismische Masse) um die Länge $\pm \Delta l$ und damit zu einer symmetrischen Kapazitätsänderung um $\pm \Delta C$ (Abbildung \ref{adxl_action}). Dieser Aufbau ist eine sogenannte Einzelzelle. In einem Sensor befinden sich viele Einzelzellen, um die Kapazitätsvariation und damit die Sensibilität zu erhöhen.
 
 Um diese Variation in ein elektrisches Ausgangssignal umzusetzen, wird eine sogenannte Brückenschaltung verwendet (Abbildung \ref{bruecke}).
 
@@ -236,8 +237,9 @@ Um abschätzen zu können wie groß die auftretenden Beschleunigungen an der Rad
 
 Die Wahl fiel auf einen \textit{Bosch BMA180} digitalen, dreiachsigen MEMS Beschleunigungssensor. Er verfügt über einen eingebauten 14-bit Analog-Digital Wandler und sieben per Software verstellbaren Messbereiche von $\pm1$ bis $\pm16$g.
 Die Kommunikation kann über SPI oder I2C erfolgen.
+Analogfilter
 
-Ich nutze ein Breakoutboard von Sparkfun, da so das knifflige SMD-Löten entfällt und bereits zwei Spannungsstabilisierende Kondensatoren eingebaut sind.
+Ich nutze ein Breakoutboard von Sparkfun, da so das knifflige SMD-Löten entfällt und bereits zwei spannungsstabilisierende Kondensatoren eingebaut sind.
 
 \subsection{Arduino}
 
@@ -249,16 +251,20 @@ Ich nutze ein Breakoutboard von Sparkfun, da so das knifflige SMD-Löten entfäl
 \end{figure}
 
 
-Arduino ist eine auf Atmega Mikroprozessoren basierende Open-Source Entwicklungsplattform zur Verarbeitung von analogen und digitalen Signalen. Die Programmierung kann über eine eigene Entwicklungsumgebung in einer an \textit{Processing\footnote{LINK?}} angelehnten Sprache erfolgen, die im Prinzip ein vereinfachtes C/C++ darstellt.\\
+Arduino ist eine auf ATmega Mikroprozessoren basierende Open-Source Entwicklungsplattform zur Verarbeitung von analogen und digitalen Signalen. Die Programmierung kann über eine eigene Entwicklungsumgebung in einer an \textit{Processing\footnote{LINK?}} angelehnten Sprache erfolgen, die im Prinzip ein vereinfachtes C/C++ darstellt.\\
 Die Plattform ist auf Prototyping und Experimente ausgelegt. Es ist bereits ein Bootloader vorinstalliert, so kann die Programmierung direkt über die serielle Schnittstelle erfolgen. Die Boards machen die meisten Pins des Atmegas für eigene Schaltungen verfügbar, in den gängigen Boards sind das 14 Pins, die frei als Ein- oder Ausgänge genutzt werden können.
-Die Stromversorgung kann über USB oder eine externe 5V Quelle erfolgen. Als weitere Interfaces werden SPI, ICSP und I2C angeboten.
+Die Stromversorgung kann über USB oder eine externe 5V Quelle erfolgen. Als weitere Interfaces werden SPI, ICSP und I2C angeboten.\\
+Der ATmega arbeitet mit 16 MHz und hat einen geringen Energieverbrauch.
+
 
 \subsection{Schnittstellen}
 
 \subsubsection{I$^2$C}
-Die Kommunikation zwischen Beschleunigungssensor und Arduino erfolgt über den  I$^2$C Bus.
+Die Kommunikation zwischen Beschleunigungssensor und Arduino erfolgt über den  I$^2$C Bus \citep{:2012fj}.
 Dabei handelt es sich um einen von Phillips entwickelten seriellen Datenbus, der ursprünglich entwickelt wurde, um Chips in Fernsehgeräten steuern zu können. Inzwischen ist das Patent ausgelaufen und er wird in vielen Hardwareprojekten verwendet, da er sehr leicht zu verstehen und zu verwenden ist. 
-\citep{:2012fj}
+
+Ich benutze die Arduino Wire Library \citep{:2012vn}, welche die gesamte Kommunikation über I$^2$C steuert und einfache Funktionsaufrufe zur Verfügung stellt. (WEITER AUSFÜHREN???!?)
+
 \subsubsection{Serieller Port}
 Zum einfachen Anschluss des Arduinos an einen PC oder Datenlogger wird eine serielle Schnittstelle nach RS232 (REFERENZ) verwendet. Auf dem Arduino befindet sich ein ATmega16U2, welcher die seriellen Signale in USB umwandelt und dafür sorgt, dass der Arduino am PC als virtueller COM-Port erscheint.
 
@@ -297,7 +303,7 @@ Da der Sensor im I$^2$C Modus betrieben werden soll, ist CS auf High (3.3V) gesc
 
 
 \begin{table}[htb]
-\begin{tabular}{@{}ll@{}}            \cmidrule(r){1-2}\morecmidrules\cmidrule(r){1-2}       SPI mode & I2C mode\\      \midrule SDI input & SDA birectional (!) \\  SDO output & ADDR adress bit, input \\ SCLK input & SCL input \\ CSB chip select, input & I2C mode select, input \\   \addlinespace   \bottomrule \end{tabular}
+\begin{tabular}{@{}ll@{}}          	\cmidrule(r){1-2}\morecmidrules\cmidrule(r){1-2}       	SPI mode & I2C mode\\      	\midrule 	SDI input & SDA birectional (!) \\  	SDO output & ADDR adress bit, input \\ 	SCLK input & SCL input \\ 	CSB chip select, input & I2C mode select, input \\ 	 \addlinespace 	 \bottomrule \end{tabular}
 \caption{BMA180 Pinbelegung für SPI und I2C Modes \citep{Sensortec:2009rt}}
 \label{i2cmode}
 \end{table}
@@ -317,28 +323,58 @@ Da der Sensor im I$^2$C Modus betrieben werden soll, ist CS auf High (3.3V) gesc
 Um das System wirklich praktisch nutzen zu können muss er natürlich fest aufgebaut werden und mit einem Gehäuse versehen werden, das es erlaubt, ihn fest an einem Testobjekt anzubringen und ihn gleichzeitig vor Schäden durch mechanische oder witterungsbedingte Einflüsse schützt.
 
 Um die eigentliche Sensoreinheit möglichst kompakt zu halten, habe ich mich entschieden, den Beschleunigungssensor vom Arduino zu trennen und auf eine kleine Lochrasterplatine zu löten. Diese wird in einen festen Block aus Polyurethanharz \citep{Components:2010fk} eingegossen, womit sie gleichzeitig gut geschützt und leicht anzubringen ist.
+(Abbildung \ref{harz}) \\
 
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=.15]{hardwareimages/harz.jpg}
-\caption{BMA180 in Polyurethanharz eingegossen, die Kunststoffbox wurde von der technischen Werkstatt des Geomatikums gefertigt.}
+\caption{BMA180 in Polyurethanharz eingegossen, die Kunststoffform wurde von der technischen Werkstatt des Geomatikums gefertigt.}
 \label{harz}
 \end{figure}
 
+Der Arduino ist in ein ABS Gehäuse \citep{Enclosures:2012uq} eingebaut (Abbildung \ref{arduinobox} und \ref{arduinoboxregen}
+Die I$^2$C Verbindung mit dem Sensor erfolgt über einen Hirschmannstecker™ mit 7 Polen, von denen 4 beschaltet sind, wie in Abbildung \ref{hirschmann_i2c} zu sehen ist.
+Mit dem Logger ist der Arduino über ein USB-Kabel verbunden, über das die Kommunikation per RS232 geführt wird.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.8]{hardwareimages/kabel.eps}
+\caption{Verbindungen zwischen BMA180, Arduino und Logger per I$^2$C bzw. RS232}
+\label{kabel}
+\end{figure}
+
+\begin{figure}[H]
+	\begin{minipage}[H]{8cm}
+		\centering
+		\includegraphics[scale=.5]{hardwareimages/hirschmann_i2c.eps}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[H]{8cm}
+		\centering
+		\begin{tabular}{@{}lllll@{}}          			\cmidrule(r){1-5}\morecmidrules\cmidrule(r){1-5}       			Pin & I2C & Arduino & BMA180 & Farbe\\      			\midrule 			1 & 3.3V & 3.3V & VDD & Rot \\  			2 & & & &\\
+ 			3 & SDA & A4 & SDI & Gelb\\
+ 			4 & SCL & A5 & SCK & Grün\\
+ 			5 & & & &\\
+ 			6 & & & &\\
+ 			7 & GND & GND & GND & Schwarz\\   			\addlinespace   			\bottomrule 		\end{tabular}
+	\end{minipage}
+	\caption{I$^2$C Beschaltung des Hirschmannsteckers™}
+	\label{hirschmann_i2c}
+\end{figure}
 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{minipage}[H]{8cm}
 	\centering
 	\includegraphics[scale=.111]{hardwareimages/arduinobox.jpg}
-	\caption{Arduinobox}
+	\caption{ABS Box, welche den Arduino enthält\\ }
 	\label{arduinobox}
 \end{minipage}
 \hfill
 \begin{minipage}[H]{8cm}
 	\centering
 	\includegraphics[scale=.111]{hardwareimages/arduinoboxregen.jpg}
-	\caption{Arduinobox im Regen}
+	\caption{ABS Box geschlossen im Witterungstest}
 	\label{arduinoboxregen}
 \end{minipage}
 \end{figure}
@@ -346,9 +382,152 @@ Um die eigentliche Sensoreinheit möglichst kompakt zu halten, habe ich mich ent
 
 \subsection{Software} 
 
+Die Software besteht aus zwei Teilen. Zunächst der Code auf dem Arduino, welcher die Daten vom Sensor abfragt und konvertiert und dann der Teil auf dem Logger, der die Messungen über den Seriellen Port erhält und diese gemeinsam mit der jeweils aktuellen Uhrzeit in eine Datei schreibt.\\
+
+Bei der Erläuterung des Codes möchte ich mich auf die wesentlichen Punkte beschränken. Die gesamten Quelltexte befinden sich im Anhang.
+
+\subsubsection{Arduino}
+
+Der Arduino ist für die Kommunikation mit dem BMA180 über I$^2$C zuständig. Für diese Aufgabe existiert eine Arduino Bibliothek, welche ich angepasst und verwendet habe (REFERENZ!!)
+Ich möchte hier die einzelnen Schritte beschreiben, die notwendig sind, um eine Messung zu erhalten und diese an den Logger weiterzuleiten. \\
+
+Die Steuerung des BMA180 erfolgt über direkte Zugriffe auf die Register. Entweder man schreibt einen neuen Wert in ein Register oder man liest ein Register aus. Es gibt fünf Arten von Registern - Test, control, image, status und data.
+Davon interessieren uns nur die \textbf{control} und die \textbf{data} Register. Weitere Informationen über die zusätzlichen Register lassen sich im Datenblatt \citep{Sensortec:2009rt} nachschlagen.
+
+Die control Register dienen dazu, den Beschleunigungssensor zu steuern, vornehmlich also den Messbereich festzulegen und eventuell einen zusätzlichen digitalen Bandfilter einzustellen. Dazu müssen Werte in Register hineingeschrieben werden. Dazu geht man folgendermaßen vor:\\
+
+\textbf{In Register schreiben}
+\begin{enumerate}
+	\item Übertragung initiieren (mit der Adresse des Sensors)
+	\item Adresse des Registers senden, in welches wir schreiben möchten
+	\item Daten senden, die wir in das Register schreiben möchten
+	\item Übertragung beeenden
+\end{enumerate}
+
+Da ein Register immer ein Byte (8 Bit) groß ist, finden sich oftmals verschiedene Einstellungen in einem Register um Platz zu sparen. Einen korrekten Schreibvorgang auszuführen wird dadurch komplexer. Daher möchte ich den Prozess am Beispiel der Messbereichseinstellung demonstrieren.
+
+\begin{figure}[H]
+%\centering
+\includegraphics[scale=.359]{registerstransp}
+\caption{Memory Map BMA180, Ausschnitt \citep{Sensortec:2009rt}}
+\label{registermap}
+\end{figure}
+
+Die relevanten Bits sind also im Register $0x35$\footnote{Ein vorangestelltes 0x bedeutet, dass es sich um eine Zahl im Hexadezimalsystem handelt}, Bit eins, zwei und drei\footnote{Es wird von rechts nach links gezählt und mit 0 begonnen}. Hier die entsprechenden Zeilen aus dem Quellcode:
+
+\lstset{language=C++,caption={Funktion zum Einstellen des Messbereichs aus der BMA180 Bibliothek(REF!!)\\ maxg ist eine dem Wertebereich zugeordnete Binärzahl zwischen 000 und 110 },label=sensitivity}
+\lstset{frameround=fttt}
+\begin{lstlisting}[frame=trBL]
+	void BMA180::setGSensitivty(GSENSITIVITY maxg) //1, 1.5 2 3 4 8 16
+	{
+	    setRegValue(0x35,maxg<<1,0xF1);
+	    gSense = maxg;
+	}
+\end{lstlisting}
+ 
+Die aufgerufene Funktion $setRegValue$ bekommt als Argumente das zu schreibende Register ($0x35$), den zu schreibenden Wert ($maxg << 1$) und zusätzlich eine Maske, die angibt, welche Bits des Registers nicht verändert werden sollen mit.\\
+Da das letzte Bit (Bit Null) eine andere Funktion hat, 'schieben' wir $maxg$ mit Hilfe der \textit{bitshift Operation} $<<$ um ein Bit nach links.\\
+Bei $gSense$ handelt es sich um eine Statusvariable, die später benutzt wird, um den genutzten Wertebereich mit zu dokumentieren.\\
+
+
+\lstset{language=C++,caption={Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek(REF!!)},label=writeregister}
+\begin{lstlisting}[frame=trBL]
+	void BMA180::setRegValue(int regAdr, int val, int maskPreserve)
+	{
+	    int preserve=getRegValue(regAdr);	
+	    int orgval=preserve & maskPreserve;
+	    Wire.beginTransmission(address);
+	    Wire.write(regAdr);
+	    Wire.write(orgval|val);
+	    int result = Wire.endTransmission();
+	    checkResult(result);
+	}
+\end{lstlisting}
+
+Nun lesen wir zunächst den bisherigen Wert des Registers ein (Zeile 3)  und maskieren ihn mit der übergebenen Maske, so dass wir alle Bits übernehmen, außer die, welche wir verändern wollen (Zeile 4). Dann schreiben wir in das Register, wobei wir nach dem oben beschriebenen Schema vorgehen. Beim Senden der Daten verknüpfen wir jedoch $orgval$ mittels eines bitweisen $OR$s mit dem zu schreibenden Wert (Zeile 7). So haben wir sicher gestellt, dass wir nur die relevanten Bits verändern.\\
+In Abbildung \ref{bitops} ist das Vorgehen noch einmal dargestellt.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.5]{bitops.eps}
+\caption{Beispiel eines Schreibvorgangs in das Register $0x35$. Nur die grau markierten Bits werden verändert.}
+\label{bitops}
+\end{figure}
+
+\textbf{Daten aus Registern lesen}
+
+In die data Register werden die gemessenen Beschleunigungsdaten geschrieben. Da der A/D-Wandler des BMA180 eine Auflösung von 14 Bit hat, existieren pro Achse 2 Register mit jeweils 8 Bit. 
+Hier benötigen wir das Konzept der \textbf{Bitwertigkeit}:
+
+In einer Zahl haben die Stellen unterschiedlichen Wert. Verändert man zum Beispiel bei der Zahl 4653 die letzte Stelle, so ist der Unterschied maximal 9. Wird hingegen die dritte Stelle (von hinten) verändert, so kann der Unterschied bis zu 900 betragen. Analog verhält es sich mit den binären Zahlen. 
+Dabei bezeichnen wir das höchstwertige Bit als \textbf{m}ost-\textbf{s}ignificant-\textbf{b}it \textbf{(msb)} und das geringwertige Bit als \textbf{l}east-\textbf{s}ignificant-\textbf{b}it \textbf{(msb)}.
+
+Analog dazu spricht man vom höchstwertigen Byte \textbf{m}ost-\textbf{s}ignificant-\textbf{b}yte \textbf{(MSB)} und geringwertigen Byte \textbf{l}east-\textbf{s}ignificant-\textbf{b}yte \textbf{(LSB)}.
+
+\begin{equation}
+\overbrace {\underbrace{1}_{msb}000101101}^{MSB}\overbrace {11010011\underbrace{0}_{lsb}}^{LSB}
+\end{equation}
+
+Die gemessene Beschleunigung ist also aufgeteilt und muss im Programm wieder zusammengesetzt werden. \\
+
+Um die Beschleunigungsdaten vom Sensor zu laden, ist so vorzugehen:
+\begin{enumerate}
+	\item Übertragung initiieren (mit der Adresse des Sensors)
+	\item Adresse des Registers senden, bei dem wir \textbf{anfangen} wollen zu lesen
+	\item Übertragung beenden
+	\item So viele Bytes abrufen, wie wir haben möchten
+	\item Übertragung beenden
+\end{enumerate}
+
+\lstset{language=C++,caption={Funktion zum Auslesen der Beschleunigungsdaten},label=readaccel}
+\begin{lstlisting}[frame=trBL]
+	void BMA180::readAccel()
+	{
+	  unsigned int result;
+
+	  Wire.beginTransmission(address);
+	  Wire.write(0x02);
+	  Wire.endTransmission();
+	  Wire.requestFrom((int)address, 7);
+	  if(Wire.available()==7)
+	  {
+	    int lsb = Wire.read()>>2;
+	    int msb = Wire.read();
+	    x=(msb<<6)+lsb; 
+	    if (x&0x2000) x|=0xc000; // set full 2 complement for neg values
+	    lsb = Wire.read()>>2;
+	    msb = Wire.read();
+	    y=(msb<<6)+lsb;
+	    if (y&0x2000) y|=0xc000;
+	    lsb = Wire.read()>>2;
+	    msb = Wire.read();
+	    z=(msb<<6)+lsb;
+	    if (z&0x2000) z|=0xc000;
+	    temp = Wire.read();
+	    if (temp&0x80) temp|=0xff00;
+	  }
+	  result = Wire.endTransmission();
+	}
+\end{lstlisting}
+
+Das Register, bei dem wir beginnen wollen zu lesen, ist $0x02$, (Zeile 6) und wir benötigen die nächsten 7 Bytes (Zeile 8). Jeweils zwei Bytes MSB und LSB für die drei Achsen und als letztes Byte lesen wir zusätzlich die aktuelle Temperatur aus. Diese wird jedoch weiterhin nicht mehr verwendet.
+
+Mit $Wire.read()$ erhalten wir immer das nächste Byte, welches wir vorher angefordert haben. Da wir 
+
+
+\subsubsection{PC Logger}
 
 
 
+\section{Experimente in Waakirchen}
+
+
+\section{Results}
+
+Eruption ist zu sehen!
+Schüssel bewegt sich um x m/s durch Eruption! Im auflösbaren Bereich? Arbeitsweise des Radars -> Tina fragen
+
+Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung?
 
 
 \clearpage

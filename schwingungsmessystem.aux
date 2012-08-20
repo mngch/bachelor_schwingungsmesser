@@ -35,6 +35,7 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces BMA180 Breakoutboard von Sparkfun\relax }}{9}}
 \newlabel{bma180_breakout}{{6}{9}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Arduino}{9}}
+\citation{:2012vn}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Arduino UNO\relax }}{10}}
 \newlabel{Arduino}{{7}{10}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Schnittstellen}{10}}
@@ -50,23 +51,46 @@
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces BMA180 Pinbelegung f\IeC {\"u}r SPI und I2C Modes \citep  {Sensortec:2009rt}\relax }}{11}}
 \newlabel{i2cmode}{{1}{11}}
 \citation{Components:2010fk}
+\citation{Enclosures:2012uq}
 \@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Schaltplan Testaufbau. Die Interrupts sind nicht verbunden, VCC und CS sind auf 3.3V geschaltet, GND und SDO auf die Masse des Arduinos gezogen, die I$^2$C Datenleitungen SCK und SDI sind mit den Arduinopins A4 und A5 verbunden, wobei zus\IeC {\"a}tzlich 10k$\Omega $ Pull-Up-Widerst\IeC {\"a}nde eingebaut sind.\relax }}{12}}
 \newlabel{schematics}{{10}{12}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Fester Aufbau}{12}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Software}{12}}
-\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces BMA180 in Polyurethanharz eingegossen, die Kunststoffbox wurde von der technischen Werkstatt des Geomatikums gefertigt.\relax }}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces BMA180 in Polyurethanharz eingegossen, die Kunststoffform wurde von der technischen Werkstatt des Geomatikums gefertigt.\relax }}{13}}
 \newlabel{harz}{{11}{13}}
-\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Arduinobox\relax }}{14}}
-\newlabel{arduinobox}{{12}{14}}
-\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Arduinobox im Regen\relax }}{14}}
-\newlabel{arduinoboxregen}{{13}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces I$^2$C Beschaltung des Hirschmannsteckers\IeC {\texttrademark }\relax }}{13}}
+\newlabel{hirschmann_i2c}{{13}{13}}
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces Verbindungen zwischen BMA180, Arduino und Logger per I$^2$C bzw. RS232\relax }}{14}}
+\newlabel{kabel}{{12}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces ABS Box, welche den Arduino enth\IeC {\"a}lt  \relax }}{14}}
+\newlabel{arduinobox}{{14}{14}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces ABS Box geschlossen im Witterungstest\relax }}{14}}
+\newlabel{arduinoboxregen}{{15}{14}}
+\citation{Sensortec:2009rt}
+\citation{Sensortec:2009rt}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Software}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.1}Arduino}{15}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Memory Map BMA180, Ausschnitt \citep  {Sensortec:2009rt}\relax }}{15}}
+\newlabel{registermap}{{16}{15}}
+\newlabel{sensitivity}{{1}{16}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {1}Funktion zum Einstellen des Messbereichs aus der BMA180 Bibliothek(REF!!)\\ maxg ist eine dem Wertebereich zugeordnete Bin\IeC {\"a}rzahl zwischen 000 und 110}{16}}
+\newlabel{writeregister}{{2}{16}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek(REF!!)}{16}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Beispiel eines Schreibvorgangs in das Register $0x35$. Nur die grau markierten Bits werden ver\IeC {\"a}ndert.\relax }}{17}}
+\newlabel{bitops}{{17}{17}}
+\newlabel{readaccel}{{3}{18}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {3}Funktion zum Auslesen der Beschleunigungsdaten}{18}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2}PC Logger}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experimente in Waakirchen}{18}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results}{18}}
 \bibstyle{plainnat}
 \bibdata{bachelor}
 \bibcite{Devices:1996pd}{{1}{1996}{{ADXL05}}{{}}}
-\bibcite{Components:2010fk}{{2}{2010}{{Components}}{{}}}
-\bibcite{Kanda:1991gf}{{3}{1991}{{Kanda}}{{}}}
-\bibcite{Klingbeil:2006qy}{{4}{2006}{{Klingbeil}}{{}}}
-\bibcite{:2012fj}{{5}{2012}{{NXP}}{{}}}
-\bibcite{:2002fk}{{6}{2002}{{Schmidt}}{{}}}
-\bibcite{Sensortec:2009rt}{{7}{2009}{{Sensortec}}{{}}}
-\bibcite{S.J.-Sherman:1992ul}{{8}{1992}{{Sherman et~al.}}{{Sherman, Tsang, Core, Payne, Quinn, Chau, Farash, and Baum}}}
+\bibcite{:2012vn}{{2}{2012}{{Arduino}}{{}}}
+\bibcite{Components:2010fk}{{3}{2010}{{Components}}{{}}}
+\bibcite{Enclosures:2012uq}{{4}{2005}{{Enclosures}}{{}}}
+\bibcite{Kanda:1991gf}{{5}{1991}{{Kanda}}{{}}}
+\bibcite{Klingbeil:2006qy}{{6}{2006}{{Klingbeil}}{{}}}
+\bibcite{:2012fj}{{7}{2012}{{NXP}}{{}}}
+\bibcite{:2002fk}{{8}{2002}{{Schmidt}}{{}}}
+\bibcite{Sensortec:2009rt}{{9}{2009}{{Sensortec}}{{}}}
+\bibcite{S.J.-Sherman:1992ul}{{10}{1992}{{Sherman et~al.}}{{Sherman, Tsang, Core, Payne, Quinn, Chau, Farash, and Baum}}}

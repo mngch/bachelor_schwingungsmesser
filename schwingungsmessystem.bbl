@@ -1,4 +1,4 @@
-\begin{thebibliography}{8}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,9 +10,18 @@ Datasheet ADXL05.
 \newblock \emph{1g to 5g Single Chip Accelerometer with Signal Conditioning},
   1996.
 
+\bibitem[Arduino(2012)]{:2012vn}
+Arduino.
+\newblock Arduino wire library, 2012.
+\newblock URL \url{http://www.arduino.cc/en/Reference/Wire}.
+
 \bibitem[Components(2010)]{Components:2010fk}
 RS~Components.
 \newblock \emph{Datasheet Polyurethane}, 2010.
+
+\bibitem[Enclosures(2005)]{Enclosures:2012uq}
+BOSS Enclosures.
+\newblock \emph{ABS Geh{\"a}use}, 2005.
 
 \bibitem[Kanda(1991)]{Kanda:1991gf}
 Yozo Kanda.
