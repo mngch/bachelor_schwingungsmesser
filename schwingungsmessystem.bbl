@@ -1,4 +1,4 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{11}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -57,5 +57,10 @@ S.J. Sherman, W.K. Tsang, T.A. Core, R.S. Payne, D.E. Quinn, K.H.-L. Chau, J.A.
 \newblock A low cost monolithic accelerometer; product/technology update.
 \newblock In \emph{Electron Devices Meeting, 1992. IEDM '92. Technical Digest.,
   International}, pages 501--504, 1992.
+
+\bibitem[Tietze and Schenk(2002)]{Tietze:2002fk}
+Ulrich Tietze and Christoph Schenk.
+\newblock \emph{Halbleiter-Schaltungstechnik}.
+\newblock Number 3-540-42849-6. Springer, Berlin, 12 edition, 2002.
 
 \end{thebibliography}
