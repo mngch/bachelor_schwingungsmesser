@@ -536,6 +536,9 @@ Da die Daten im sogenannten Zweierkomplement (näheres in \citep{Tietze:2002fk})
 
 Für die y- und z-Achse ist das Vorgehen analog.
 
+
+
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=.6]{auslesen.eps}
@@ -543,11 +546,42 @@ Für die y- und z-Achse ist das Vorgehen analog.
 \label{auslesen}
 \end{figure}
 
+
+\subsubsection{Restitution}
+
+Jetzt haben wir eine Beschleunigungsmessung, jedoch ist diese noch in gerätespezifischen 'count' Einheiten. Diese müssen nun die physikalisch bestimmte Einheit der Beschleunigung umgerechnet werden. Der Vorgang wird als Restitution bezeichnet und der entsprechende Code ist in Listing \ref{restitution} zu sehen.
+
+\lstset{language=C++,caption={Restitution der aufgenommenen Beschleunigungsdaten. Ausgabe als Vielfaches von der Erdbeschleunigung $g = 9.81m/s^2$},label=restitution}
+\begin{lstlisting}[frame=trBL]
+	float BMA180::getXValFloat()
+	{
+	    // normalize (if x is maximum (8191) and GSENSE=1.0 then 1.0
+	    return (float)x/8191.0*getGSense();
+	}
+\end{lstlisting}
+
+Aus dem Datenblatt \citep{Sensortec:2009rt} lässt sich entnehmen, dass $10~0000~0000~0000$ den geringstmöglichen Wert in jedem Messbereich darstellt und $01~1111~1111~1111$ de größten. Das erste Bit gibt dabei das Vorzeichen an (Zweierkomplement). Teilt man den Wert durch 8191, was in Binärdarstellung $1~1111~1111~1111$ entspricht, erhält man nach einer Multiplikation mit dem Messbereich (GSENSE) die Beschleunigung als Vielfaches, beziehungsweise Teil der Erdbeschleunigung $g = 9.81 m/s^2$.
+
+
 \subsubsection{PC Logger}
+
+Das Programm, welches auf dem PC läuft und die Daten aufzeichnet, ist ein Python Script, welches ich von Matthias Hort übernommen und angepasst habe. Sobald es gestartet ist und eine kurze Beschreibung für das aktuelle Experiment eingegeben wurde, nimmt es sämtliche Nachrichten auf dem eingestellten Comport entgegen und schreibt diese mit der jeweils aktuellen Systemzeit in eine Datei.
+
+Die exakte Zeit ist sehr wichtig, um die Ergebnisse später mit anderen Messungen vergleichen zu können. Zu diesem Zweck ist der PC mit einem NTP (ERKLÄREN?) Server verbunden, welcher stets die korrekte Uhrzeit von GPS-Satelliten empfängt und damit die computerinterne Uhr korrigiert.
 
 
 
 \section{Experimente in Waakirchen}
+
+Um das System in der Anwendung zu testen, habe ich im Mai 2012 an Eruptionsdynamikexperimenten in Waakirchen, in der Nähe von München, teilgenommen, die gemeinsam mit der Ludwig-Maximilians-Universität München, der Universität Catania und dem Istituto Nazionale di Geofisica e Vulcanologia (Sezione di Catania and Dept. of Seismology and Tectonophysics, Rome) durchgeführt wurden. 
+
+Bei diesen Experimenten wurden künstliche Explosionen in Autoklaven \citep{Spieler:2004fk} verschiedener Geometrie (von 16 cm bis 40 cm Länge) ausgelöst. Es kamen dabei zwei Aufbauten zum Einsatz, von denen einer das Erhitzen der Proben auf bis zu $850\circ C$ und damit der Wirklichkeit nähere Umgebungsbedingungen ermöglichte. Bei den verwendeten Samples handelte es sich um Proben von verschiedenen Vulkanen (sowohl Asche als auch festes Lavagestein) und Analogmaterialien.
+Die Experimente wurden wiederholt durchgeführt und dabei Einflussgrößen, wie Korngröße, Mischverhältnis, Druck und Temperatur, variiert.
+
+Untersucht wurde dabei eine Vielzahl von Parametern durch den Einsatz von Hochgeschwindigkeits- Thermo- und optischen Kameras, Piezo Sensoren, einem akustischen Array und unserem Doppler Radar.\\
+
+Mein Ziel war dabei vor Allem, erste Erfahrungen mit dem System im Feld zu machen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, da bei vorherigen Experimenten in den Radardaten in einigen Fällen negative Geschwindigkeiten auftraten, für die es bisher keine vollständige Erklärung gibt. 
+
 
 
 \section{Results}
@@ -556,6 +590,10 @@ Eruption ist zu sehen!
 Schüssel bewegt sich um x m/s durch Eruption! Im auflösbaren Bereich? Arbeitsweise des Radars -> Tina fragen
 
 Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung?
+
+\section{Verbesserungen}
+
+BMA180 - Interrupts benutzen, da sonst Samples verlorengehen… etc
 
 
 \clearpage
