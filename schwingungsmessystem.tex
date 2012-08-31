@@ -12,6 +12,8 @@
 %\usepackage{pdfpages}     % pdfs einbinden
 
 
+\usepackage{setspace}
+
 \usepackage[]{natbib}
 
 %========================================================================================
@@ -108,12 +110,14 @@ title=\lstname,                 				% show the filename of files included with \
 }
 
 \usepackage{booktabs}
+\usepackage{subfigure}
 
 
 
 %==========================================================================================
 
 \begin{document}
+
 \title {Entwicklung eines Schwingungsmesssystems für ein Radar}
 \author{Sebastian Beyer}
 \maketitle
@@ -124,58 +128,104 @@ title=\lstname,                 				% show the filename of files included with \
 \newpage
 
 
+
+
 \section{Abstrakt}
 
 \newpage
 
-\section{Motivation und Hintergrund}
+\section{Motivation}
 
 \newpage
 
-\section{Hintergrund: Beschleunigungssensoren}
+\section{Beschleunigungssensoren}
+\onehalfspacing
+Beschleunigungssensoren messen die Beschleunigung, die auf ein System wirkt, indem sie die auf eine Testmasse wirkenden Kräfte bestimmen. Nach Newton  Die auf einen Körper wirkende Beschleunigung setzt sich aus der Gravitation und Trägheitskräften zusammen. Isoliert man die Trägheitskräfte, so lässt sich daraus die Translationsbeschleunigung bestimmen. Mithilfe dieser und dem zweiten newtonschen Gesetz lässt sich die Positionsänderung des Systems berechnen: 
 
-Beschleunigungssensoren messen grundsätzlich die Kraft, die auf ein System wirkt. Diese setzt sich aus der Gravitation und Trägheitskräften zusammen. Isoliert man die Trägheitskräfte, so lässt sich daraus die Translationsbeschleunigung bestimmen. Mithilfe dieser lässt sich die Positionsänderung des Systems berechnen. (Referenz?)\\
+\begin{equation}
+F = m \cdot a
+\end{equation}
 
-Es gibt verschiedene Prinzipien, mit denen die Beschleunigung bestimmt werden kann. Das verbreitetste ist das der Federwaage.
+Es gibt verschiedene Prinzipien, mit denen Beschleunigung gemessen werden kann. Am gebräuchlichsten ist das der Federwaage.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{federmasse.eps}
-\caption{Masse-Feder-System zur Beschleunigungsmessung. k, d, m und $\Delta l$ bezeichnen Federkonstante, Dämpfung, Masse und Auslenkung. nach \citep{Klingbeil:2006qy}.}
+\caption{Masse-Feder-System zur Beschleunigungsmessung. k, d, m und $x$ bezeichnen Federkonstante, Dämpfung, Masse und Auslenkung. nach \citep{Klingbeil:2006qy}.}
 \label{federwaage}
 \end{figure}
 
-Eine Masse m (auch seismische Masse genannt) ist über einer Feder mit der Federkonstante k mit einem festen Bezugspunkt verbunden. Die Auslenkung $\Delta l$ ist proportional zur auf die Masse wirkenden Beschleunigung a.
+Eine Masse m (auch seismische Masse genannt) ist über eine Feder der Federkonstanten k mit einem festen Bezugspunkt verbunden. Die Auslenkung $x$ ist proportional zur auf die Masse wirkenden Beschleunigung a.
 \begin{equation}
-a = \frac{k}{m} \cdot \Delta l
+a = \frac{k}{m} \cdot x
 \end{equation}
 
-Zu beachten ist die Ausrichtung des Sensors, a entspricht immer der Projektion der Beschleunigung auf die Auslenkungsrichtung von m.\\
-Durch geeignete Wahl von k, d und m lässt sich das System für den jeweiligen Fall so einstellen, dass die Ansprechzeit, Resonanz und Sensitivität optimal sind und es möglichst zu keinerlei Nachschwingen kommt. \\
+Zu beachten ist die Ausrichtung des Sensors: a entspricht immer der Projektion der Beschleunigung auf die Auslenkungsrichtung von m.\\
 
-Mittlerweile sind Beschleunigungssensoren in den meisten Fällen als MEMS realisiert (\textbf{M}icro \textbf{E}lectro \textbf{M}echanical \textbf{S}ystems). Sehr kleine mechanische Elemente (1-100 Mikrometer) werden zusammen mit elektronischen Schaltungen auf einen Siliziumwafer aufgebracht. Dabei werden Techniken aus der Fabrikation von integrierten Schaltkreisen (ICs) verwendet, was dazu führt, dass komplizierte elektromechanische System in winziger Größe und hoher Stückzahl hergestellt werden können. Der geringe Preis führt dazu, dass die Sensoren in mehr und mehr Anwendungen integriert werden (Autos, Smartphones, Quadrokopter…).
+Das System führt eine gedämpfte harmonische Schwingung aus. Einmal angeregt beginnt es zu schwingen, die Amplitude nimmt dann aber kontinuierlich ab. Die Bewegungsgleichung lautet: (vergleiche auch \citep{Meschede:2001fk})
 
-Die Messung der Auslenkung erfolgt im Wesentlichen durch zwei Verfahren:
+\begin{equation}
+m \ddot x + d \dot x + kx = 0
+\end{equation}
+
+Wobei $m$ die Masse, $d$ die Dämpfung und $k$ die Federkonstante ist.
+Eine Lösung dieser Differentialgleichung lautet:
+
+\begin{equation}
+x(t) = x_0 e^{-\delta t} sin(\omega_d t + \varphi_0) \qquad mit \quad \delta = \frac{d}{2m}
+\end{equation}
+
+Die Lösung ist aus zwei elementaren Funktionen zusammengesetzt, wobei die eine den periodischen Anteil ausmacht und die andere den dämpfenden Anteil. Der periodische Anteil lässt ich auch als $x_0 e^{i\omega_d t}$ schreiben, wobei 
+\begin{equation}
+\omega_d = \sqrt{\omega_0^2 - \delta^2}
+\end{equation}
+die gedämpfte Eigenfrequenz genannt wird und einen entscheidenden Einfluss auf das Schwingverhalten hat.
+
+Bei kleinem $\delta$ ist die Dämpfung gering und es gilt
+\begin{equation}
+\omega_d \approx \omega_0
+\end{equation}
+Dies nennt man den \textit{Schwingungsfall}
+
+Wenn die Dämpfung jedoch so groß wird, dass
+\begin{equation}
+\delta = \omega_0
+\end{equation}
+gilt, wird $\omega_d = 0$ und das System kommt in kürzestmöglicher Zeit zur Ruhe. Man spricht vom \textit{aperiodischen Grenzfall}. Dieses Verhalten ist bei Beschleunigungsaufnehmern erwünscht, weil man so die höchste Wiederholfrequenz von Messungen erreicht, ohne dass sich die Anregungen gegenseitig überlagern.\\
+
+Wird $\delta$ noch größer, so wird der Term unter der Wurzel negativ und $\omega_d$ damit imaginär. Aus 
+\begin{equation}
+e^{i\omega_d t}
+\end{equation}
+wird
+\begin{equation}
+e^{-k t}
+\end{equation}
+und bewirkt eine zusätzliche Dämpfung. Eine Schwingung existiert nicht mehr und das System erreicht seine Ruhelage nach längerer Zeit als beim aperiodischen Grenzfall. Dieses als \textit{Kriechfall} bezeichnete Verhalten ist in den meisten Fällen unerwünscht. \\
+
+
+
+Mittlerweile sind Beschleunigungssensoren in den meisten Fällen als MEMS realisiert (\textbf{M}icro \textbf{E}lectro \textbf{M}echanical \textbf{S}ystems). Sehr kleine mechanische Elemente (1-100 Mikrometer) werden zusammen mit elektronischen Schaltungen auf einen Siliziumwafer aufgebracht. Dabei werden Techniken aus der Fabrikation von integrierten Schaltkreisen (ICs) verwendet. So können komplizierte elektromechanische System in winziger Größe und hoher Stückzahl hergestellt werden. Der geringe Preis ist maßgeblich dafür verantwortlich, dass die Sensoren in immer mehr Anwendungen integriert werden (Autos, Smartphones, Quadrokopter…).
+
+Die Beschleunigungsmessung erfolgt also über die Messung der Auslenkung einer Testmasse. Dazu haben sich zwei Verfahren durchgesetzt, die ich im Folgenden kurz erläutern möchte. 
 
 \subsection{Piezoresistive Sensoren}
-Piezoresistive Sensoren machen sich den Piezoelektrischen Effekt zunutze. In der Feder der Testmasse befinden sich Piezoelemente, welche sich bei Auslenkung verformen und damit ihren Widerstand ändern. Silizium ist ein geeignetes Material, da es sehr empfindlich und linear reagiert und gleichzeitig gut mit der MEMS Technik kombinierbar ist \citep{Kanda:1991gf}.
+Piezoresistive Sensoren machen sich den piezoelektrischen Effekt zunutze. In der Feder der Testmasse befinden sich Piezoelemente, welche sich bei Auslenkung verformen und damit ihren Widerstand ändern. Silizium ist ein geeignetes Material, da es sehr empfindlich und linear reagiert und gleichzeitig gut mit der MEMS Technik kombinierbar ist \citep{Kanda:1991gf}.
 
 \subsection{Kapazitative Sensoren}
 
 \begin{figure}[htb]
-\begin{minipage}[H]{8cm}
 	\centering
-	\includegraphics[width=8cm]{adxl_ruhe.png}
-	\caption{Vereinfachtes Diagramm des ADXL05 in Ruhe \citep{Devices:1996pd}}
-	\label{adxl_ruhe}
-\end{minipage}
-\hfill
-\begin{minipage}[H]{8cm}
-	\centering
-	\includegraphics[width=8cm]{adxl_action.png}
-	\caption{Vereinfachtes Diagramm des ADXL05 während einer externen Beschleunigung \citep{Devices:1996pd}}
-	\label{adxl_action}
-\end{minipage}
+	\subfigure[Sensor in Ruhe, Abstand der Kondensatorplatten ist gleich, $C_1 = C_2$] {
+		\label{adxl_ruhe}
+		\includegraphics[width=7cm]{adxl_ruhe.png}
+	}
+	\subfigure[Sensor während einer externen Beschleunigung, $C_1 < C_2$] {
+	\includegraphics[width=7cm]{adxl_action.png}
+ 	\label{adxl_action}
+	}
+	\caption{Vereinfachtes Diagramm des ADXL05 \citep{Devices:1996pd}}
+	\label{adxl}
 \end{figure}
 
 \begin{figure}[htb]
@@ -187,10 +237,10 @@ Piezoresistive Sensoren machen sich den Piezoelektrischen Effekt zunutze. In der
 
 
 
-Die Auslenkung lässt sich auch über eine Kapazitätsmessung bestimmen, wenn man je eine Elektrode an der Testmasse und eine am fixen Referenzpunkt anbringt.\citep{S.J.-Sherman:1992ul} Eine mögliche Realisierung ist in Abbildung \ref{adxl_ruhe} und Abbildung \ref{adxl_action} zu sehen: Es handelt sich um einen sogenannten Differentialkondensatorsensor. Der Vorteil bei dieser Art von Sensoren ist die Möglichkeit zur Linearisierung und Kompensation \citep{:2002fk}. (ERKLÄREN??) \\
-Die seismische Masse befindet sich zwischen zwei fest verankerten Platten, die zusammen zwei Kondensatoren $C_1$ und $C_2$ bilden (Abbildung \ref{adxl_ruhe}). Eine auftretende Beschleunigung führt also zu einer Auslenkung der Mittelelektrode des Kondensatorenpaares (seismische Masse) um die Länge $\pm \Delta l$ und damit zu einer symmetrischen Kapazitätsänderung um $\pm \Delta C$ (Abbildung \ref{adxl_action}). Dieser Aufbau ist eine sogenannte Einzelzelle. In einem Sensor befinden sich viele Einzelzellen, um die Kapazitätsvariation und damit die Sensibilität zu erhöhen.
+Die Auslenkung lässt sich auch über eine Kapazitätsmessung bestimmen, wenn man je eine Elektrode an der Testmasse und am fixen Referenzpunkt anbringt \citep{S.J.-Sherman:1992ul}. Eine mögliche Realisierung ist in Abbildung \ref{adxl} a,b zu sehen: Es handelt sich um einen sogenannten Differentialkondensatorsensor \citep{:2002fk}. \\
+Die seismische Masse befindet sich zwischen zwei fest verankerten Platten, die zusammen zwei Kondensatoren $C_1$ und $C_2$ bilden (Abb. \ref{adxl_ruhe}). Eine auftretende Beschleunigung führt also zu einer Auslenkung der Mittelelektrode des Kondensatorenpaares (seismische Masse) um die Länge $\pm x$ und damit zu einer symmetrischen Kapazitätsänderung um $\pm \Delta C$ (Abb. \ref{adxl_action}). Dieser Aufbau ist eine sogenannte Einzelzelle. In einem Sensor befinden sich viele Einzelzellen, um die Kapazitätsvariation und damit die Sensibilität zu erhöhen (Abb. \ref{adxl_micro}
 
-Um diese Variation in ein elektrisches Ausgangssignal umzusetzen, wird eine sogenannte Brückenschaltung verwendet (Abbildung \ref{bruecke}).
+Um diese Variation in ein elektrisches Ausgangssignal umzusetzen, wird eine sogenannte Brückenschaltung verwendet (Abb. \ref{bruecke}).
 
 \begin{figure}[H]
 \centering
@@ -199,7 +249,9 @@ Um diese Variation in ein elektrisches Ausgangssignal umzusetzen, wird eine soge
 \label{bruecke}
 \end{figure}
 
-Wird nun eine Wechselspannung an die Brücke angelegt, so ergibt sich nach der Spannungsteilerregel für den Ausgang $U_a$:
+Die folgende Herleitung ist aus \citep{:2002fk} entnommen:
+
+Wird eine Wechselspannung an die Brücke angelegt, so ergibt sich nach der Spannungsteilerregel für den Ausgang $U_a$:
 
 \begin{equation}
 U_a = U_1 - U_2 = U_0 \frac{R}{2 R} - U_0 \dfrac{\dfrac{1}{j \omega C_2} } { \dfrac{1} {j \omega C_2} + \dfrac{1}{j \omega C_1} }
@@ -211,21 +263,20 @@ Durch Kürzen ergibt sich:
 U_a = \frac{U_0}{2} - U_0 \dfrac{\dfrac{1}{C_2}}{\dfrac{1}{C_2} + \dfrac{1}{C_1}} = U_0 \left( \frac{1}{2} - \frac{C_1}{C_2 + C_1} \right) = \frac{U_0}{2} \left( \frac{C_2 - C_1}{C_2 + C_1} \right)
 \end{equation}
 
-Mit $C_1 = C_0 + \Delta C = \varepsilon _0 \cdot \varepsilon _r \cdot A / (d_0 - \Delta l )$ und $C_2 = C_0 - \Delta C = \varepsilon _0 \cdot \varepsilon _r \cdot A / (d_0 + \Delta l )$ erhält man eine lineare Abhängigkeit der Ausgangsspannung $U_a$ von der Auslenkung  $\Delta l$:
+Mit $C_1 = C_0 + \Delta C = \varepsilon _0 \cdot \varepsilon _r \cdot A / (d_0 - x )$ und $C_2 = C_0 - \Delta C = \varepsilon _0 \cdot \varepsilon _r \cdot A / (d_0 + x )$ erhält man eine lineare Abhängigkeit der Ausgangsspannung $U_a$ von der Auslenkung  $x$:
 
 \begin{equation}
-U_a = - U_0 \frac{\Delta l}{2 d_0}
-\end{equation}
+U_a = - U_0 \frac{x}{2 d_0}
+\end{equation}\\
 
-Aus \citep{:2002fk}.\\
 
 Diese Spannung lässt sich nun digitalisieren und auslesen. In vielen MEMS Bausteinen ist bereits ein integrierter Analog Digital Wandler eingebaut, sodass die Messwerte direkt digital abrufbar sind. 
 
 \newpage
 
-\section{Entwicklung des ersten Schwingunsmesssystems (BMA180)}
+\section{Entwicklung des Schwingungsmesssystems: Prototyp (BMA180)}
 
-Um abschätzen zu können wie groß die auftretenden Beschleunigungen an der Radarantenne sind, habe ich damit begonnen einen günstigen, schnell zu verwendenden Prototypen zu entwickeln. Dies ist vor Allem wichtig, um entscheiden zu können, für welchen Messbereich und welche Frequenzen der eigentliche Sensor ausgelegt sein muss. \\
+Um abschätzen zu können wie groß die auftretenden Beschleunigungen an der Radarantenne sind, habe ich damit begonnen einen günstigen und einfach zu verwendenden Prototypen zu entwickeln. Letzteres ist vor Allem wichtig, um entscheiden zu können, für welchen Messbereich und welche Frequenzen der eigentliche Sensor ausgelegt sein muss. \\
 
 \subsection{Bosch BMA180}
 \begin{figure}[h]
@@ -235,11 +286,10 @@ Um abschätzen zu können wie groß die auftretenden Beschleunigungen an der Rad
 \label{bma180_breakout}
 \end{figure}
 
-Die Wahl fiel auf einen \textit{Bosch BMA180} digitalen, dreiachsigen MEMS Beschleunigungssensor. Er verfügt über einen eingebauten 14-bit Analog-Digital Wandler und sieben per Software verstellbaren Messbereiche von $\pm1$ bis $\pm16$g.
-Die Kommunikation kann über SPI oder I2C erfolgen.
-Analogfilter
+Die Wahl fiel auf einen digitalen, dreiachsigen MEMS Beschleunigungssensor \textit{Bosch BMA180}. Er verfügt über einen eingebauten 14-bit Analog-Digital Wandler und sieben per Software verstellbaren Messbereiche von $\pm1$ bis $\pm16$g.
+Die Kommunikation kann über SPI (Serial Peripheral Interface)  oder I$^2$C (Inter-Integrated Circuit) erfolgen.
 
-Ich nutze ein Breakoutboard von Sparkfun, da so das knifflige SMD-Löten entfällt und bereits zwei spannungsstabilisierende Kondensatoren eingebaut sind.
+Ich nutze ein Breakoutboard von Sparkfun (Abb. \ref{bma180_breakout}), welches die IC Pins (SMD Technik) mit praktische Lötösen verbindet. Außerdem sind bereits zwei spannungsstabilisierende Kondensatoren mit auf der Platine verbaut.
 
 \subsection{Arduino}
 
@@ -251,22 +301,22 @@ Ich nutze ein Breakoutboard von Sparkfun, da so das knifflige SMD-Löten entfäl
 \end{figure}
 
 
-Arduino ist eine auf ATmega Mikroprozessoren basierende Open-Source Entwicklungsplattform zur Verarbeitung von analogen und digitalen Signalen. Die Programmierung kann über eine eigene Entwicklungsumgebung in einer an \textit{Processing\footnote{LINK?}} angelehnten Sprache erfolgen, die im Prinzip ein vereinfachtes C/C++ darstellt.\\
-Die Plattform ist auf Prototyping und Experimente ausgelegt. Es ist bereits ein Bootloader vorinstalliert, so kann die Programmierung direkt über die serielle Schnittstelle erfolgen. Die Boards machen die meisten Pins des Atmegas für eigene Schaltungen verfügbar, in den gängigen Boards sind das 14 Pins, die frei als Ein- oder Ausgänge genutzt werden können.
-Die Stromversorgung kann über USB oder eine externe 5V Quelle erfolgen. Als weitere Interfaces werden SPI, ICSP und I2C angeboten.\\
+Arduino ist eine auf ATmega Mikroprozessoren basierende Open-Source Entwicklungsplattform zur Verarbeitung von analogen und digitalen Signalen. Die Programmierung kann über eine eigene Entwicklungsumgebung in einer an \textit{Processing\footnote{processing.org}} angelehnten Sprache erfolgen, die im Prinzip ein vereinfachtes C/C++ darstellt.\\
+Die Plattform ist auf Prototyping und Experimente ausgelegt. Es ist bereits ein Bootloader vorinstalliert, so kann die Programmierung direkt über die serielle Schnittstelle erfolgen. Die Boards machen die meisten Pins des ATmegas für eigene Schaltungen verfügbar, in den gängigen Boards sind das 14 Pins, die frei als Ein- oder Ausgänge genutzt werden können.
+Die Stromversorgung kann über USB oder eine externe 5V Quelle erfolgen. Als Kommunikationsinterfaces werden SPI, ICSP (In-Circuit Serial Programming) und I$^2$C angeboten.\\
 Der ATmega arbeitet mit 16 MHz und hat einen geringen Energieverbrauch.
 
 
 \subsection{Schnittstellen}
 
 \subsubsection{I$^2$C}
-Die Kommunikation zwischen Beschleunigungssensor und Arduino erfolgt über den  I$^2$C Bus \citep{:2012fj}.
-Dabei handelt es sich um einen von Phillips entwickelten seriellen Datenbus, der ursprünglich entwickelt wurde, um Chips in Fernsehgeräten steuern zu können. Inzwischen ist das Patent ausgelaufen und er wird in vielen Hardwareprojekten verwendet, da er sehr leicht zu verstehen und zu verwenden ist. 
+Zur Kommunikation zwischen Beschleunigungssensor und Arduino habe ich den  I$^2$C Bus \citep{:2012fj} gewählt.
+Dabei handelt es sich um einen von Phillips entwickelten seriellen Datenbus, der ursprünglich entwickelt wurde, um Chips in Fernsehgeräten steuern zu können. Inzwischen ist das Patent ausgelaufen und er wird in vielen Hardwareprojekten verwendet, da er sehr einfach zu verstehen und zu verwenden ist. 
 
-Ich benutze die Arduino Wire Library \citep{:2012vn}, welche die gesamte Kommunikation über I$^2$C steuert und einfache Funktionsaufrufe zur Verfügung stellt. (WEITER AUSFÜHREN???!?)
+Ich benutze die Arduino Wire Library \citep{:2012vn}, welche die gesamte Kommunikation über I$^2$C steuert und einfache Funktionsaufrufe, wie zum Beispiel Senden und Empfangen, zur Verfügung stellt.
 
 \subsubsection{Serieller Port}
-Zum einfachen Anschluss des Arduinos an einen PC oder Datenlogger wird eine serielle Schnittstelle nach RS232 (REFERENZ) verwendet. Auf dem Arduino befindet sich ein ATmega16U2, welcher die seriellen Signale in USB umwandelt und dafür sorgt, dass der Arduino am PC als virtueller COM-Port erscheint.
+Zum einfachen Anschluss des Arduinos an einen PC oder Datenlogger wird eine serielle Schnittstelle nach RS232 verwendet. Auf dem Arduino befindet sich ein ATmega16U2, welcher die seriellen Signale in USB umwandelt und dafür sorgt, dass der Arduino am PC als virtueller COM-Port erscheint.
 
 \newpage
 \subsection{Aufbau und Schaltung}
@@ -275,54 +325,48 @@ Zum einfachen Anschluss des Arduinos an einen PC oder Datenlogger wird eine seri
 
 Um die korrekte Verschaltung zu überprüfen und die Software für das Auslesen der Daten zu zu entwickeln, habe ich zunächst auf dem Breadboard gearbeitet. Der dazu verwendete Schaltplan ist in Abbildung \ref{schematics} zu sehen.
 
-Da der Sensor im I$^2$C Modus betrieben werden soll, ist CS auf High (3.3V) geschaltet. Der SDO-Pin setzt damit dann die Adresse des Chips, wie aus Tabelle \ref{i2cmode} zu entnehmen ist. Ist dieser Low (GND), so ist die Adresse 0x40.
+Da der Sensor sowohl im I$^2$C- sowie im SPI-Modus betrieben werden kann, ist es notwendig, den Modus bereits bei der Verschaltung einzustellen. Über den CS Pin (Pin 4) ist dies möglich. Schaltet man ihn auf High (3.3V), so benutzt der Chip I$^2$C, verbindet man ihn mit GND, so wird ISP verwendet. Je nach Modus haben die Pins unterschiedliche Funktionen. In Tabelle \ref{i2cmode} sind die verschiedenen Konfigurationen aufgeführt.
+
+Pin 6 legt im von mir benutzten I$^2$C Modus die Adresse des Chips fest. Ist dieser auf Low (GND), so ist die Adresse 0x40.
 
 
-
-\begin{figure}[h]
-\centering
-
-\end{figure}
 
 \begin{figure}[htb]
-\begin{minipage}[H]{8cm}
 	\centering
-	\includegraphics[scale=.111]{hardwareimages/breadboard.jpg}
-	\caption{Testaufbau auf dem Breadboard}
-	\label{breadboard}
-\end{minipage}
-\hfill
-\begin{minipage}[H]{8cm}
-	\centering
-	\includegraphics[scale=.111]{hardwareimages/testaufbau.png}
-	\caption{Testplatine am Radar}
-	\label{testaufbau}
-\end{minipage}
+	\subfigure[Testaufbau auf dem Breadboard] {
+		\label{breadboard}
+		\includegraphics[width=7cm]{hardwareimages/breadboard.jpg}
+	}
+	\subfigure[Testplatine am Radar] {
+	\includegraphics[width=7cm]{hardwareimages/testaufbau.png}
+ 	\label{testaufbau}
+	}
+	\caption{Testaufbau des Sensors}
+	\label{testaufbaufigure}
 \end{figure}
-
 
 
 \begin{table}[htb]
-\begin{tabular}{@{}ll@{}}      
+\begin{tabular}{@{}lll@{}}      
     	\cmidrule(r){1-2}\morecmidrules\cmidrule(r){1-2}
-       	SPI mode & I2C mode\\
+       	Pin & SPI mode & I2C mode\\
       	\midrule
- 	SDI input & SDA birectional (!) \\ 
- 	SDO output & ADDR adress bit, input \\
- 	SCLK input & SCL input \\
- 	CSB chip select, input & I2C mode select, input \\
+ 	7 & SDI input & SDA birectional (!) \\ 
+ 	6 & SDO output & ADDR adress bit, input \\
+ 	5 & SCLK input & SCL input \\
+ 	4 & CSB chip select, input & I2C mode select, input \\
  	 \addlinespace
  	 \bottomrule
  \end{tabular}
-\caption{BMA180 Pinbelegung für SPI und I2C Modes \citep{Sensortec:2009rt}}
+\caption{BMA180 Pinbelegung für SPI und I$^2$C Modes \citep{Sensortec:2009rt}}
 \label{i2cmode}
 \end{table}
 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.8]{schematics.eps}
-\caption{Schaltplan Testaufbau. Die Interrupts sind nicht verbunden, VCC und CS sind auf 3.3V geschaltet, GND und SDO auf die Masse des Arduinos gezogen, die I$^2$C Datenleitungen SCK und SDI sind mit den Arduinopins A4 und A5 verbunden, wobei zusätzlich 10k$\Omega$ Pull-Up-Widerstände eingebaut sind.}
+\includegraphics[scale=.6]{schematics.eps}
+\caption{Schaltplan Testaufbau. Der Interrupt ist nicht verbunden, VDD und CS sind auf 3.3V geschaltet, GND und SDO auf die Masse des Arduinos gezogen, die I$^2$C Datenleitungen SCK und SDI sind mit den Arduinopins A4 und A5 verbunden, wobei zusätzlich 10k$\Omega$ Pull-Up-Widerstände eingebaut sind.}
 \label{schematics}
 \end{figure}
 
@@ -330,19 +374,18 @@ Da der Sensor im I$^2$C Modus betrieben werden soll, ist CS auf High (3.3V) gesc
 \newpage
 \subsubsection{Fester Aufbau}
 
-Um das System wirklich praktisch nutzen zu können muss er natürlich fest aufgebaut werden und mit einem Gehäuse versehen werden, das es erlaubt, ihn fest an einem Testobjekt anzubringen und ihn gleichzeitig vor Schäden durch mechanische oder witterungsbedingte Einflüsse schützt.
+Um das System praktisch nutzen zu können muss es natürlich fest aufgebaut werden und mit einem Gehäuse versehen werden, das es erlaubt, ihn fest an einem Testobjekt anzubringen und ihn gleichzeitig vor Schäden durch mechanische oder witterungsbedingte Einflüsse schützt.
 
-Um die eigentliche Sensoreinheit möglichst kompakt zu halten, habe ich mich entschieden, den Beschleunigungssensor vom Arduino zu trennen und auf eine kleine Lochrasterplatine zu löten. Diese wird in einen festen Block aus Polyurethanharz \citep{Components:2010fk} eingegossen, womit sie gleichzeitig gut geschützt und leicht anzubringen ist.
-(Abbildung \ref{harz}) \\
+Um die eigentliche Sensoreinheit möglichst kompakt zu halten, habe ich mich entschieden, den Beschleunigungssensor vom Arduino zu trennen und auf eine kleine Lochrasterplatine zu löten. Diese wird in einen festen Block aus Polyurethanharz\footnote{OPTICALLY CLEAR POLYURETHANE, RS COMPONENTS, RS 195-984A} eingegossen, womit sie gleichzeitig gut geschützt und leicht anzubringen ist (Abb. \ref{harz}). \\
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
-\includegraphics[scale=.15]{hardwareimages/harz.jpg}
-\caption{BMA180 in Polyurethanharz eingegossen, die Kunststoffform wurde von der technischen Werkstatt des Geomatikums gefertigt.}
+\includegraphics[scale=.14]{hardwareimages/harz.jpg}
+\caption{BMA180 in Polyurethanharz eingegossen, die Kunststoffform wurde von den feinmechanischen Werkstätten des Fachbereichs Geowissenschaften gefertigt.}
 \label{harz}
 \end{figure}
 
-Der Arduino ist in ein ABS Gehäuse \citep{Enclosures:2012uq} eingebaut (Abbildung \ref{arduinobox} und \ref{arduinoboxregen}
+Der Arduino ist in ein ABS Gehäuse (zum Beispiel von BOSS Endloseres) eingebaut (Abb. \ref{arduinobox} und \ref{arduinoboxregen}
 Die I$^2$C Verbindung mit dem Sensor erfolgt über einen Hirschmannstecker™ mit 7 Polen, von denen 4 beschaltet sind, wie in Abbildung \ref{hirschmann_i2c} zu sehen ist.
 Mit dem Logger ist der Arduino über ein USB-Kabel verbunden, über das die Kommunikation per RS232 geführt wird.
 
@@ -381,45 +424,43 @@ Mit dem Logger ist der Arduino über ein USB-Kabel verbunden, über das die Komm
 \end{figure}
 
 
-\begin{figure}[H]
-\begin{minipage}[H]{8cm}
+\begin{figure}[htb]
 	\centering
-	\includegraphics[scale=.111]{hardwareimages/arduinobox.jpg}
-	\caption{ABS Box, welche den Arduino enthält\\ }
-	\label{arduinobox}
-\end{minipage}
-\hfill
-\begin{minipage}[H]{8cm}
-	\centering
-	\includegraphics[scale=.111]{hardwareimages/arduinoboxregen.jpg}
-	\caption{ABS Box geschlossen im Witterungstest}
-	\label{arduinoboxregen}
-\end{minipage}
+	\subfigure[ABS Box, welche den Arduino enthält] {
+		\label{arduinobox}
+		\includegraphics[width=7cm]{hardwareimages/arduinobox.jpg}
+	}
+	\subfigure[ABS Box, geschlossen im Witterungstest] {
+	\includegraphics[width=7cm]{hardwareimages/arduinoboxregen.jpg}
+ 	\label{arduinoboxregen}
+	}
+	\caption{ABS Box mit Arduino}
+	\label{arduinoboxfigure}
 \end{figure}
 
 
 \subsection{Software} 
 
-Die Software besteht aus zwei Teilen. Zunächst der Code auf dem Arduino, welcher die Daten vom Sensor abfragt und konvertiert und dann der Teil auf dem Logger, der die Messungen über den Seriellen Port erhält und diese gemeinsam mit der jeweils aktuellen Uhrzeit in eine Datei schreibt.\\
+Die Software besteht aus zwei Teilen: Der Code auf dem Arduino fragt die Daten vom Sensor ab und stellt sie per RS232 zur Verfügung. Der zweite Teil auf dem Logger sammelt die Messungen über den Seriellen Port und schreibt diese gemeinsam mit der jeweils aktuellen Uhrzeit in eine Datei.\\
 
-Bei der Erläuterung des Codes möchte ich mich auf die wesentlichen Punkte beschränken. Die gesamten Quelltexte befinden sich im Anhang.
+Bei der Erläuterung des Codes möchte ich mich auf die wesentlichen Punkte beschränken. Die vollständigen Quelltexte befinden sich im Anhang.
 
 \subsubsection{Arduino}
 
-Der Arduino ist für die Kommunikation mit dem BMA180 über I$^2$C zuständig. Für diese Aufgabe existiert eine Arduino Bibliothek, welche ich angepasst und verwendet habe (REFERENZ!!)
-Ich möchte hier die einzelnen Schritte beschreiben, die notwendig sind, um eine Messung zu erhalten und diese an den Logger weiterzuleiten. \\
+Der Arduino ist für die Kommunikation mit dem BMA180 über I$^2$C zuständig. Für diese Aufgabe nutze ich die Arduino Bibliothek bma180\footnote{Selbst nach ausführlicher Recherche ist es mir nicht gelungen den Originalauthor der Bibliothek zu ermitteln. Ich habe sie von John Mc Combs, welcher allerdings nicht der Ursprungsauthor ist. \\ https://bitbucket.org/johnmccombs/arduino-libraries/src/058c7101c8da/bma180 (August 2012)}. Sie enthält eine Sammlung von Lese und Schreibroutinen, die ich für meine Zwecke angepasst habe.
+Hier möchte ich die einzelnen Schritte beschreiben, die notwendig sind, um eine Messung zu erhalten und diese an den Logger weiterzuleiten. \\
 
-Die Steuerung des BMA180 erfolgt über direkte Zugriffe auf die Register. Entweder man schreibt einen neuen Wert in ein Register oder man liest ein Register aus. Es gibt fünf Arten von Registern - Test, control, image, status und data.
-Davon interessieren uns nur die \textbf{control} und die \textbf{data} Register. Weitere Informationen über die zusätzlichen Register lassen sich im Datenblatt \citep{Sensortec:2009rt} nachschlagen.
+Die Steuerung des BMA180 erfolgt über direkte Zugriffe auf die Register. Entweder schreibt man einen neuen Wert in ein Register oder man liest ein Register aus. Es gibt fünf Arten von Registern - \texttt{test}, \texttt{control}, \texttt{image}, \texttt{status} und \texttt{data}.
+Davon interessieren uns nur die \texttt{control} und die \texttt{data} Register. Weitere Informationen über die zusätzlichen Register lassen sich im Datenblatt \citep{Sensortec:2009rt} nachschlagen.
 
-Die control Register dienen dazu, den Beschleunigungssensor zu steuern, vornehmlich also den Messbereich festzulegen und eventuell einen zusätzlichen digitalen Bandfilter einzustellen. Dazu müssen Werte in Register hineingeschrieben werden. Dazu geht man folgendermaßen vor:\\
+Die \texttt{control} Register dienen dazu, den Beschleunigungssensor zu steuern, vornehmlich also den Messbereich festzulegen und eventuell einen zusätzlichen digitalen Bandfilter einzustellen. Dazu müssen Werte in Register hineingeschrieben werden. Dazu geht man folgendermaßen vor:\\
 
 \textbf{In Register schreiben}
 \begin{enumerate}
 	\item Übertragung initiieren (mit der Adresse des Sensors)
 	\item Adresse des Registers senden, in welches wir schreiben möchten
 	\item Daten senden, die wir in das Register schreiben möchten
-	\item Übertragung beeenden
+	\item Übertragung beenden
 \end{enumerate}
 
 Da ein Register immer ein Byte (8 Bit) groß ist, finden sich oftmals verschiedene Einstellungen in einem Register um Platz zu sparen. Einen korrekten Schreibvorgang auszuführen wird dadurch komplexer. Daher möchte ich den Prozess am Beispiel der Messbereichseinstellung demonstrieren.
@@ -431,9 +472,9 @@ Da ein Register immer ein Byte (8 Bit) groß ist, finden sich oftmals verschiede
 \label{registermap}
 \end{figure}
 
-Die relevanten Bits sind also im Register $0x35$\footnote{Ein vorangestelltes 0x bedeutet, dass es sich um eine Zahl im Hexadezimalsystem handelt}, Bit eins, zwei und drei\footnote{Es wird von rechts nach links gezählt und mit 0 begonnen}. Hier die entsprechenden Zeilen aus dem Quellcode:
+Die relevanten Bits befinden sich im Register \texttt{0x35}\footnote{Ein vorangestelltes \texttt{0x} bedeutet, dass es sich um eine Zahl im Hexadezimalsystem handelt}, Bit eins, zwei und drei\footnote{Es wird von rechts nach links gezählt und mit 0 begonnen} (siehe Abb. \ref{registermap} Hier die entsprechenden Zeilen aus dem Quellcode:
 
-\lstset{language=C++,caption={Funktion zum Einstellen des Messbereichs aus der BMA180 Bibliothek(REF!!)\\ maxg ist eine dem Wertebereich zugeordnete Binärzahl zwischen 000 und 110 },label=sensitivity}
+\lstset{language=C++,caption={Funktion zum Einstellen des Messbereichs aus der bma180 Bibliothek\\ maxg ist eine dem Wertebereich zugeordnete Binärzahl zwischen 000 und 110 },label=sensitivity}
 \lstset{frameround=fttt}
 \begin{lstlisting}[frame=trBL]
 	void BMA180::setGSensitivty(GSENSITIVITY maxg) //1, 1.5 2 3 4 8 16
@@ -443,9 +484,9 @@ Die relevanten Bits sind also im Register $0x35$\footnote{Ein vorangestelltes 0x
 	}
 \end{lstlisting}
  
-Die aufgerufene Funktion $setRegValue$ bekommt als Argumente das zu schreibende Register ($0x35$), den zu schreibenden Wert ($maxg << 1$) und zusätzlich eine Maske, die angibt, welche Bits des Registers nicht verändert werden sollen mit.\\
+Die aufgerufene Funktion $setRegValue$ (Zeile 3) bekommt als Argumente das zu schreibende Register (\texttt{0x35}), den zu schreibenden Wert ($maxg << 1$) und zusätzlich eine Maske, die angibt, welche Bits des Registers nicht(!) verändert werden sollen.\\
 Da das letzte Bit (Bit Null) eine andere Funktion hat, 'schieben' wir $maxg$ mit Hilfe der \textit{bitshift Operation} $<<$ um ein Bit nach links.\\
-Bei $gSense$ handelt es sich um eine Statusvariable, die später benutzt wird, um den genutzten Wertebereich mit zu dokumentieren.\\
+Bei $gSense$ (Zeile 4) handelt es sich um eine Statusvariable, die später benutzt wird, um den genutzten Wertebereich mit zu dokumentieren.\\
 
 
 \lstset{language=C++,caption={Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek(REF!!)},label=writeregister}
@@ -462,13 +503,13 @@ Bei $gSense$ handelt es sich um eine Statusvariable, die später benutzt wird, u
 	}
 \end{lstlisting}
 
-Nun lesen wir zunächst den bisherigen Wert des Registers ein (Zeile 3)  und maskieren ihn mit der übergebenen Maske, so dass wir alle Bits übernehmen, außer die, welche wir verändern wollen (Zeile 4). Dann schreiben wir in das Register, wobei wir nach dem oben beschriebenen Schema vorgehen. Beim Senden der Daten verknüpfen wir jedoch $orgval$ mittels eines bitweisen $OR$s mit dem zu schreibenden Wert (Zeile 7). So haben wir sicher gestellt, dass wir nur die relevanten Bits verändern.\\
+Nun lesen wir zunächst den bisherigen Wert des Registers ein (Zeile 3)  und maskieren ihn mit der übergebenen Maske, so dass wir alle Bits übernehmen, außer die, welche wir verändern wollen (Zeile 4). Dann schreiben wir in das Register, wobei wir nach dem oben beschriebenen Schema vorgehen. Beim Senden der Daten verknüpfen wir jedoch $orgval$ mittels eines bitweisen $OR$ mit dem zu schreibenden Wert (Zeile 7). So haben wir sichergestellt, dass wir nur die relevanten Bits verändern.\\
 In Abbildung \ref{bitops} ist das Vorgehen noch einmal dargestellt.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=.5]{bitops.eps}
-\caption{Beispiel eines Schreibvorgangs in das Register $0x35$. Nur die grau markierten Bits werden verändert.}
+\caption{Beispiel eines Schreibvorgangs in das Register \textt{0x35}. Nur die grau markierten Bits werden verändert.}
 \label{bitops}
 \end{figure}
 
@@ -477,7 +518,7 @@ In Abbildung \ref{bitops} ist das Vorgehen noch einmal dargestellt.
 In die data Register werden die gemessenen Beschleunigungsdaten geschrieben. Da der A/D-Wandler des BMA180 eine Auflösung von 14 Bit hat, existieren pro Achse 2 Register mit jeweils 8 Bit. 
 Hier benötigen wir das Konzept der \textbf{Bitwertigkeit}:
 
-In einer Zahl haben die Stellen unterschiedlichen Wert. Verändert man zum Beispiel bei der Zahl 4653 die letzte Stelle, so ist der Unterschied maximal 9. Wird hingegen die dritte Stelle (von hinten) verändert, so kann der Unterschied bis zu 900 betragen. Analog verhält es sich mit den binären Zahlen. 
+In einer Zahl haben die Stellen unterschiedlichen Wert. Verändert man zum Beispiel bei der Zahl 4650 die letzte Stelle, so ist der Unterschied maximal 9 (4650 verglichen zu 4659). Wird hingegen die dritte Stelle (von hinten) verändert, so kann der Unterschied bis zu 900 betragen. Analog verhält es sich mit den binären Zahlen. 
 Dabei bezeichnen wir das höchstwertige Bit als \textbf{m}ost-\textbf{s}ignificant-\textbf{b}it \textbf{(msb)} und das geringwertige Bit als \textbf{l}east-\textbf{s}ignificant-\textbf{b}it \textbf{(msb)}.
 
 Analog dazu spricht man vom höchstwertigen Byte \textbf{m}ost-\textbf{s}ignificant-\textbf{b}yte \textbf{(MSB)} und geringwertigen Byte \textbf{l}east-\textbf{s}ignificant-\textbf{b}yte \textbf{(LSB)}.
@@ -528,21 +569,18 @@ Um die Beschleunigungsdaten vom Sensor zu laden, ist so vorzugehen:
 	}
 \end{lstlisting}
 
-Das Register, bei dem wir beginnen wollen zu lesen, ist $0x02$, (Zeile 6) und wir benötigen die nächsten 7 Bytes (Zeile 8). Jeweils zwei Bytes MSB und LSB für die drei Achsen und als letztes Byte lesen wir zusätzlich die aktuelle Temperatur aus. Diese wird jedoch weiterhin nicht mehr verwendet.\\
+Das Register, bei dem wir beginnen wollen zu lesen, ist \texttt{0x02}, (Zeile 6) und wir benötigen die nächsten 7 Bytes (Zeile 8). Jeweils zwei Bytes MSB und LSB für die drei Achsen und als letztes Byte lesen wir zusätzlich die aktuelle Temperatur aus. Diese wird jedoch im Weiteren nicht verwendet.\\
 
-Mit $Wire.read()$ erhalten wir immer das nächste Byte, welches wir vorher angefordert haben. Da das LSB an Stelle null und eins für den Messwert nicht relevante Bits enthält, entfernen wir diese per Bitshift (Zeile 11). Dann shiften wir das MSB im ganzen um sechs Stellen nach links, um es dann mit dem LSB zu addieren und damit den kompletten Messwert zu erhalten (Zeile 13).\\
+Mit $Wire.requestFrom(adress, n)$ fordern wir einen Stapel von $n$ Bytes vom Sensor (Zeile 8). $Wire.read()$ entfernt immer das oberste Byte von diesem Stapel und gibt seinen Wert aus. Da das LSB an Stelle null und eins für den Messwert nicht relevante Bits enthält, entfernen wir diese per Bitshift (Zeile 11). Dann shiften wir das MSB im ganzen um sechs Stellen nach links, um es dann mit dem LSB zu addieren und damit den kompletten Messwert zu erhalten (Zeile 13).\\
 
-Da die Daten im sogenannten Zweierkomplement (näheres in \citep{Tietze:2002fk}) ausgegeben werden und es sich bei x (und auch bei y und z) um Integer Variablen handelt, müssen wir das Vorzeichenbit an vorderster Stelle setzen. Dies geschieht in Zeile 14.\\
-
-Für die y- und z-Achse ist das Vorgehen analog.
-
+Da die Daten im sogenannten Zweierkomplement (näheres in \citep{Tietze:2002fk}) ausgegeben werden und es sich bei x (sowie bei y und z) um Integer Variablen handelt, müssen wir das Vorzeichenbit an vorderster Stelle setzen. Dies geschieht in Zeile 14 (bzw. Zeile 18 für y und Zeile 24 für z).\\
 
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=.6]{auslesen.eps}
-\caption{Auslesen und zusammenfügen der Daten. MSB und LSB werden addiert.Mittels IF Abfrage und Masking wird überprüft, ob es sich um eine negative Zahl handelt; Falls ja, so wird das korrekte Zweierkomplement gebildet und als Integer gespeichert.}
+\caption{Auslesen und zusammenfügen der Daten. MSB und LSB werden addiert. Mittels IF Abfrage und Masking wird überprüft, ob es sich um eine negative Zahl handelt; Falls ja, so wird das korrekte Zweierkomplement gebildet und als Integer gespeichert.}
 \label{auslesen}
 \end{figure}
 
@@ -560,27 +598,27 @@ Jetzt haben wir eine Beschleunigungsmessung, jedoch ist diese noch in gerätespe
 	}
 \end{lstlisting}
 
-Aus dem Datenblatt \citep{Sensortec:2009rt} lässt sich entnehmen, dass $10~0000~0000~0000$ den geringstmöglichen Wert in jedem Messbereich darstellt und $01~1111~1111~1111$ de größten. Das erste Bit gibt dabei das Vorzeichen an (Zweierkomplement). Teilt man den Wert durch 8191, was in Binärdarstellung $1~1111~1111~1111$ entspricht, erhält man nach einer Multiplikation mit dem Messbereich (GSENSE) die Beschleunigung als Vielfaches, beziehungsweise Teil der Erdbeschleunigung $g = 9.81 m/s^2$.
+Aus dem Datenblatt \citep{Sensortec:2009rt} lässt sich entnehmen, dass $10~0000~0000~0000$ den geringstmöglichen Wert in jedem Messbereich darstellt und $01~1111~1111~1111$ de größten. Das erste Bit gibt dabei das Vorzeichen an (Zweierkomplement). Teilt man den Wert durch 8191, was in Binärdarstellung $1~1111~1111~1111$ entspricht, erhält man nach einer Multiplikation mit dem Messbereich (GSENSE) die Beschleunigung als Vielfaches der Erdbeschleunigung $g = 9.81 m/s^2$.
 
 
 \subsubsection{PC Logger}
 
 Das Programm, welches auf dem PC läuft und die Daten aufzeichnet, ist ein Python Script, welches ich von Matthias Hort übernommen und angepasst habe. Sobald es gestartet ist und eine kurze Beschreibung für das aktuelle Experiment eingegeben wurde, nimmt es sämtliche Nachrichten auf dem eingestellten Comport entgegen und schreibt diese mit der jeweils aktuellen Systemzeit in eine Datei.
 
-Die exakte Zeit ist sehr wichtig, um die Ergebnisse später mit anderen Messungen vergleichen zu können. Zu diesem Zweck ist der PC mit einem NTP (ERKLÄREN?) Server verbunden, welcher stets die korrekte Uhrzeit von GPS-Satelliten empfängt und damit die computerinterne Uhr korrigiert.
+Die exakte Zeit ist sehr wichtig, um die Ergebnisse später mit anderen Messungen vergleichen zu können. Zu diesem Zweck ist der PC mit einem NTP (Network Time Protocol) Server verbunden, welcher stets die korrekte Uhrzeit von GPS-Satelliten empfängt und im Netzwerk zur Synchronisation bereitstellt. Ein Programm auf dem PC (Domain Time II) korrigiert mit dieser GPS Zeit die computerinterne Uhr.
 
 
 
 \section{Experimente in Waakirchen}
 
-Um das System in der Anwendung zu testen, habe ich im Mai 2012 an Eruptionsdynamikexperimenten in Waakirchen, in der Nähe von München, teilgenommen, die gemeinsam mit der Ludwig-Maximilians-Universität München, der Universität Catania und dem Istituto Nazionale di Geofisica e Vulcanologia (Sezione di Catania and Dept. of Seismology and Tectonophysics, Rome) durchgeführt wurden. 
+Um das System in der Anwendung zu testen, habe ich im Mai 2012 an Eruptionsdynamikexperimenten in Waakirchen, in der Nähe von München, teilgenommen. Diese Experimente wurden gemeinsam mit der Ludwig-Maximilians-Universität München, der Universität Catania und dem Istituto Nazionale di Geofisica e Vulcanologia (Sezione di Catania and Dept. of Seismology and Tectonophysics, Rome) durchgeführt. 
 
 Bei diesen Experimenten wurden künstliche Explosionen in Autoklaven \citep{Spieler:2004fk} verschiedener Geometrie (von 16 cm bis 40 cm Länge) ausgelöst. Es kamen dabei zwei Aufbauten zum Einsatz, von denen einer das Erhitzen der Proben auf bis zu $850\circ C$ und damit der Wirklichkeit nähere Umgebungsbedingungen ermöglichte. Bei den verwendeten Samples handelte es sich um Proben von verschiedenen Vulkanen (sowohl Asche als auch festes Lavagestein) und Analogmaterialien.
-Die Experimente wurden wiederholt durchgeführt und dabei Einflussgrößen, wie Korngröße, Mischverhältnis, Druck und Temperatur, variiert.
+Die Experimente wurden wiederholt durchgeführt und dabei potentielle Einflussgrößen wie Korngröße, Mischverhältnis, Druck und Temperatur variiert.
 
 Untersucht wurde dabei eine Vielzahl von Parametern durch den Einsatz von Hochgeschwindigkeits- Thermo- und optischen Kameras, Piezo Sensoren, einem akustischen Array und unserem Doppler Radar.\\
 
-Mein Ziel war dabei vor Allem, erste Erfahrungen mit dem System im Feld zu machen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, da bei vorherigen Experimenten in den Radardaten in einigen Fällen negative Geschwindigkeiten auftraten, für die es bisher keine vollständige Erklärung gibt. 
+Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, da bei vorherigen Experimenten in den Radardaten in einigen Fällen negative Geschwindigkeiten auftraten, für die es bisher keine vollständige Erklärung gibt. 
 
 
 
@@ -598,6 +636,7 @@ BMA180 - Interrupts benutzen, da sonst Samples verlorengehen… etc
 
 \clearpage
 \newpage
+\singlespacing
 \appendix
 \bibliographystyle{plainnat}
 \bibliography{bachelor}

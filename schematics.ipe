@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70005" creator="Ipe 7.1.2">
-<info created="D:20120809233808" modified="D:20120809234543"/>
+<info created="D:20120809233808" modified="D:20120831153420"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -395,13 +395,13 @@ h
 <text transformations="translations" pos="320 680" stroke="black" type="label" width="43.06" height="11.761" depth="0" valign="baseline" size="LARGE">AnIn4</text>
 <text transformations="translations" pos="376 680" stroke="black" type="label" width="43.06" height="11.761" depth="0" valign="baseline" size="LARGE">AnIn5</text>
 <text matrix="1 0 0 1 -8 0" transformations="translations" pos="88 448" stroke="black" type="label" width="36.603" height="11.761" depth="0" valign="baseline" size="LARGE">GND</text>
-<text matrix="1 0 0 1 -8 0" transformations="translations" pos="136 448" stroke="black" type="label" width="34.472" height="11.761" depth="0" valign="baseline" size="LARGE">VCC</text>
+<text matrix="1 0 0 1 -8 0" transformations="translations" pos="136 448" stroke="black" type="label" width="36.264" height="11.761" depth="0" valign="baseline" size="LARGE">VDD</text>
 <text transformations="translations" pos="184 448" stroke="black" type="label" width="20.288" height="11.761" depth="0" valign="baseline" size="LARGE">CS</text>
 <text transformations="translations" pos="352 448" stroke="black" type="label" width="33.351" height="11.761" depth="0" valign="baseline" size="LARGE">SDO</text>
 <text matrix="1 0 0 1 -8 0" transformations="translations" pos="464 448" stroke="black" type="label" width="32.673" height="11.761" depth="0" valign="baseline" size="LARGE">SCK</text>
 <text matrix="1 0 0 1 -8 0" transformations="translations" pos="504 448" stroke="black" type="label" width="26.599" height="11.761" depth="0" valign="baseline" size="LARGE">SDI</text>
-<text transformations="translations" pos="240 448" stroke="black" type="label" width="36.964" height="11.761" depth="0" valign="baseline" size="LARGE">INT1</text>
-<text transformations="translations" pos="296 448" stroke="black" type="label" width="36.964" height="11.761" depth="0" valign="baseline" size="LARGE">INT2</text>
+<text transformations="translations" pos="240 448" stroke="black" type="label" width="29.968" height="11.761" depth="0" valign="baseline" size="LARGE">VIO</text>
+<text transformations="translations" pos="296 448" stroke="black" type="label" width="29.069" height="11.761" depth="0" valign="baseline" size="LARGE">INT</text>
 <path stroke="black" pen="heavier">
 72 472 m
 72 384 l
@@ -419,5 +419,10 @@ h
 h
 </path>
 <text matrix="1 0 0 1 32 0" transformations="translations" pos="248 392" stroke="black" type="label" width="61.52" height="11.761" depth="0" valign="baseline" size="LARGE">BMA180</text>
+<path stroke="black">
+256 472 m
+256 560 l
+</path>
+<use name="mark/disk(sx)" pos="256 560" size="normal" stroke="black"/>
 </page>
 </ipe>
