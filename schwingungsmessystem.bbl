@@ -1,4 +1,4 @@
-\begin{thebibliography}{12}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,14 +15,6 @@ Arduino.
 \newblock Arduino wire library, 2012.
 \newblock URL \url{http://www.arduino.cc/en/Reference/Wire}.
 
-\bibitem[Components(2010)]{Components:2010fk}
-RS~Components.
-\newblock \emph{Datasheet Polyurethane}, 2010.
-
-\bibitem[Enclosures(2005)]{Enclosures:2012uq}
-BOSS Enclosures.
-\newblock \emph{ABS Geh{\"a}use}, 2005.
-
 \bibitem[Kanda(1991)]{Kanda:1991gf}
 Yozo Kanda.
 \newblock Piezoresistance effect of silicon.
@@ -35,6 +27,11 @@ Lasse Klingbeil.
   Erfassung von Position und Orientierung bewegter Objekte}.
 \newblock PhD thesis, Universit{\"a}t Bonn, 2006.
 
+\bibitem[Meschede(2001)]{Meschede:2001fk}
+D.~Meschede.
+\newblock \emph{Gerthsen Physik}.
+\newblock Springer Berlin Heidelberg, 12. auflage edition, September 2001.
+
 \bibitem[NXP(2012)]{:2012fj}
 NXP.
 \newblock \emph{UM10204 I2C-bus specification and user manual}.
@@ -44,6 +41,13 @@ NXP.
 Schmidt.
 \newblock \emph{Sensorschaltungstechnik}.
 \newblock Vogel, 2002.
+
+\bibitem[Sengpiel(2001)]{Sengpiel:2001fk}
+Eberhard Sengpiel.
+\newblock Symmetrische und unsymmetrische signal{\"u}bertragung.
+\newblock Tutorium UdK Berlin, March 2001.
+\newblock URL
+  \url{http://www.sengpielaudio.com/SymmetrischeUndUnsymmetrischeSignaluebertragung.pdf}.
 
 \bibitem[Sensortec(2009)]{Sensortec:2009rt}
 Bosch Sensortec.
@@ -65,6 +69,11 @@ Oliver Spieler, Ben Kennedy, Ulrich Kueppers, Donald~B. Dingwell, Bettina
 \newblock The fragmentation threshold of pyroclastic rocks.
 \newblock \emph{Earth and Planetary Science Letters}, 226\penalty0
   (1-2):\penalty0 139--148, September 2004.
+
+\bibitem[Stallings(2000)]{Stallings:2000uq}
+William Stallings.
+\newblock \emph{Operating Systems: Internals and Design Principles}.
+\newblock Prentice Hall International, 6 edition, 2000.
 
 \bibitem[Tietze and Schenk(2002)]{Tietze:2002fk}
 Ulrich Tietze and Christoph Schenk.

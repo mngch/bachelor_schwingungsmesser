@@ -279,7 +279,7 @@ Diese Spannung lässt sich nun digitalisieren und auslesen. In vielen MEMS Baust
 Um abschätzen zu können wie groß die auftretenden Beschleunigungen an der Radarantenne sind, habe ich damit begonnen einen günstigen und einfach zu verwendenden Prototypen zu entwickeln. Letzteres ist vor Allem wichtig, um entscheiden zu können, für welchen Messbereich und welche Frequenzen der eigentliche Sensor ausgelegt sein muss. \\
 
 \subsection{Bosch BMA180}
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=.4]{hardwareimages/bma180_breakout.jpg}
 \caption{BMA180 Breakoutboard von Sparkfun}
@@ -293,7 +293,7 @@ Ich nutze ein Breakoutboard von Sparkfun (Abb. \ref{bma180_breakout}), welches d
 
 \subsection{Arduino}
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=.2]{hardwareimages/ArduinoUno_R3_Front.jpg}
 \caption{Arduino UNO}
@@ -363,7 +363,7 @@ Pin 6 legt im von mir benutzten I$^2$C Modus die Adresse des Chips fest. Ist die
 \end{table}
 
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=.6]{schematics.eps}
 \caption{Schaltplan Testaufbau. Der Interrupt ist nicht verbunden, VDD und CS sind auf 3.3V geschaltet, GND und SDO auf die Masse des Arduinos gezogen, die I$^2$C Datenleitungen SCK und SDI sind mit den Arduinopins A4 und A5 verbunden, wobei zusätzlich 10k$\Omega$ Pull-Up-Widerstände eingebaut sind.}
@@ -389,7 +389,7 @@ Der Arduino ist in ein ABS Gehäuse (zum Beispiel von BOSS Endloseres) eingebaut
 Die I$^2$C Verbindung mit dem Sensor erfolgt über einen Hirschmannstecker™ mit 7 Polen, von denen 4 beschaltet sind, wie in Abbildung \ref{hirschmann_i2c} zu sehen ist.
 Mit dem Logger ist der Arduino über ein USB-Kabel verbunden, über das die Kommunikation per RS232 geführt wird.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=.8]{hardwareimages/kabel.eps}
 \caption{Verbindungen zwischen BMA180, Arduino und Logger per I$^2$C bzw. RS232}
@@ -509,7 +509,7 @@ In Abbildung \ref{bitops} ist das Vorgehen noch einmal dargestellt.
 \begin{figure}[H]
 \centering
 \includegraphics[scale=.5]{bitops.eps}
-\caption{Beispiel eines Schreibvorgangs in das Register \textt{0x35}. Nur die grau markierten Bits werden verändert.}
+\caption{Beispiel eines Schreibvorgangs in das Register \texttt{0x35}. Nur die grau markierten Bits werden verändert.}
 \label{bitops}
 \end{figure}
 
@@ -620,19 +620,173 @@ Untersucht wurde dabei eine Vielzahl von Parametern durch den Einsatz von Hochge
 
 Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, da bei vorherigen Experimenten in den Radardaten in einigen Fällen negative Geschwindigkeiten auftraten, für die es bisher keine vollständige Erklärung gibt. 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ergebnisse der Messungen in Waakirchen}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.5]{wakiki/firstexample2.png}
+\caption{Restituierte Beschleunigungsdaten in 3 Komponenten während Experiment 7.\\ Die X-Achse entspricht der Querachse (Nickachse) des Radars, die Y-Achse seiner Hochachse und die Z-Achse der Längsachse, welche in Radarstrahlrichtung ausgerichtet ist. }
+\label{firstexample}
+\end{figure}
 
 
-\section{Results}
 
-Eruption ist zu sehen!
-Schüssel bewegt sich um x m/s durch Eruption! Im auflösbaren Bereich? Arbeitsweise des Radars -> Tina fragen
+zeitvergleich mit Radar
 
-Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung?
+Eruption ist zu sehen! YEAH!
+
+
+
+Schüssel bewegt sich um x m/s durch Explosion! Im auflösbaren Bereich? 
+
+
+Integration Integrationsproblem
+
+
+Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung? 
+sieht schlecht aus…
+
+Experiment am Tisch
+
 
 \section{Verbesserungen}
 
 BMA180 - Interrupts benutzen, da sonst Samples verlorengehen… etc
 
+
+
+\newpage
+\section{Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}
+
+
+Mit den bisher gewonnenen Erkenntnissen konnte ich nun das zweite Schwingungsmesssystem mit dem ASC Chip (ASC 5511LN-002) realisieren. Durch die höhere Auflösung und Samplerate und geringeres Rauschen, ergibt sich ein besser nutzbares Signal. Einen Vergleich der relevanten technischen Daten enthält Tabelle \ref{sensorcompare}.
+
+\begin{table}[ht]
+\begin{tabular}{@{}llll@{}}    
+      			\cmidrule(r){1-4}\morecmidrules\cmidrule(r){1-4}
+       			Beschleunigungsaufnehmer & Auflösung & Noise & Temperatur Drift\\
+      			\midrule
+ 			BMA180 				   & 0.244 mg  & 150$\mu g / \sqrt{Hz}$ & 0.5 $mg/k$ \\ 
+ 			ASC 5511LN-002 		   & 0.077 mg  &    5$\mu g / \sqrt{Hz}$  & 0.2 $mg/k$\\
+ 		
+   			\addlinespace
+   			\bottomrule
+ \end{tabular}
+ \caption{Vergleich der relevanten technischen Daten der beiden Sensoren bezogen auf einem Messbereich von $\pm$2g.\\ Das Auflösungsvermögen des ASC 5511LN-002 bezieht sich hier auf die Verwendung mit  dem \textit{Diamond-MM-16-AT PC/104 Analog I/O Module}}
+ \label{sensorcompare}
+\end{table}
+
+\subsection{ASC 5511LN-002}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.5]{hardwareimages/asc.jpg}
+\caption{ASC 5511LN-010 von Advanced Sensors Calibration}
+\label{asc5511}
+\end{figure}
+
+Bei dem ASC 5511LN-002 handelt es sich ebenfalls um einen kapazitativen MEMS Sensor. Er ist allerdings von hochwertigerer Qualität als der BMA180 und gibt das Signal analog als Spannung aus. Aus diesem Grund wird ein externer AD-Wandler benötigt.
+Durch das Aluminiumgehäuse ist die Elektronik bereits gut geschützt und die symmetrische Ausführung der Signalkabel sorgt dafür, dass äußere elektromagnetische Einflüsse auf dem Weg zum AD-Wandler vermieden werden. Das Signal wird als auf zwei Leitungen ausgegeben, wobei das Signal auf der einen Leitung invertiert ist (Abb. \ref{symmetrisch}). Störungen wirken auf beide Adern und somit kann man sie an der Empfangsstation per Differenzbildung leicht entfernen. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.7]{unsymmetrisch.png}
+\caption{Unsymmetrische Signalübertragung mit Störung 'Zacke'. \citep{Sengpiel:2001fk}}
+\label{unsymmetrisch}
+\end{figure}
+
+
+Bei unsymmetrischer Signalführung wird das Störsignal ebenso stark verstärkt, wie das Nutzsignal (Abb. \ref{unsymmetrisch}). Mathematisch lässt sich dies so ausdrücken \citep{Sengpiel:2001fk}:
+
+\begin{equation}
+U_a = v \cdot (U_e + U_{stoer} = v \cdot U_e + v \cdot U_{stoer}
+\end{equation}
+
+wobei $U_a$ dem Ausgangssignal, $U_e$ dem Eingangssignal, $U_stoer$ dem Störsignal und $v$ dem Verstärkungsfaktor entspricht.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.7]{symmetrisch.png}
+\caption{Symmetrische Signalübertragung mit sich aufhebender Störung. \citep{Sengpiel:2001fk}}
+\label{symmetrisch}
+\end{figure}
+
+Symmetrische Signalführung hingegen sorgt dafür, dass sich der Störeinfluss auslöscht:
+
+\begin{equation}
+U_a = U_e + U_{stoer} - ( -U_e + U_{stoer} ) = 2 \cdot U_e
+\end{equation}
+
+Das Resultat ist ein besseres Signal zu Rausch Verhältnis.
+
+
+\subsection{Diamond-MM-16-AT PC/104 Analog I/O Module}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.4]{hardwareimages/diamondmm16at.jpg}
+\caption{Diamond-MM-16-AT PC/104 Analog I/O Module}
+\label{diamond}
+\end{figure}
+
+
+
+Als AD-Wandler verwende ich ein \textit{Diamond-MM-16-AT PC/104 Analog I/O Module}. Das Board verfügt über 8 Eingänge (16 wenn man sie nicht als Differentialeingänge verwendet) und eine maximale Samplingrate von 100kHz. Außerdem besitzt es einen 512-Sample \textit{FIFO Speicher} und verwendet \textit{Interrupts}, worauf ich in den beiden nächsten Punkten eingehen möchte.
+Mit dem Computer verbindet sich das Board über den \textit{PC/104 Bus}.
+
+
+\subsubsection{Interrupts}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=1.4]{interrupt.png}
+\caption{Ablauf eines Interrupts \citep{Stallings:2000uq}}
+\label{interrupt}
+\end{figure}
+
+Ein Interrupt beschreibt in der Informatik eine kurzzeitige Unterbrechung des normalen Programmflusses, um eine andere Operation auszuführen. Diese andere Operation ist Zeitkritisch und ihr exaktes Auftreten nicht vorher bestimmbar. Sobald sie beendet ist, setzt das Programm seine Ausführung an der vorher unterbrochenen Stelle fort.
+
+Genutzt werden Interrupts zum Beispiel von Ein- und Ausgabegeräten, wie Maus und Tastatur. Ohne Interrupts müssten alle Programme zyklisch nachfragen, ob es eine neue Eingabe gibt und diese dann entsprechend bearbeiten (sogenanntes Polling). Da ein Programm in dieser Zeit nichts anderes machen kann, ist diese Art der Abfrage höchst ineffizient.
+
+Die am weitesten verbreitete Analogie zur Verdeutlichung des Prinzips ist eine Wohnungstür mit Klingel. Man kann den ganzen Tag in der Wohnung seinen Aufgaben nachgehen und zwischendurch klingeln Gäste, mit denen man sich dann kurz beschäftigt. Das klingeln ist hier also der Interrupt. Dann kann man wieder weiter mit der Arbeit machen bis der nächste klingelt. Hat man nun aber keine Klingel, so muss man ständig zur Tür rennen und nachsehen, ob eventuell jemand dort steht und gerne hereinkommen möchte (Polling).
+
+An dieser Analogie kann man auch erkennen, dass Interrupts zusätzliche Hardware (eine Klingel) erfordern.
+
+
+\subsubsection{FIFO Speicher}
+
+BILD??\\
+
+Ein FIFO (First In First Out) ist ein Speicherverfahren, bei dem die Elemente, die als erstes gespeichert werden, auch als erstes wieder entnommen werden. Es wird auch als Warteschlangenprinzip bezeichnet und in vielen Bereichen der Datenverarbeitung verwendet. Besonders bei Schnittstellen und Kommunikationsprotokollen ist es wichtig, dass die Daten in der Reihenfolge verarbeiten werden, in der sie angekommen sind, beziehungsweise abgesendet wurden. Das gegensätzliche Prinzip ist das LIFO (Last In First Out), auch Stapelprinzip (engl. Stack) genannt.\\
+
+Im AD-Wandler sorgt der FIFO dafür, dass wirklich alle digitalisierten Samples vom Computer gespeichert werden, auch wenn dieser aufgrund von starker Prozesserbelastung nicht in der Lage ist diese sofort zu verarbeiten. Die digitalisierten Daten werden unabhängig vom PC immer sofort in den FIFO gespeichert und können dort angefordert werden. Ein Problem ergibt sich erst wenn der PC die Sample so langsam ausliest, dass der FIFO Speicher voll wird. In diesem Fall spricht man von einem Speicherüberlauf und bereits aufgenommene Daten werden überschrieben.\\
+
+
+Zusammen mit Interrupts erlaubt der FIFO Speicher eine konstante Messwertdigitalisierung mit hoher Frequenz, ohne den Prozessor des PCs zu stark zu beanspruchen. Dazu werden die Daten kontinuierlich vom Board in den FIFO geschrieben und sobald ein festgelegter Grenzwert (threshold) erreicht ist, löst es einen Interrupt aus. Darauf reagiert nun der PC, indem er das komplette Datenpaket auf einmal (also so viele Samples, wie der threshold Wert eingestellt ist) aus dem FIFO liest und auf seine Festplatte speichert. Währenddessen werden weiterhin Daten digitalisiert und es geht kein Sample verloren.
+
+Würde bei jedem neuen Sample ein Interrupt ausgelöst werden und die Daten jedes Mal einzeln abgerufen und gespeichert, so würde dies bei hohen Abtastfrequenzen zu extremer Prozessorbelastung führen. Der FIFO dient also gleichzeitig auch zur Verringerung der Interrupt Rate:
+
+\begin{equation}
+Interrupt ~Rate = \frac{A/D ~Frequenz \cdot Anzahl ~der ~aufgenommenen ~Kanaele}{FIFO ~threshold}
+\end{equation}
+
+Bei einem Kanal und einer Abtastfrequenz von $100000 Hz$ resultiert, bei einem threshold von 256, ein Unterschied von $100000$ zu ca. $391$ Interrupts pro Sekunde.
+
+
+\subsection{Programmcode}
+
+Für das Diamond Board existiert die \textit{Universal Driver Software}\footnote{http://www.diamondsystems.com/products/dscud}, eine C-basierte Programmbibliothek, die eine große Zahl von Funktionen zur Datenaquisition zur Verfügung stellt. Die Low-Level-Programmierung, bei der auf die einzelnen Register zugegriffen wird, entfällt damit weitgehend. 
+
+
+
+\section{Experimente am Geomatikum}
+
+
+\section{Verbesserungen}
+
+bessere Zeitstempel, nicht nur 3 Mal pro Sekunde
 
 \clearpage
 \newpage

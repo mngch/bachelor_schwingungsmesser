@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.9.29)  31 AUG 2012 16:00
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.9.29)  11 SEP 2012 17:19
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -684,10 +684,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
-
-Package natbib Warning: Citation `Meschede:2001fk' on page 5 undefined on input
- line 165.
-
 [5 <./federmasse-eps-converted-to.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 193--195
 
@@ -698,19 +694,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--205
 
  []
 
-[6] <adxl_ruhe.png, id=51, 224.7597pt x 153.2124pt>
+[6] <adxl_ruhe.png, id=50, 224.7597pt x 153.2124pt>
 File: adxl_ruhe.png Graphic file (type png)
  <use adxl_ruhe.png>
 Package pdftex.def Info: adxl_ruhe.png used on input line 222.
 (pdftex.def)             Requested size: 199.16928pt x 135.77179pt.
 
-<adxl_action.png, id=53, 249.69286pt x 150.3216pt>
+<adxl_action.png, id=52, 249.69286pt x 150.3216pt>
 File: adxl_action.png Graphic file (type png)
  <use adxl_action.png>
 Package pdftex.def Info: adxl_action.png used on input line 226.
 (pdftex.def)             Requested size: 199.16928pt x 119.90648pt.
 
-<adxl_micro.png, id=54, 447.71265pt x 203.44005pt>
+<adxl_micro.png, id=53, 447.71265pt x 203.44005pt>
 File: adxl_micro.png Graphic file (type png)
  <use adxl_micro.png>
 Package pdftex.def Info: adxl_micro.png used on input line 233.
@@ -755,12 +751,8 @@ File: hardwareimages/ArduinoUno_R3_Front.jpg Graphic file (type jpg)
 Package pdftex.def Info: hardwareimages/ArduinoUno_R3_Front.jpg used on input l
 ine 298.
 (pdftex.def)             Requested size: 361.3436pt x 249.72858pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[11 <./hardwareimages/bma180_breakout.jpg>] [12 <./hardwareimages/ArduinoUno_R3
-_Front.jpg>] [13]
+ [11 <./hardwareimages/bma180_breakout.jpg>] [12 <./hardwareimages/ArduinoUno_R
+3_Front.jpg>] [13]
 <hardwareimages/breadboard.jpg, id=90, 1943.26pt x 2601.72pt>
 File: hardwareimages/breadboard.jpg Graphic file (type jpg)
 
@@ -792,11 +784,7 @@ File: schematics-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: schematics-eps-converted-to.pdf used on input line 368
 .
 (pdftex.def)             Requested size: 285.46869pt x 222.83421pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[14 <./hardwareimages/breadboard.jpg> <./hardwareimages/testaufbau.png>]
+ [14 <./hardwareimages/breadboard.jpg> <./hardwareimages/testaufbau.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 379--380
 
  []
@@ -831,10 +819,6 @@ File: hardwareimages/kabel-eps-converted-to.pdf Graphic file (type pdf)
 Package pdftex.def Info: hardwareimages/kabel-eps-converted-to.pdf used on inpu
 t line 394.
 (pdftex.def)             Requested size: 334.85144pt x 380.6225pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 Package epstopdf Info: Source file: <hardwareimages/hirschmann_i2c.eps>
 (epstopdf)                    date: 2012-08-10 15:40:41
 (epstopdf)                    size: 22561 bytes
@@ -963,58 +947,126 @@ Package epstopdf Info: Source file: <auslesen.eps>
 (epstopdf)                    size: 11668 bytes
 (epstopdf)             Command: <epstopdf --outfile=auslesen-eps-converted-to.p
 df auslesen.eps>
-(epstopdf)             \includegraphics on input line 585.
+(epstopdf)             \includegraphics on input line 582.
 Package epstopdf Info: Output file is already uptodate.
-<auslesen-eps-converted-to.pdf, id=158, 583.17876pt x 627.34375pt>
+<auslesen-eps-converted-to.pdf, id=159, 583.17876pt x 627.34375pt>
 File: auslesen-eps-converted-to.pdf Graphic file (type pdf)
 
 <use auslesen-eps-converted-to.pdf>
-Package pdftex.def Info: auslesen-eps-converted-to.pdf used on input line 585.
+Package pdftex.def Info: auslesen-eps-converted-to.pdf used on input line 582.
 (pdftex.def)             Requested size: 349.90996pt x 376.40915pt.
- [23 <./auslesen-eps-converted-to.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 600.
+ [23]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 597.
 
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 600.
- [24]
-Overfull \hbox (53.97696pt too wide) in paragraph at lines 622--623
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 597.
+ [24 <./auslesen-eps-converted-to.pdf>] [25]
+Overfull \hbox (53.97696pt too wide) in paragraph at lines 619--620
 []\T1/cmr/m/n/12 Untersucht wur-de da-bei ei-ne Viel-zahl von Pa-ra-me-tern dur
 ch den Ein-satz von Hochgeschwindigkeits-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 622--623
+Underfull \hbox (badness 10000) in paragraph at lines 619--620
 
  []
 
+<wakiki/firstexample2.png, id=178, 633.36626pt x 921.4425pt>
+File: wakiki/firstexample2.png Graphic file (type png)
 
-Overfull \hbox (2.70474pt too wide) in paragraph at lines 633--634
+<use wakiki/firstexample2.png>
+Package pdftex.def Info: wakiki/firstexample2.png used on input line 630.
+(pdftex.def)             Requested size: 316.68236pt x 460.72012pt.
+ [26] [27 <./wakiki/firstexample2.png>]
+Overfull \hbox (2.70474pt too wide) in paragraph at lines 649--651
 []\T1/cmr/m/n/12 Korrelation zwi-schen Ge-schwin-dig-keit (Ra-dar-ge-mes-sen) u
-nd ge-mes-se-ner Be-schleu-ni-gung? 
+nd ge-mes-se-ner Be-schleu-ni-gung?
  []
 
-[25] (./schwingungsmessystem.bbl
+[28] <hardwareimages/asc.jpg, id=188, 602.25pt x 421.575pt>
+File: hardwareimages/asc.jpg Graphic file (type jpg)
+
+<use hardwareimages/asc.jpg>
+Package pdftex.def Info: hardwareimages/asc.jpg used on input line 686.
+(pdftex.def)             Requested size: 301.12425pt x 210.78697pt.
+
+<unsymmetrisch.png, id=189, 434.3427pt x 112.2594pt>
+File: unsymmetrisch.png Graphic file (type png)
+ <use unsymmetrisch.png>
+Package pdftex.def Info: unsymmetrisch.png used on input line 695.
+(pdftex.def)             Requested size: 304.03781pt x 78.58102pt.
+
+[29 <./hardwareimages/asc.jpg>]
+<symmetrisch.png, id=194, 426.6339pt x 112.7412pt>
+File: symmetrisch.png Graphic file (type png)
+ <use symmetrisch.png>
+Package pdftex.def Info: symmetrisch.png used on input line 711.
+(pdftex.def)             Requested size: 298.64168pt x 78.91829pt.
+
+<hardwareimages/diamondmm16at.jpg, id=195, 602.25pt x 594.22pt>
+File: hardwareimages/diamondmm16at.jpg Graphic file (type jpg)
+
+<use hardwareimages/diamondmm16at.jpg>
+Package pdftex.def Info: hardwareimages/diamondmm16at.jpg used on input line 72
+9.
+(pdftex.def)             Requested size: 240.89572pt x 237.68379pt.
+ [30 <./unsymmetrisch.png> <./symmetrisch.png>] <interrupt.png, id=201, 312.688
+2pt x 195.6108pt>
+File: interrupt.png Graphic file (type png)
+ <use interrupt.png>
+Package pdftex.def Info: interrupt.png used on input line 744.
+(pdftex.def)             Requested size: 437.76048pt x 273.85323pt.
+
+[31 <./hardwareimages/diamondmm16at.jpg>] [32 <./interrupt.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 760--761
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 762--763
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 764--765
+
+ []
+
+[33] [34] (./schwingungsmessystem.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 14--17
 []\T1/cmr/m/n/12 Arduino.  Ar-dui-no wi-re li-bra-ry, 2012.  URL
  []
 
-)
 
-Package natbib Warning: There were undefined citations.
+Underfull \hbox (badness 10000) in paragraph at lines 46--51
+[]\T1/cmr/m/n/12 Eberhard Seng-piel.  Sym-me-tri-sche und un-sym-me-tri-sche si
+-gnal-
+ []
 
-[26
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--51
+\T1/cmr/m/n/12 über-tra-gung.  Tu-to-ri-um UdK Ber-lin, March 2001.  URL
+ []
+
+
+Overfull \hbox (60.75865pt too wide) in paragraph at lines 46--51
+\T1/cmtt/m/n/12 http://www.sengpielaudio.com/SymmetrischeUndUnsymmetrischeSigna
+luebertragung.pdf\T1/cmr/m/n/12 . 
+ []
+
+) [35
 
 ] (./schwingungsmessystem.aux) ) 
 Here is how much of TeX's memory you used:
- 8346 strings out of 493633
- 121252 string characters out of 3143377
- 295648 words of memory out of 3000000
- 11475 multiletter control sequences out of 15000+200000
- 22617 words of font info for 54 fonts, out of 3000000 for 9000
+ 8390 strings out of 493633
+ 122130 string characters out of 3143377
+ 296685 words of memory out of 3000000
+ 11510 multiletter control sequences out of 15000+200000
+ 23620 words of font info for 56 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  47i,15n,49p,695b,1865s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/local/texlive/2011/texmf-dist/fonts/enc/d
@@ -1045,13 +1097,15 @@ sr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr
 ocal/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></usr/loc
 al/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfsx2488.pfb></usr/local
 /texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/local/t
-exlive/2011/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texli
-ve/2011/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on schwingungsmessystem.pdf (26 pages, 15988456 bytes).
+exlive/2011/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/tex
+live/2011/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texli
+ve/2011/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive
+/2011/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2
+011/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on schwingungsmessystem.pdf (35 pages, 17028674 bytes).
 PDF statistics:
- 271 PDF objects out of 1000 (max. 8388607)
- 188 compressed objects within 2 object streams
+ 317 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -16,7 +16,15 @@
 \contentsline {subsection}{\numberline {4.5}Software}{18}
 \contentsline {subsubsection}{\numberline {4.5.1}Arduino}{18}
 \contentsline {subsubsection}{\numberline {4.5.2}Restitution}{24}
-\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{24}
-\contentsline {section}{\numberline {5}Experimente in Waakirchen}{24}
-\contentsline {section}{\numberline {6}Results}{25}
-\contentsline {section}{\numberline {7}Verbesserungen}{25}
+\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{25}
+\contentsline {section}{\numberline {5}Experimente in Waakirchen}{25}
+\contentsline {section}{\numberline {6}Ergebnisse der Messungen in Waakirchen}{27}
+\contentsline {section}{\numberline {7}Verbesserungen}{28}
+\contentsline {section}{\numberline {8}Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}{29}
+\contentsline {subsection}{\numberline {8.1}ASC 5511LN-002}{29}
+\contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{31}
+\contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{32}
+\contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{33}
+\contentsline {subsection}{\numberline {8.3}Programmcode}{34}
+\contentsline {section}{\numberline {9}Experimente am Geomatikum}{34}
+\contentsline {section}{\numberline {10}Verbesserungen}{34}
