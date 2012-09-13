@@ -625,6 +625,8 @@ Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informatione
 
 \section{Ergebnisse der Messungen in Waakirchen}
 
+\subsection{Messungen an der Radarantenne}
+
 \begin{figure}[H]
 \centering
 \includegraphics[scale=.5]{wakiki/firstexample2.png}
@@ -644,15 +646,20 @@ Schüssel bewegt sich um x m/s durch Explosion! Im auflösbaren Bereich?
 
 
 Integration Integrationsproblem
-
+Integrieren ist ein Filter  1/(iw) im Frequenzbereich
 
 Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung? 
 sieht schlecht aus…
 
-Experiment am Tisch
 
 
-\section{Verbesserungen}
+\subsection{Messungen am Autoklavenaufbau}
+
+
+
+
+
+\subsection{Verbesserungen}
 
 BMA180 - Interrupts benutzen, da sonst Samples verlorengehen… etc
 
@@ -757,9 +764,14 @@ An dieser Analogie kann man auch erkennen, dass Interrupts zusätzliche Hardware
 
 \subsubsection{FIFO Speicher}
 
-BILD??\\
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.7]{fifolifo.eps}
+\caption{Vergleich von FIFO und LIFO}
+\label{fifolifo}
+\end{figure}
 
-Ein FIFO (First In First Out) ist ein Speicherverfahren, bei dem die Elemente, die als erstes gespeichert werden, auch als erstes wieder entnommen werden. Es wird auch als Warteschlangenprinzip bezeichnet und in vielen Bereichen der Datenverarbeitung verwendet. Besonders bei Schnittstellen und Kommunikationsprotokollen ist es wichtig, dass die Daten in der Reihenfolge verarbeiten werden, in der sie angekommen sind, beziehungsweise abgesendet wurden. Das gegensätzliche Prinzip ist das LIFO (Last In First Out), auch Stapelprinzip (engl. Stack) genannt.\\
+Ein FIFO (First In First Out) ist ein Speicherverfahren, bei dem die Elemente, die als erstes gespeichert werden, auch als erstes wieder entnommen werden. Es wird auch als Warteschlangenprinzip (Queue) bezeichnet und in vielen Bereichen der Datenverarbeitung verwendet. Besonders bei Schnittstellen und Kommunikationsprotokollen ist es wichtig, dass die Daten in der Reihenfolge verarbeiten werden, in der sie angekommen sind, beziehungsweise abgesendet wurden. Das gegensätzliche Prinzip ist das LIFO (Last In First Out), auch Stapelprinzip (engl. Stack) genannt.\\
 
 Im AD-Wandler sorgt der FIFO dafür, dass wirklich alle digitalisierten Samples vom Computer gespeichert werden, auch wenn dieser aufgrund von starker Prozesserbelastung nicht in der Lage ist diese sofort zu verarbeiten. Die digitalisierten Daten werden unabhängig vom PC immer sofort in den FIFO gespeichert und können dort angefordert werden. Ein Problem ergibt sich erst wenn der PC die Sample so langsam ausliest, dass der FIFO Speicher voll wird. In diesem Fall spricht man von einem Speicherüberlauf und bereits aufgenommene Daten werden überschrieben.\\
 
@@ -775,9 +787,9 @@ Interrupt ~Rate = \frac{A/D ~Frequenz \cdot Anzahl ~der ~aufgenommenen ~Kanaele}
 Bei einem Kanal und einer Abtastfrequenz von $100000 Hz$ resultiert, bei einem threshold von 256, ein Unterschied von $100000$ zu ca. $391$ Interrupts pro Sekunde.
 
 
-\subsection{Programmcode}
+\subsection{Software}
 
-Für das Diamond Board existiert die \textit{Universal Driver Software}\footnote{http://www.diamondsystems.com/products/dscud}, eine C-basierte Programmbibliothek, die eine große Zahl von Funktionen zur Datenaquisition zur Verfügung stellt. Die Low-Level-Programmierung, bei der auf die einzelnen Register zugegriffen wird, entfällt damit weitgehend. 
+Für das Diamond Board existiert die \textit{Universal Driver Software}\footnote{http://www.diamondsystems.com/products/dscud}, eine C-basierte Programmbibliothek, die eine große Zahl von Funktionen zur Datenaquisition zur Verfügung stellt. Die Low-Level-Programmierung, bei der auf die einzelnen Register zugegriffen wird, entfällt damit. 
 
 
 

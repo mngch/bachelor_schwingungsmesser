@@ -25,6 +25,6 @@
 \contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{31}
 \contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{32}
 \contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{33}
-\contentsline {subsection}{\numberline {8.3}Programmcode}{34}
+\contentsline {subsection}{\numberline {8.3}Software}{34}
 \contentsline {section}{\numberline {9}Experimente am Geomatikum}{34}
 \contentsline {section}{\numberline {10}Verbesserungen}{34}

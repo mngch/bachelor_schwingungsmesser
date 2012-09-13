@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.9.29)  11 SEP 2012 17:19
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.9.29)  12 SEP 2012 10:34
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1022,21 +1022,34 @@ Package pdftex.def Info: interrupt.png used on input line 744.
 (pdftex.def)             Requested size: 437.76048pt x 273.85323pt.
 
 [31 <./hardwareimages/diamondmm16at.jpg>] [32 <./interrupt.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 760--761
+Package epstopdf Info: Source file: <fifolifo.eps>
+(epstopdf)                    date: 2012-09-12 10:33:01
+(epstopdf)                    size: 29140 bytes
+(epstopdf)             Output file: <fifolifo-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-09-12 10:34:42
+(epstopdf)                    size: 6314 bytes
+(epstopdf)             Command: <epstopdf --outfile=fifolifo-eps-converted-to.p
+df fifolifo.eps>
+(epstopdf)             \includegraphics on input line 762.
+Package epstopdf Info: Output file is already uptodate.
+
+<fifolifo-eps-converted-to.pdf, id=211, 453.695pt x 420.57124pt>
+File: fifolifo-eps-converted-to.pdf Graphic file (type pdf)
+
+<use fifolifo-eps-converted-to.pdf>
+Package pdftex.def Info: fifolifo-eps-converted-to.pdf used on input line 762.
+(pdftex.def)             Requested size: 317.58434pt x 294.39786pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 767--768
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 762--763
+Underfull \hbox (badness 10000) in paragraph at lines 769--770
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 764--765
-
- []
-
-[33] [34] (./schwingungsmessystem.bbl
+[33 <./fifolifo-eps-converted-to.pdf>] [34] (./schwingungsmessystem.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 14--17
 []\T1/cmr/m/n/12 Arduino.  Ar-dui-no wi-re li-bra-ry, 2012.  URL
  []
@@ -1062,10 +1075,10 @@ luebertragung.pdf\T1/cmr/m/n/12 .
 
 ] (./schwingungsmessystem.aux) ) 
 Here is how much of TeX's memory you used:
- 8390 strings out of 493633
- 122130 string characters out of 3143377
- 296685 words of memory out of 3000000
- 11510 multiletter control sequences out of 15000+200000
+ 8396 strings out of 493633
+ 122287 string characters out of 3143377
+ 295695 words of memory out of 3000000
+ 11515 multiletter control sequences out of 15000+200000
  23620 words of font info for 56 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  47i,15n,49p,695b,1865s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1102,10 +1115,10 @@ live/2011/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local/texli
 ve/2011/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/texlive
 /2011/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/texlive/2
 011/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on schwingungsmessystem.pdf (35 pages, 17028674 bytes).
+Output written on schwingungsmessystem.pdf (35 pages, 17030972 bytes).
 PDF statistics:
- 317 PDF objects out of 1000 (max. 8388607)
- 213 compressed objects within 3 object streams
+ 322 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 121 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
