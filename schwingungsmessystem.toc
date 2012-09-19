@@ -16,15 +16,19 @@
 \contentsline {subsection}{\numberline {4.5}Software}{18}
 \contentsline {subsubsection}{\numberline {4.5.1}Arduino}{18}
 \contentsline {subsubsection}{\numberline {4.5.2}Restitution}{24}
-\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{25}
-\contentsline {section}{\numberline {5}Experimente in Waakirchen}{25}
-\contentsline {section}{\numberline {6}Ergebnisse der Messungen in Waakirchen}{27}
-\contentsline {section}{\numberline {7}Verbesserungen}{28}
-\contentsline {section}{\numberline {8}Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}{29}
-\contentsline {subsection}{\numberline {8.1}ASC 5511LN-002}{29}
-\contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{31}
-\contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{32}
-\contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{33}
-\contentsline {subsection}{\numberline {8.3}Software}{34}
-\contentsline {section}{\numberline {9}Experimente am Geomatikum}{34}
-\contentsline {section}{\numberline {10}Verbesserungen}{34}
+\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{24}
+\contentsline {section}{\numberline {5}Berechnung der Wegwerte aus den Beschleunigungsdaten}{25}
+\contentsline {subsection}{\numberline {5.1}Numerische Integration}{25}
+\contentsline {subsection}{\numberline {5.2}Problematik des Integrierens Noisebehafteter Daten}{25}
+\contentsline {section}{\numberline {6}Experimente in Waakirchen}{26}
+\contentsline {section}{\numberline {7}Ergebnisse der Messungen in Waakirchen}{28}
+\contentsline {subsection}{\numberline {7.1}Messungen an der Radarantenne}{28}
+\contentsline {subsection}{\numberline {7.2}Messungen am Autoklavenaufbau}{30}
+\contentsline {section}{\numberline {8}Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}{31}
+\contentsline {subsection}{\numberline {8.1}ASC 5511LN-002}{31}
+\contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{33}
+\contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{34}
+\contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{35}
+\contentsline {subsection}{\numberline {8.3}Software}{36}
+\contentsline {section}{\numberline {9}Experimente am Geomatikum}{44}
+\contentsline {section}{\numberline {10}Verbesserungen}{44}

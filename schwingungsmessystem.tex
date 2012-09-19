@@ -121,10 +121,11 @@ title=\lstname,                 				% show the filename of files included with \
 \title {Entwicklung eines Schwingungsmesssystems für ein Radar}
 \author{Sebastian Beyer}
 \maketitle
-
+\thispagestyle{empty}
 \newpage
 
 \tableofcontents
+\thispagestyle{empty}
 \newpage
 
 
@@ -489,7 +490,7 @@ Da das letzte Bit (Bit Null) eine andere Funktion hat, 'schieben' wir $maxg$ mit
 Bei $gSense$ (Zeile 4) handelt es sich um eine Statusvariable, die später benutzt wird, um den genutzten Wertebereich mit zu dokumentieren.\\
 
 
-\lstset{language=C++,caption={Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek(REF!!)},label=writeregister}
+\lstset{language=C++,caption={Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek},label=writeregister}
 \begin{lstlisting}[frame=trBL]
 	void BMA180::setRegValue(int regAdr, int val, int maskPreserve)
 	{
@@ -579,7 +580,7 @@ Da die Daten im sogenannten Zweierkomplement (näheres in \citep{Tietze:2002fk})
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.6]{auslesen.eps}
+\includegraphics[scale=.55]{auslesen.eps}
 \caption{Auslesen und zusammenfügen der Daten. MSB und LSB werden addiert. Mittels IF Abfrage und Masking wird überprüft, ob es sich um eine negative Zahl handelt; Falls ja, so wird das korrekte Zweierkomplement gebildet und als Integer gespeichert.}
 \label{auslesen}
 \end{figure}
@@ -607,7 +608,41 @@ Das Programm, welches auf dem PC läuft und die Daten aufzeichnet, ist ein Pytho
 
 Die exakte Zeit ist sehr wichtig, um die Ergebnisse später mit anderen Messungen vergleichen zu können. Zu diesem Zweck ist der PC mit einem NTP (Network Time Protocol) Server verbunden, welcher stets die korrekte Uhrzeit von GPS-Satelliten empfängt und im Netzwerk zur Synchronisation bereitstellt. Ein Programm auf dem PC (Domain Time II) korrigiert mit dieser GPS Zeit die computerinterne Uhr.
 
+\newpage
 
+\section{Berechnung der Wegwerte aus den Beschleunigungsdaten}
+
+\subsection{Numerische Integration}
+
+Um aus den gemessenen Beschleunigungen die gesuchten Wegwerte (Ausschläge) zu ermitteln, müssen die Messwerte zweifach über die Zeit integiert werden. Da die zu integrierenden Funktionen als begrenzte Anzahl von Abtastpunkten in diskreten Zeitabständen vorliegen, bietet es sich an, numerische Integrationsverfahren anzuwenden. Die dazu möglichen Verfahren, wie z.B. Rechteckverfahren, Trapezformel, Rombergverfahren, unterscheiden sich durch die Art der Interpolation zwischen den Abtastpunkten \citep[S. 760ff]{Bronstein:1995fk}. Die Wahl des Integrationsverfahrens beeinflusst dabei die Genauigkeit des Ergebnisses.
+
+In dieser Arbeit verwende ich die Trapezformel und komme damit für den Weg auf folgende Rekursionsformel:
+
+\begin{equation}
+y_{i+1} = \Delta t^2 \cdot a_i - y_{i-1} + 2 \cdot y_i
+\end{equation}
+
+Mit dieser Formel kann aus den vorherigen Wegwerten $y_{i-1}$ und $y_i$ sowie den gemessenen Beschleunigungen $a_i$ und dem Zeitintervall $\Delta t$ der nächste Wegwert bestimmt werden.
+
+Die Startwerte für $i=1$ sind vorerst nicht bekannt und können z.B. $y_0 = y_1 = 0$ gewählt werden. Dies führt allerdings zu systematischen Fehlern, die später behoben werden müssen.
+
+
+\subsection{Problematik des Integrierens Noisebehafteter Daten}
+
+Wie alle nicht synthetischen Daten enthalten die aufgenommen Beschleunigungsmessungen ein gewisses Rauschen. Schwankungen in der Spannungsversorgung, elektromagnetische Einstreuungen oder thermisches Rauschen sind einige Beispiele für mögliche Ursachen. Solange das Signal deutlich größer ist als das Rauschen, ist das kaum ein Problem. Man spricht von einem guten Signal- zu Rauschverhältnis. 
+
+Bei der Integration der Beschleunigungswerten zu Wegwerten handelt es sich jedoch gewissermaßen um eine Addition aller Messwerte und damit einer Addition allen Rauschens. Je länger die Zeit ist, über die integiert wird, desto größer wird der Fehler in den Wegdaten. 
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.4]{sinusnoise.png}
+\caption{Numerische Integration von $sin(x)$. Oben: ohne Noise Unten: Mit Noise einer Varianz von 0.3}
+\label{sinusnoise}
+\end{figure}
+
+Das Resultat ist in Abbildung \ref{sinusnoise} zu erkennen. Ich habe in Matlab eine Sinusfunktion mit 1000 Stützstellen numerisch integriert. Dabei habe ich zunächst keinen Noise hinzugefügt. Bei der unteren Abbildung jedoch liegt auf dem Sinus ein Rauschen mit einer Varianz von $0.3$. Es ist eine deutliche Drift der resultierenden Daten zu sehen. Bei der zweifachen Integration, die man benötigt um aus den Beschleunigungsdaten Wegdaten zu berechnen, tritt dieser Effekt sogar noch verstärkt auf. Die Fehler der Messungen überlagern die eigentlichen Messergebnisse und führen damit zu völlig falschen Wegstrecken. \\
+
+Um diesen Effekt zu verhindern, müssen die Daten gefiltert werden. Die sich dafür bietenden Möglichkeiten möchte ich in der jeweiligen Auswertung besprechen.
 
 \section{Experimente in Waakirchen}
 
@@ -625,6 +660,8 @@ Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informatione
 
 \section{Ergebnisse der Messungen in Waakirchen}
 
+
+
 \subsection{Messungen an der Radarantenne}
 
 \begin{figure}[H]
@@ -634,34 +671,40 @@ Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informatione
 \label{firstexample}
 \end{figure}
 
+In Abbildung \ref{firstexample} sind exemplarisch die Beschleunigungsdaten aus Experiment 7 zu sehen. Es wurde mit 32 Hz aufgenommen und der Messbereich auf $\pm 1.5g$ eingestellt. {\color{red}(Auf andere verweisen? alle anhängen??)} Auf der Z-Achse ist ein deutlicher Ausschlag um ca. $0.4 m/s^2$ zu sehen, welcher durch die Druckwelle der Explosion zustande kommt. 
+
+Die Bewegung der Schüssel wird allerdings lediglich durch ein einziges Sample erfasst. Es ist nicht sichergestellt, ob hier wirklich das Maximum an Beschleunigung abgebildet ist und wie die Bewegung genau verläuft. Eine Bestimmung der Geschwindigkeit oder des Weges durch Integration ist damit praktisch nicht möglich. 
+
+An dieser Stelle sei auch auf das Nyquist Theorem verwiesen. Es besagt, dass ein Signal immer mindestens mit der doppelten Frequenz des hochfrequentesten Anteils im Signal abgetastet werden muss, damit es komplett rekonstruiert werden kann.  \citep[vgl.][]{Shannon:1949uq}\\
+
+Betrachtet man lediglich das Sample, bei dem die Beschleunigung auftritt und interpoliert linear zu den nächsten beiden Samples, welche noch keine Beschleunigung anzeigen, so lässt sich dennoch eine Geschwindigkeit abschätzen. Diese ergibt sich demnach als:
+
+\begin{equation}
+v = \frac{1}{2} ~a \cdot t
+\end{equation}
+
+Im betrachteten Experiment 7 ist $v = 0.012 m/s$. Diese Geschwindigkeit ist sehr gering und kann vom Radar nicht aufgelöst werden. Aus den eben genannten Gründen ist dieses Ergebnis vorsichtig zu betrachten. Eine höhere Abtastrate ist notwendig um sicherere Aussagen treffen zu können.\\
 
 
-zeitvergleich mit Radar
-
-Eruption ist zu sehen! YEAH!
+Vergleicht man den Zeitpunkt des Maximalausschlags (15:10:20.465 Uhr) mit dem vom Radar ermittelten Explosionszeitpunkt (15:10:20.274 Uhr), so ergibt sich ein Unterschied von $191$ Millisekunden. Diese Differenz lässt sich nicht durch die langsamere Ausbreitungsgeschwindigkeit der Druckwelle erklären. Es gab offensichtlich ein Problem mit der Zeitsynchronisation, so dass das Radar nicht zu jedem Zeitpunkt eine korrekte GPS Zeit besaß. \\
 
 
 
-Schüssel bewegt sich um x m/s durch Explosion! Im auflösbaren Bereich? 
+{\color{red}Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung? bringt mit den 3 Experimenten, wo alles gemeinsam zu sehen ist wenig... }
 
-
-Integration Integrationsproblem
-Integrieren ist ein Filter  1/(iw) im Frequenzbereich
-
-Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung? 
-sieht schlecht aus…
 
 
 
 \subsection{Messungen am Autoklavenaufbau}
 
 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.13]{hardwareimages/tisch.jpg}
+\caption{Messaufbau: Bewegungsmessung des Autoklavenaufbaus. Der Beschleunigungssensor ist am Bein des Aufbaus befestigt (roter Kreis).}
+\label{tisch}
+\end{figure}
 
-
-
-\subsection{Verbesserungen}
-
-BMA180 - Interrupts benutzen, da sonst Samples verlorengehen… etc
 
 
 
@@ -741,7 +784,7 @@ Das Resultat ist ein besseres Signal zu Rausch Verhältnis.
 
 
 Als AD-Wandler verwende ich ein \textit{Diamond-MM-16-AT PC/104 Analog I/O Module}. Das Board verfügt über 8 Eingänge (16 wenn man sie nicht als Differentialeingänge verwendet) und eine maximale Samplingrate von 100kHz. Außerdem besitzt es einen 512-Sample \textit{FIFO Speicher} und verwendet \textit{Interrupts}, worauf ich in den beiden nächsten Punkten eingehen möchte.
-Mit dem Computer verbindet sich das Board über den \textit{PC/104 Bus}.
+Mit dem Computer kommunizert das Board über den \textit{PC/104 Bus}.
 
 
 \subsubsection{Interrupts}
@@ -791,9 +834,239 @@ Bei einem Kanal und einer Abtastfrequenz von $100000 Hz$ resultiert, bei einem t
 
 Für das Diamond Board existiert die \textit{Universal Driver Software}\footnote{http://www.diamondsystems.com/products/dscud}, eine C-basierte Programmbibliothek, die eine große Zahl von Funktionen zur Datenaquisition zur Verfügung stellt. Die Low-Level-Programmierung, bei der auf die einzelnen Register zugegriffen wird, entfällt damit. 
 
+Bei der Entwicklung habe ich mich an der \textit{DSCADScanInt} Demo\footnote{http://files.diamondsystems.com/cdrom/Software/Universal\%20Driver/Demos/DMM16-AT\_5.91\_Demo.zip (September 2012)} aus den Beispielen der Treibersoftware orientiert.
 
+Ich möchte wiederum nur die wichtigsten Teile des Quellcodes erläutern. Der komplette Code findet sich im Anhang. \\
+
+Das Programm wird mit zwei Parametern aufgerufen: Dem Namen des Logfiles, in das die Daten geschrieben werden und der Anzahl an Samples, die aufgenommen werden sollen. 
+
+Wenn im folgenden von einem Buffer gesprochen wird, so ist damit nicht der FIFO gemeint, sondern ein Speicher, in dem die Samples gespeichert werden, sobald sie aus dem FIFO herauskommen. Dieser Buffer wird nur von Interrupts beschrieben, daher wird zusätzliche Logik benötigt, um die Daten in der richtigen Reihenfolge aus diesem Buffer auszulesen. \\
+
+Der Programmablauf ist folgendermaßen gegliedert:
+
+\begin{enumerate}
+	\item Initialisierung des Treibers
+	\item Initialisierung des Boards (mit Bus-Adresse und Interrupt Level)
+	\item Konfigurationsvariablen für den AD-Wandler setzen
+	\item Konfigurieren des Interrupts und des FIFOs
+	\item Loop, der alle x Sekunden überprüft, ob neue Daten vorliegen
+		\begin{itemize}
+			\item Daten in der richtigen Reihenfolge aus dem Buffer lesen und samt Zeitstempel in eine Datei schreiben
+		\end{itemize}
+\end{enumerate}
+
+
+
+
+\textbf{Initialisierung des Treibers}
+
+In Listing \ref{initdriver} wird zunächst der Treiber für das Board initialisiert, dabei wird überprüft, ob die korrekte Treiberversion installiert ist.
+\lstset{language=C++,caption={Initialisierung der Treibersoftware},label=initdriver}
+\begin{lstlisting}[frame=trBL]
+	if( dscInit( DSC_VERSION ) != DE_NONE )
+	{
+		dscGetLastError(&errparams);
+		fprintf( stderr, "dscInit error: %s %s\n", dscGetErrorString(errparams.ErrCode), errparams.errstring );
+		return 0;
+	}
+\end{lstlisting}
+
+
+\textbf{Initialisierung des Boards}
+
+Als nächstes wird das Board selbst initialisiert (Lst. \ref{initboard}). Dazu notwendig sind die Bus-Adresse (Zeile 3) und das Interrupt-Level (Zeile 4), die auf dem Board per Jumper eingestellt werden können. Es ist dadruch möglich mehrere Boards gleichzeitig in einem Computer zu betreiben.
+
+\lstset{language=C++,caption={Initialisierung des Boards},label=initboard}
+\begin{lstlisting}[frame=trBL]
+	printf( "\nDMM16AT BOARD INITIALIZATION:\n" );
+
+	dsccb.base_address = 0x300;
+	dsccb.int_level = (BYTE) 7;
+
+	if(dscInitBoard(DSC_DMM16AT, &dsccb, &dscb)!= DE_NONE)
+	{
+		dscGetLastError(&errparams);
+		fprintf( stderr, "dscInitBoard error: %s %s\n", dscGetErrorString(errparams.ErrCode), errparams.errstring );
+		return 0;
+	}
+\end{lstlisting}
+
+Der Ablauf der Konfiguration ist in allen Punkten einheitlich. Zunächst werden die entsprechenden Werte in eine Struktur geschrieben, dann wird diese als ganzes an das Board übergeben. Sollten dabei Fehler auftreten, so werden diese ausgegeben und das Programm bricht ab. \\
+
+\textbf{Setzen der Konfigurationsvariablen für den AD-Wandler}
+
+Der AD-Wandler kann in verschiedenen Messbereichen arbeiten und außerdem eine gewisse Signalverstärkung (gain) vornehmen. Die dazu notwendigen Einstellungen sind in Listing \ref{initad} aufgeführt. 
+Der \textit{ASC 5511LN-002} gibt eine maximale Spannung von 5V aus, daher ist \texttt{RANGE\_5} der richtige Eintrag. In unserem Fall muss die Spannung auch nicht verstärkt werden. 
+
+Über eine längere Zeit und vor allem mit der Änderung der Temperatur neigen AD-Wandler dazu, eine gewisse Drift aufzuweisen. Dies liegt daran, dass sich der Ohmsche Widerstand, welcher als Referenz zur gemessenen Spannung dient, mit der Temperatur ändert. Das \textit{Diamond-MM-16-AT} verfügt über einen Autokalibrationsmechanismus. Indem es vorher exakt bekannte Ohmsche Widerstände misst und die Messungen mit den bekannten Werten vergleicht, kann die genaue Drift bestimmt und herausgerechnet werden\citep[siehe auch][]{Miller:2006fk}.
+
+Ob diese Autokalibration genutzt werden soll, legt \texttt{load\_cal} in Zeile 4 fest.
+
+Zeile 5 setzt den aktuellen Kanal, bei dem die Digitalisierung beginnen soll fest.
+
+\lstset{language=C++,caption={Konfigurieren des AD-Wandlers},label=initad}
+\begin{lstlisting}[frame=trBL]
+	dscadsettings.range = RANGE_5;
+	dscadsettings.polarity = UNIPOLAR;
+	dscadsettings.gain = GAIN_1;
+	dscadsettings.load_cal = (BYTE)TRUE;
+	dscadsettings.current_channel = 0;
+\end{lstlisting}
+
+
+\textbf{Konfigurieren des Interrupts und des FIFOs}
+
+An dieser Stelle (Lst. \ref{initint}) wird festgelegt, dass der FIFO benutzt werden soll (Zeile 9) und wie groß der treshold ist, bei dem ein Interrupt ausgelöst wird (Zeile 11). Die Größe des FIFOs (\texttt{fifo\_depth}) ist durch die Hardware auf 256 Byte festgelegt.
+
+\texttt{Low\_channel} (Zeile 5) und \texttt{high\_channel} (Zeile 6) geben an, welche der 8 Eingänge des Boards genutzt werden sollen. Obwohl der Beschleunigungssensor nur 3 Komponenten hat, verwende ich hier 4 Kanäle, da dies die Ausleselogik vereinfacht.
+
+In Zeile 2 wird die Samplingrate festgelegt. Sie ist immer auf alle Kanäle bezogen, so dass sich bei einer Samplingfrequenz von 1000 Hz und 4 Kanälen eine letztendliche Abtastrate von 250 Mal pro Sekunde pro Kanal ergibt. 
+
+Theoretisch lassen sich mit dem Board Samplingraten von bis zu 100 000 Mal pro Sekunde erreichen. Dazu ist jedoch eine genaue Kalibrierung aller Parameter und weitere Codeoptimierung notwendig, was nicht mehr Teil dieser Arbeit sein soll. \\
+
+
+\lstset{language=C++,caption={Setzen der Variablen für den Interrupt},label=initint}
+\begin{lstlisting}[frame=trBL]
+	dscaioint.num_conversions = num_conversions;
+	dscaioint.conversion_rate = 1000;
+	dscaioint.cycle = (BYTE)TRUE;
+	dscaioint.internal_clock = (BYTE)TRUE;
+	dscaioint.low_channel = 0;
+	dscaioint.high_channel = 3;
+	dscaioint.external_gate_enable = (BYTE)FALSE;
+	dscaioint.internal_clock_gate = (BYTE)FALSE;
+	dscaioint.fifo_enab = (BYTE)TRUE;
+	dscaioint.fifo_depth = 256;
+	dscaioint.dump_threshold = 256;
+\end{lstlisting}
+
+In Zeile 3 lässt sich zwischen \textit{One-Shot-Mode} und \textit{Recycle-Mode} wechseln. Im One-Shot-Mode wird ein Buffer ein Mal mit Daten gefüllt und danach beendet sich die Routine. \texttt{Num\_conversions} gibt dabei die Größe des Buffers an, und damit wie viele Samples aufgenommen werden sollen.
+
+Im Recycle-Mode wird bei Erreichen des Bufferendes zum Anfang des Buffers gesprungen und dort die alten Daten überschrieben. Der Parameter \texttt{num\_conversions} gibt in diesem Fall die Größe des Buffers an. Somit enthält dieser immer die letzten $n$ Samples, wobei $n$ die Buffergröße ist.
+
+Um herauszufinden, an welcher Stelle im Buffer grade geschrieben wurde, dienen die beiden Variablen \texttt{DSCS.transfers} und \texttt{DSCS.total\_transfers}. \texttt{DSCS.transfers} gibt an, wie viele Samples im aktuellen Zyklus bereits im Buffer gespeichert wurden und wird immer auf 0 gesetzt wenn ein neuer Zyklus beginnt. \texttt{DSCS.total\_transfers} gibt die Gesamtzahl an bisher digitalisierter Werte in der gesamten Operation an.
+
+Damit ist es möglich, die Daten in der korrekten Reihenfolge in eine Datei zu speichern.\\
+
+Die weiteren in Listing \ref{initint} aufgeführten Variablen sind für unseren Anwendungsfall nicht relevant.\\
+
+
+\textbf{Auslesen und Speichern der Daten}
+
+
+Wie bereits beschrieben verläuft das Speichern der neuen Samples in den zirkulären Buffer automatisch durch die Interrupts. Sobald der \texttt{dump\_treshold} erreicht ist, werden die Daten vom FIFO in den Buffer übertragen. Um sie von dort aus in eine Datei zu schreiben, bedienen wir uns einer Programmschleife, die mehrmals pro Sekunde überprüft, ob neue Samples vorliegen (Lst. \ref{loop}). 
+
+\lstset{language=C++,caption={Programmschleife, die den Buffer auf neue Daten überprüft und diese in eine Datei schreibt. Der Code zum Auslesen und Schreiben der Samples ist in diesem Listing entfernt und seperat in Listing \ref{placedafter} und \ref{placedbefore} abgebildet.},label=loop}
+\begin{lstlisting}[frame=trBL]
+	DWORD sleep_ms = 300;
+	
+	do {
+        dscSleep(sleep_ms);
+        dscGetStatus(dscb, &dscs);
+
+        if ( dscs.overflows ) {
+            printf("Operation failed: FIFO overflowed\n");
+            break;
+        }
+
+        if ( dscs.total_transfers == last_total_transfers ) {
+            printf("Operation failed: no new samples taken in %d ms\n", sleep_ms);
+            break;
+        }
+
+        new_sample_count = dscs.total_transfers - last_total_transfers;
+
+        /* Number of new samples should never exceed the size of the circular buffer.  If it does it means that either "sleep_ms" should be smaller so you check status more often, or "num_conversions" should be bigger so the circular buffer is bigger */
+        if ( new_sample_count > num_conversions ) {
+            printf("Operation failed: not processing data fast enough.  %d samples lost\n",
+                new_sample_count - num_conversions);
+            break;
+        }
+
+		/* AUSLESEN UND SPEICHERN DER DATEN  */
+		/* FOLGT IM NAECHSTEN LISTING */
+       
+        last_transfers = dscs.transfers;
+        last_total_transfers = dscs.total_transfers;
+
+        if ( dscs.total_transfers >= stop_after_transfers )
+            break;
+
+    } while ( dscs.op_type != OP_TYPE_NONE );
+
+    dscCancelOp(dscb);
+\end{lstlisting}	
+
+In Zeile 1 wird mit \texttt{sleep\_ms = 300} festgelegt, dass die Schleife ca. 3 Mal pro Sekunde ausgeführt wird. Zunächst wird überprüft, ob der FIFO übergelaufen ist (Zeile 7), es überhaupt neue Samples seit des letzten Schleifendurchlaufs gab (Zeile 12) und ob die Daten rechtzeitig aus dem Buffer in eine Datei geschrieben wurden (Zeile 17 und 20). 
+
+Schlägt einer dieser Checks fehl, so wird das Programm mit einer entsprechenden Fehlermeldung beendet.\\
+
+Treten keine Fehler auf, werden die Daten aus dem zirkulären Buffer herausgelesen und in eine Datei gespeichert.
+Dies geschiet so lange, bis die Zahl der aufzunehmenden Samples erreicht ist (Zeile 32 und 33).
+
+Da der Buffer zirkulär ist, also beim Erreichen des Endes wieder vom Anfang beschrieben wird, gibt es zwei Möglichkeiten wo die neuen Daten darin gespeichert wurden. Im einfachen Fall befinden sie sich zwischen der zuletzt ausgelesenen Position und dem Bufferende. Dieser Fall wird der Code in Listing \ref{placedafter} ausgeführt. 
+
+\lstset{language=C++,caption={Auslesen und Speichern der Daten. Fall 1: Im zirkulären Buffer wurden neue Samples nur zwischen der zuletzt ausgelesenen Position und dem Ende des Speichers geschrieben.},label=placedafter}
+\begin{lstlisting}[frame=trBL]
+	if ( dscs.transfers > last_transfers ) {
+		for ( i = last_transfers; i < dscs.transfers; i++ ) {
+			if ( i%4 == 0 ) {
+				uhr = mvTime::Now();  // get actual time
+				for ( k = 0; k < 3; k++ ) { // conversion into volts
+					dscADCodeToVoltage(dscb, dscadsettings, dscaioint.sample_values[i+k], &voltage[k]);
+				}
+					fprintf(logFile,"%s counts: %5d %5d %5d  Volts: %5.3lf %5.3lf %5.3lf\n",uhr.GetTimeStamp().c_str(),dscaioint.sample_values[i],dscaioint.sample_values[i+1], dscaioint.sample_values[i+2],voltage[0],voltage[1],voltage[2]);
+			}
+\end{lstlisting}		
+
+In Zeile 1 findet die Überprüfung statt, ob die aktuelle Position im Buffer (\texttt{dscs.transfers} größer ist als die zuletzt ausgelesene Position \texttt{last\_transfers} (Also Fall 1 eingetreten ist). 
+Um die nächsten Zeilen zu verstehen, ist es wichtig zu wissen, wie die einzelnen Samples im Buffer strukturiert sind. Abbildung \ref{samplebuffer} zeigt diese Struktur. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.55]{samplebuffer.png}
+\caption{Struktur des Buffers, in dem die Samples stehen. \citep{Systems:2008uq}}
+\label{samplebuffer}
+\end{figure}
+
+Alle Kanäle werden hintereinander gespeichert. Um diese nun nach Kanal sortiert auszugeben, nutze ich in Zeile 3 den Modulo Operator damit $i$ immer Kanal 0 enthält und die anderen Kanäle mit $i+1$ und $i+2$ auszulesen sind.
+
+Die Werte müssen noch von AD-Counts mittels der Funktion \texttt{dscADCodeToVoltage} in Volt umgewandelt werden (Zeilen 5 bis 7).
+
+Das Schreiben in eine Datei findet in Zeile 8 statt. Dabei werden sowohl die umgewandelten Voltzahlen als auch die ursprünglichen Counts gespeichert und mit einem Zeitstempel versehen. \\
+
+Im zweiten Fall wurden neue Daten sowohl nach der zuletzt ausgelesenen Position geschrieben, als auch wieder an den Anfang des Buffers. Fall 2 ist in Listing \ref{placedbefore} zu sehen und beinahe identisch mit Fall 1. 
+
+Es gibt allerdings zwei for Schleifen. Die erste liest Samples, die nach der zuletzt gelesenen Position gespeichert wurden (Zeile 2) und die zweite liest die Samples, welche sich zwischen dem Anfang und der aktuellen Position befinden (Zeile 10).
+					
+\lstset{language=C++,caption={Auslesen und Speichern der Daten. Fall 2: Im zirkulären Buffer wurden neue Samples zwischen der zuletzt ausgelesenen Position und dem Ende und zusätzlich am Anfang des Speichers geschrieben.},label=placedbefore}
+\begin{lstlisting}[frame=trBL]				
+	} else if ( dscs.transfers <= last_transfers ) {
+		for ( i = last_transfers; i < num_conversions; i++ ) // after the last_transfers
+				if ( i%4 == 0 ) {
+					uhr = mvTime::Now();    // get actual time
+					for ( k = 0; k < 3; k++ ) {  // conversion into volts
+						dscADCodeToVoltage(dscb, dscadsettings, dscaioint.sample_values[i+k], &voltage[k]);
+					}
+					fprintf(logFile,"%s counts: %5d %5d %5d  Volts: %5.3lf %5.3lf %5.3lf \n",uhr.GetTimeStamp().c_str(),dscaioint.sample_values[i],dscaioint.sample_values[i+1], dscaioint.sample_values[i+2],voltage[0],voltage[1],voltage[2]);
+				}
+            for ( i = 0; i < dscs.transfers; i++ ) // in between beginning and last transfers
+				if ( i%4 == 0 ) {
+					uhr = mvTime::Now();   // get actual time
+					for ( k = 0; k < 3; k++ ) { // conversion into volts
+						dscADCodeToVoltage(dscb, dscadsettings, dscaioint.sample_values[i+k], &voltage[k]);
+					}
+					fprintf(logFile,"%s counts: %5d %5d %5d  Volts: %5.3lf %5.3lf %5.3lf \n",uhr.GetTimeStamp().c_str(),dscaioint.sample_values[i],dscaioint.sample_values[i+1], dscaioint.sample_values[i+2],voltage[0],voltage[1],voltage[2]);
+				}
+        }
+\end{lstlisting}
+
+Die Zeitstempel erhalte ich durch eine eine Methode aus der \texttt{mvTime} Klasse. Diese stammt aus der Radarserver Software von Malte Vöge. \\
+
+Der Nachteil bei dieser Art der Datenaufnahme ist, dass ein neuer Zeitstempel nur bei jedem Schleifendurchlauf (drei Mal pro Sekunde) entsteht. Es haben daher immer mehrere Samples den gleichen Zeitstempel. In der Auswertung muss also zunächst ein neuer Zeitstempel generiert werden.
 
 \section{Experimente am Geomatikum}
+
 
 
 \section{Verbesserungen}
@@ -804,7 +1077,8 @@ bessere Zeitstempel, nicht nur 3 Mal pro Sekunde
 \newpage
 \singlespacing
 \appendix
-\bibliographystyle{plainnat}
+% \bibliographystyle{plainnat}
+\bibliographystyle{jureco}
 \bibliography{bachelor}
 
 

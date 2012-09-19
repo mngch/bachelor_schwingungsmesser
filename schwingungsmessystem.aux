@@ -84,63 +84,95 @@
 \newlabel{sensitivity}{{1}{19}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {1}Funktion zum Einstellen des Messbereichs aus der bma180 Bibliothek\\ maxg ist eine dem Wertebereich zugeordnete Bin\IeC {\"a}rzahl zwischen 000 und 110}{19}}
 \newlabel{writeregister}{{2}{20}}
-\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek(REF!!)}{20}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2}Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek}{20}}
 \@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Beispiel eines Schreibvorgangs in das Register \texttt  {0x35}. Nur die grau markierten Bits werden ver\IeC {\"a}ndert.\relax }}{21}}
 \newlabel{bitops}{{14}{21}}
 \newlabel{readaccel}{{3}{22}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {3}Funktion zum Auslesen der Beschleunigungsdaten, x,y,z sind 2 Byte Integerzahlen}{22}}
 \citation{Tietze:2002fk}
-\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Auslesen und zusammenf\IeC {\"u}gen der Daten. MSB und LSB werden addiert. Mittels IF Abfrage und Masking wird \IeC {\"u}berpr\IeC {\"u}ft, ob es sich um eine negative Zahl handelt; Falls ja, so wird das korrekte Zweierkomplement gebildet und als Integer gespeichert.\relax }}{24}}
-\newlabel{auslesen}{{15}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces Auslesen und zusammenf\IeC {\"u}gen der Daten. MSB und LSB werden addiert. Mittels IF Abfrage und Masking wird \IeC {\"u}berpr\IeC {\"u}ft, ob es sich um eine negative Zahl handelt; Falls ja, so wird das korrekte Zweierkomplement gebildet und als Integer gespeichert.\relax }}{23}}
+\newlabel{auslesen}{{15}{23}}
+\citation{Sensortec:2009rt}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.2}Restitution}{24}}
 \newlabel{restitution}{{4}{24}}
 \@writefile{lol}{\contentsline {lstlisting}{\numberline {4}Restitution der aufgenommenen Beschleunigungsdaten. Ausgabe als Vielfaches von der Erdbeschleunigung $g = 9.81m/s^2$}{24}}
-\citation{Sensortec:2009rt}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{24}}
+\citation{Bronstein:1995fk}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Berechnung der Wegwerte aus den Beschleunigungsdaten}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Numerische Integration}{25}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Problematik des Integrierens Noisebehafteter Daten}{25}}
 \citation{Spieler:2004fk}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{25}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Experimente in Waakirchen}{25}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Ergebnisse der Messungen in Waakirchen}{27}}
-\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Restituierte Beschleunigungsdaten in 3 Komponenten w\IeC {\"a}hrend Experiment 7.  Die X-Achse entspricht der Querachse (Nickachse) des Radars, die Y-Achse seiner Hochachse und die Z-Achse der L\IeC {\"a}ngsachse, welche in Radarstrahlrichtung ausgerichtet ist. \relax }}{27}}
-\newlabel{firstexample}{{16}{27}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}Verbesserungen}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces Numerische Integration von $sin(x)$. Oben: ohne Noise Unten: Mit Noise einer Varianz von 0.3\relax }}{26}}
+\newlabel{sinusnoise}{{16}{26}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Experimente in Waakirchen}{26}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Ergebnisse der Messungen in Waakirchen}{28}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Messungen an der Radarantenne}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Restituierte Beschleunigungsdaten in 3 Komponenten w\IeC {\"a}hrend Experiment 7.  Die X-Achse entspricht der Querachse (Nickachse) des Radars, die Y-Achse seiner Hochachse und die Z-Achse der L\IeC {\"a}ngsachse, welche in Radarstrahlrichtung ausgerichtet ist. \relax }}{28}}
+\newlabel{firstexample}{{17}{28}}
+\citation{Shannon:1949uq}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Messungen am Autoklavenaufbau}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Messaufbau: Bewegungsmessung des Autoklavenaufbaus. Der Beschleunigungssensor ist am Bein des Aufbaus befestigt (roter Kreis).\relax }}{30}}
+\newlabel{tisch}{{18}{30}}
 \citation{Sengpiel:2001fk}
-\@writefile{toc}{\contentsline {section}{\numberline {8}Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}{29}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Vergleich der relevanten technischen Daten der beiden Sensoren bezogen auf einem Messbereich von $\pm $2g.  Das Aufl\IeC {\"o}sungsverm\IeC {\"o}gen des ASC 5511LN-002 bezieht sich hier auf die Verwendung mit dem \textit  {Diamond-MM-16-AT PC/104 Analog I/O Module}\relax }}{29}}
-\newlabel{sensorcompare}{{2}{29}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}ASC 5511LN-002}{29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces ASC 5511LN-010 von Advanced Sensors Calibration\relax }}{29}}
-\newlabel{asc5511}{{17}{29}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}{31}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Vergleich der relevanten technischen Daten der beiden Sensoren bezogen auf einem Messbereich von $\pm $2g.  Das Aufl\IeC {\"o}sungsverm\IeC {\"o}gen des ASC 5511LN-002 bezieht sich hier auf die Verwendung mit dem \textit  {Diamond-MM-16-AT PC/104 Analog I/O Module}\relax }}{31}}
+\newlabel{sensorcompare}{{2}{31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}ASC 5511LN-002}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces ASC 5511LN-010 von Advanced Sensors Calibration\relax }}{31}}
+\newlabel{asc5511}{{19}{31}}
 \citation{Sengpiel:2001fk}
 \citation{Sengpiel:2001fk}
-\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Unsymmetrische Signal\IeC {\"u}bertragung mit St\IeC {\"o}rung 'Zacke'. \citep  {Sengpiel:2001fk}\relax }}{30}}
-\newlabel{unsymmetrisch}{{18}{30}}
-\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces Symmetrische Signal\IeC {\"u}bertragung mit sich aufhebender St\IeC {\"o}rung. \citep  {Sengpiel:2001fk}\relax }}{30}}
-\newlabel{symmetrisch}{{19}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Unsymmetrische Signal\IeC {\"u}bertragung mit St\IeC {\"o}rung 'Zacke'. \citep  {Sengpiel:2001fk}\relax }}{32}}
+\newlabel{unsymmetrisch}{{20}{32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Symmetrische Signal\IeC {\"u}bertragung mit sich aufhebender St\IeC {\"o}rung. \citep  {Sengpiel:2001fk}\relax }}{32}}
+\newlabel{symmetrisch}{{21}{32}}
 \citation{Stallings:2000uq}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{31}}
-\@writefile{lof}{\contentsline {figure}{\numberline {20}{\ignorespaces Diamond-MM-16-AT PC/104 Analog I/O Module\relax }}{31}}
-\newlabel{diamond}{{20}{31}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{32}}
-\@writefile{lof}{\contentsline {figure}{\numberline {21}{\ignorespaces Ablauf eines Interrupts \citep  {Stallings:2000uq}\relax }}{32}}
-\newlabel{interrupt}{{21}{32}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{33}}
-\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Vergleich von FIFO und LIFO\relax }}{33}}
-\newlabel{fifolifo}{{22}{33}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Software}{34}}
-\@writefile{toc}{\contentsline {section}{\numberline {9}Experimente am Geomatikum}{34}}
-\@writefile{toc}{\contentsline {section}{\numberline {10}Verbesserungen}{34}}
-\bibstyle{plainnat}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{33}}
+\@writefile{lof}{\contentsline {figure}{\numberline {22}{\ignorespaces Diamond-MM-16-AT PC/104 Analog I/O Module\relax }}{33}}
+\newlabel{diamond}{{22}{33}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{34}}
+\@writefile{lof}{\contentsline {figure}{\numberline {23}{\ignorespaces Ablauf eines Interrupts \citep  {Stallings:2000uq}\relax }}{34}}
+\newlabel{interrupt}{{23}{34}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{35}}
+\@writefile{lof}{\contentsline {figure}{\numberline {24}{\ignorespaces Vergleich von FIFO und LIFO\relax }}{35}}
+\newlabel{fifolifo}{{24}{35}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Software}{36}}
+\newlabel{initdriver}{{5}{37}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {5}Initialisierung der Treibersoftware}{37}}
+\citation{Miller:2006fk}
+\newlabel{initboard}{{6}{38}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {6}Initialisierung des Boards}{38}}
+\newlabel{initad}{{7}{38}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {7}Konfigurieren des AD-Wandlers}{38}}
+\newlabel{initint}{{8}{39}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {8}Setzen der Variablen f\IeC {\"u}r den Interrupt}{39}}
+\newlabel{loop}{{9}{40}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {9}Programmschleife, die den Buffer auf neue Daten \IeC {\"u}berpr\IeC {\"u}ft und diese in eine Datei schreibt. Der Code zum Auslesen und Schreiben der Samples ist in diesem Listing entfernt und seperat in Listing \ref  {placedafter} und \ref  {placedbefore} abgebildet.}{40}}
+\citation{Systems:2008uq}
+\newlabel{placedafter}{{10}{42}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {10}Auslesen und Speichern der Daten. Fall 1: Im zirkul\IeC {\"a}ren Buffer wurden neue Samples nur zwischen der zuletzt ausgelesenen Position und dem Ende des Speichers geschrieben.}{42}}
+\@writefile{lof}{\contentsline {figure}{\numberline {25}{\ignorespaces Struktur des Buffers, in dem die Samples stehen. \citep  {Systems:2008uq}\relax }}{43}}
+\newlabel{samplebuffer}{{25}{43}}
+\newlabel{placedbefore}{{11}{43}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {11}Auslesen und Speichern der Daten. Fall 2: Im zirkul\IeC {\"a}ren Buffer wurden neue Samples zwischen der zuletzt ausgelesenen Position und dem Ende und zus\IeC {\"a}tzlich am Anfang des Speichers geschrieben.}{43}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Experimente am Geomatikum}{44}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Verbesserungen}{44}}
+\bibstyle{jureco}
 \bibdata{bachelor}
 \bibcite{Devices:1996pd}{{1}{1996}{{ADXL05}}{{}}}
 \bibcite{:2012vn}{{2}{2012}{{Arduino}}{{}}}
-\bibcite{Kanda:1991gf}{{3}{1991}{{Kanda}}{{}}}
-\bibcite{Klingbeil:2006qy}{{4}{2006}{{Klingbeil}}{{}}}
-\bibcite{Meschede:2001fk}{{5}{2001}{{Meschede}}{{}}}
-\bibcite{:2012fj}{{6}{2012}{{NXP}}{{}}}
-\bibcite{:2002fk}{{7}{2002}{{Schmidt}}{{}}}
-\bibcite{Sengpiel:2001fk}{{8}{2001}{{Sengpiel}}{{}}}
-\bibcite{Sensortec:2009rt}{{9}{2009}{{Sensortec}}{{}}}
-\bibcite{S.J.-Sherman:1992ul}{{10}{1992}{{Sherman et~al.}}{{Sherman, Tsang, Core, Payne, Quinn, Chau, Farash, and Baum}}}
-\bibcite{Spieler:2004fk}{{11}{2004}{{Spieler et~al.}}{{Spieler, Kennedy, Kueppers, Dingwell, Scheul, and Taddeucci}}}
-\bibcite{Stallings:2000uq}{{12}{2000}{{Stallings}}{{}}}
-\bibcite{Tietze:2002fk}{{13}{2002}{{Tietze and Schenk}}{{}}}
+\bibcite{Bronstein:1995fk}{{3}{1995}{{Bronstein et~al.}}{{Bronstein, Semendjajew, Musiol, and M{\"u}hlig}}}
+\bibcite{Kanda:1991gf}{{4}{1991}{{Kanda}}{{}}}
+\bibcite{Klingbeil:2006qy}{{5}{2006}{{Klingbeil}}{{}}}
+\bibcite{Meschede:2001fk}{{6}{2001}{{Meschede}}{{}}}
+\bibcite{Miller:2006fk}{{7}{2006}{{Miller}}{{}}}
+\bibcite{:2012fj}{{8}{2012}{{NXP}}{{}}}
+\bibcite{:2002fk}{{9}{2002}{{Schmidt}}{{}}}
+\bibcite{Sengpiel:2001fk}{{10}{2001}{{Sengpiel}}{{}}}
+\bibcite{Sensortec:2009rt}{{11}{2009}{{Sensortec}}{{}}}
+\bibcite{Shannon:1949uq}{{12}{1949}{{Shannon}}{{}}}
+\bibcite{S.J.-Sherman:1992ul}{{13}{1992}{{Sherman et~al.}}{{Sherman, Tsang, Core, Payne, Quinn, Chau, Farash, and Baum}}}
+\bibcite{Spieler:2004fk}{{14}{2004}{{Spieler et~al.}}{{Spieler, Kennedy, Kueppers, Dingwell, Scheul, and Taddeucci}}}
+\bibcite{Stallings:2000uq}{{15}{2000}{{Stallings}}{{}}}
+\bibcite{Systems:2008uq}{{16}{2008}{{Systems}}{{}}}
+\bibcite{Tietze:2002fk}{{17}{2002}{{Tietze and Schenk}}{{}}}

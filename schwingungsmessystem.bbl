@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -14,6 +14,13 @@ Datasheet ADXL05.
 Arduino.
 \newblock Arduino wire library, 2012.
 \newblock URL \url{http://www.arduino.cc/en/Reference/Wire}.
+
+\bibitem[Bronstein et~al.(1995)Bronstein, Semendjajew, Musiol, and
+  M{\"u}hlig]{Bronstein:1995fk}
+I.N. Bronstein, K.A. Semendjajew, G.~Musiol, and H.~M{\"u}hlig.
+\newblock \emph{Taschenbuch der Mathematik}.
+\newblock Verlag Harri Deutsch, Frankfurt am Main, 2. {\"u}berarbeitete und
+  erweiterte auflage edition, 1995.
 
 \bibitem[Kanda(1991)]{Kanda:1991gf}
 Yozo Kanda.
@@ -31,6 +38,11 @@ Lasse Klingbeil.
 D.~Meschede.
 \newblock \emph{Gerthsen Physik}.
 \newblock Springer Berlin Heidelberg, 12. auflage edition, September 2001.
+
+\bibitem[Miller(2006)]{Miller:2006fk}
+Jonathan Miller.
+\newblock \emph{The benefits of autocalibration}.
+\newblock Diamond Systems, 2006.
 
 \bibitem[NXP(2012)]{:2012fj}
 NXP.
@@ -54,6 +66,12 @@ Bosch Sensortec.
 \newblock \emph{BMA180 Digital, triaxial acceleration sensor Data sheet}, 2.1
   edition, December 2009.
 
+\bibitem[Shannon(1949)]{Shannon:1949uq}
+Claude~E. Shannon.
+\newblock Communication in the presence of noise.
+\newblock \emph{Proceedings of the IRE}, 37\penalty0 (1):\penalty0 10--21,
+  January 1949.
+
 \bibitem[Sherman et~al.(1992)Sherman, Tsang, Core, Payne, Quinn, Chau, Farash,
   and Baum]{S.J.-Sherman:1992ul}
 S.J. Sherman, W.K. Tsang, T.A. Core, R.S. Payne, D.E. Quinn, K.H.-L. Chau, J.A.
@@ -74,6 +92,10 @@ Oliver Spieler, Ben Kennedy, Ulrich Kueppers, Donald~B. Dingwell, Bettina
 William Stallings.
 \newblock \emph{Operating Systems: Internals and Design Principles}.
 \newblock Prentice Hall International, 6 edition, 2000.
+
+\bibitem[Systems(2008)]{Systems:2008uq}
+Diamond Systems.
+\newblock \emph{Universal Driver Manual v5.92}, 2008.
 
 \bibitem[Tietze and Schenk(2002)]{Tietze:2002fk}
 Ulrich Tietze and Christoph Schenk.
