@@ -1,4 +1,4 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -21,6 +21,14 @@ I.N. Bronstein, K.A. Semendjajew, G.~Musiol, and H.~M{\"u}hlig.
 \newblock \emph{Taschenbuch der Mathematik}.
 \newblock Verlag Harri Deutsch, Frankfurt am Main, 2. {\"u}berarbeitete und
   erweiterte auflage edition, 1995.
+
+\bibitem[Hort et~al.(2003)Hort, Seyfried, and V{\"o}ge]{Hort:2003fk}
+Matthias Hort, R.~Seyfried, and Malte V{\"o}ge.
+\newblock Radar doppler velocimetry of volcanic eruptions: theoretical
+  considerations and quantitative documentation of changes in eruptive
+  behaviour at stromboli volcano, italy.
+\newblock \emph{Geophysical Journal International}, 154\penalty0 (2):\penalty0
+  515--532, August 2003 2003.
 
 \bibitem[Kanda(1991)]{Kanda:1991gf}
 Yozo Kanda.
@@ -48,6 +56,14 @@ Jonathan Miller.
 NXP.
 \newblock \emph{UM10204 I2C-bus specification and user manual}.
 \newblock NXP, rev4 edition, February 2012.
+
+\bibitem[Scharff et~al.(2007)Scharff, Gerst, Ziemen, Hort, and
+  Johnson]{Scharff:2007uq}
+Lea Scharff, Alexander Gerst, Florian Ziemen, Matthias Hort, and Jeffrey~B.
+  Johnson.
+\newblock The dynamics of explosions at santiaguito volcano, guatemala
+  (v31e-0718).
+\newblock In \emph{Fall Meeting 2007}. American Geophysical Union, 2007.
 
 \bibitem[Schmidt(2002)]{:2002fk}
 Schmidt.

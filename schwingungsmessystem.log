@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.9.29)  19 SEP 2012 15:53
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (TeX Live 2011) (format=pdflatex 2011.9.29)  20 SEP 2012 20:14
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -660,7 +660,58 @@ File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 \tf@toc=\write3
 \openout3 = `schwingungsmessystem.toc'.
 
- [2] [3] [4]
+ [2] [3]
+<hardwareimages/radar.jpg, id=19, 680.5425pt x 1027.84pt>
+File: hardwareimages/radar.jpg Graphic file (type jpg)
+
+<use hardwareimages/radar.jpg>
+Package pdftex.def Info: hardwareimages/radar.jpg used on input line 154.
+(pdftex.def)             Requested size: 204.16432pt x 308.35437pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 159--160
+
+ []
+
+[4 <./hardwareimages/radar.jpg>]
+Package epstopdf Info: Source file: <phasenmessung.eps>
+(epstopdf)                    date: 2012-09-20 16:02:06
+(epstopdf)                    size: 60860 bytes
+(epstopdf)             Output file: <phasenmessung-eps-converted-to.pdf>
+(epstopdf)                    date: 2012-09-20 16:03:35
+(epstopdf)                    size: 9879 bytes
+(epstopdf)             Command: <epstopdf --outfile=phasenmessung-eps-converted
+-to.pdf phasenmessung.eps>
+(epstopdf)             \includegraphics on input line 166.
+Package epstopdf Info: Output file is already uptodate.
+
+<phasenmessung-eps-converted-to.pdf, id=26, 517.935pt x 223.83624pt>
+File: phasenmessung-eps-converted-to.pdf Graphic file (type pdf)
+
+<use phasenmessung-eps-converted-to.pdf>
+Package pdftex.def Info: phasenmessung-eps-converted-to.pdf used on input line 
+166.
+(pdftex.def)             Requested size: 414.34854pt x 179.06923pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 177--179
+
+ []
+
+[5 <./phasenmessung-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
+
+ []
+
+[6]
 Package epstopdf Info: Source file: <federmasse.eps>
 (epstopdf)                    date: 2012-08-31 12:35:01
 (epstopdf)                    size: 36330 bytes
@@ -669,102 +720,101 @@ Package epstopdf Info: Source file: <federmasse.eps>
 (epstopdf)                    size: 5097 bytes
 (epstopdf)             Command: <epstopdf --outfile=federmasse-eps-converted-to
 .pdf federmasse.eps>
-(epstopdf)             \includegraphics on input line 154.
+(epstopdf)             \includegraphics on input line 200.
 Package epstopdf Info: Output file is already uptodate.
-
-<federmasse-eps-converted-to.pdf, id=22, 331.2375pt x 202.7575pt>
+ <federmasse-eps-converted-to.pdf, id=48, 331.2375pt x 202.7575pt>
 File: federmasse-eps-converted-to.pdf Graphic file (type pdf)
 
 <use federmasse-eps-converted-to.pdf>
-Package pdftex.def Info: federmasse-eps-converted-to.pdf used on input line 154
+Package pdftex.def Info: federmasse-eps-converted-to.pdf used on input line 200
 .
 (pdftex.def)             Requested size: 231.86465pt x 141.92928pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--165
+Underfull \hbox (badness 10000) in paragraph at lines 210--211
 
  []
 
-[5 <./federmasse-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 194--196
+[7 <./federmasse-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 240--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 204--206
+Underfull \hbox (badness 10000) in paragraph at lines 250--252
 
  []
 
-[6] <adxl_ruhe.png, id=50, 224.7597pt x 153.2124pt>
+[8] <adxl_ruhe.png, id=69, 224.7597pt x 153.2124pt>
 File: adxl_ruhe.png Graphic file (type png)
  <use adxl_ruhe.png>
-Package pdftex.def Info: adxl_ruhe.png used on input line 223.
+Package pdftex.def Info: adxl_ruhe.png used on input line 269.
 (pdftex.def)             Requested size: 199.16928pt x 135.77179pt.
 
-<adxl_action.png, id=52, 249.69286pt x 150.3216pt>
+<adxl_action.png, id=71, 249.69286pt x 150.3216pt>
 File: adxl_action.png Graphic file (type png)
  <use adxl_action.png>
-Package pdftex.def Info: adxl_action.png used on input line 227.
+Package pdftex.def Info: adxl_action.png used on input line 273.
 (pdftex.def)             Requested size: 199.16928pt x 119.90648pt.
 
-<adxl_micro.png, id=53, 447.71265pt x 203.44005pt>
+<adxl_micro.png, id=72, 447.71265pt x 203.44005pt>
 File: adxl_micro.png Graphic file (type png)
  <use adxl_micro.png>
-Package pdftex.def Info: adxl_micro.png used on input line 234.
+Package pdftex.def Info: adxl_micro.png used on input line 280.
 (pdftex.def)             Requested size: 447.71155pt x 203.43954pt.
 
-[7 <./adxl_ruhe.png> <./adxl_action.png>]
-<schaltung_beschleunigungssensor.png, id=64, 176.70015pt x 119.2455pt>
+[9 <./adxl_ruhe.png> <./adxl_action.png>]
+<schaltung_beschleunigungssensor.png, id=82, 176.70015pt x 119.2455pt>
 File: schaltung_beschleunigungssensor.png Graphic file (type png)
 
 <use schaltung_beschleunigungssensor.png>
 Package pdftex.def Info: schaltung_beschleunigungssensor.png used on input line
- 248.
+ 294.
 (pdftex.def)             Requested size: 353.39941pt x 238.49039pt.
- [8 <./adxl_micro.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 271--272
+ [10 <./adxl_micro.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 317--318
 
  []
 
-[9 <./schaltung_beschleunigungssensor.png>] [10]
-Overfull \hbox (4.63028pt too wide) in paragraph at lines 278--278
+[11 <./schaltung_beschleunigungssensor.png>] [12]
+Overfull \hbox (4.63028pt too wide) in paragraph at lines 324--324
  |[]\T1/cmr/bx/n/14.4 Entwicklung des Schwin-gungs-mess-sys-tems: Pro-to-typ (B
 MA180)| 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 280--281
+Underfull \hbox (badness 10000) in paragraph at lines 326--327
 
  []
 
-<hardwareimages/bma180_breakout.jpg, id=76, 451.6875pt x 451.6875pt>
+<hardwareimages/bma180_breakout.jpg, id=94, 451.6875pt x 451.6875pt>
 File: hardwareimages/bma180_breakout.jpg Graphic file (type jpg)
 
 <use hardwareimages/bma180_breakout.jpg>
 Package pdftex.def Info: hardwareimages/bma180_breakout.jpg used on input line 
-285.
+331.
 (pdftex.def)             Requested size: 180.67178pt x 180.67178pt.
 
-<hardwareimages/ArduinoUno_R3_Front.jpg, id=77, 1806.75pt x 1248.665pt>
+<hardwareimages/ArduinoUno_R3_Front.jpg, id=95, 1806.75pt x 1248.665pt>
 File: hardwareimages/ArduinoUno_R3_Front.jpg Graphic file (type jpg)
 
 <use hardwareimages/ArduinoUno_R3_Front.jpg>
 Package pdftex.def Info: hardwareimages/ArduinoUno_R3_Front.jpg used on input l
-ine 299.
+ine 345.
 (pdftex.def)             Requested size: 361.3436pt x 249.72858pt.
- [11 <./hardwareimages/bma180_breakout.jpg>] [12 <./hardwareimages/ArduinoUno_R
-3_Front.jpg>] [13]
-<hardwareimages/breadboard.jpg, id=90, 1943.26pt x 2601.72pt>
+ [13 <./hardwareimages/bma180_breakout.jpg>] [14 <./hardwareimages/ArduinoUno_R
+3_Front.jpg>] [15]
+<hardwareimages/breadboard.jpg, id=108, 1943.26pt x 2601.72pt>
 File: hardwareimages/breadboard.jpg Graphic file (type jpg)
 
 <use hardwareimages/breadboard.jpg>
-Package pdftex.def Info: hardwareimages/breadboard.jpg used on input line 340.
+Package pdftex.def Info: hardwareimages/breadboard.jpg used on input line 386.
 (pdftex.def)             Requested size: 199.16928pt x 266.61848pt.
 
-<hardwareimages/testaufbau.png, id=91, 1943.26pt x 2601.72pt>
+<hardwareimages/testaufbau.png, id=109, 1943.26pt x 2601.72pt>
 File: hardwareimages/testaufbau.png Graphic file (type png)
 
 <use hardwareimages/testaufbau.png>
-Package pdftex.def Info: hardwareimages/testaufbau.png used on input line 344.
+Package pdftex.def Info: hardwareimages/testaufbau.png used on input line 390.
 (pdftex.def)             Requested size: 199.16928pt x 266.61848pt.
 Package epstopdf Info: Source file: <schematics.eps>
 (epstopdf)                    date: 2012-08-31 15:35:23
@@ -774,30 +824,30 @@ Package epstopdf Info: Source file: <schematics.eps>
 (epstopdf)                    size: 8179 bytes
 (epstopdf)             Command: <epstopdf --outfile=schematics-eps-converted-to
 .pdf schematics.eps>
-(epstopdf)             \includegraphics on input line 369.
+(epstopdf)             \includegraphics on input line 415.
 Package epstopdf Info: Output file is already uptodate.
 
-<schematics-eps-converted-to.pdf, id=92, 475.7775pt x 371.3875pt>
+<schematics-eps-converted-to.pdf, id=110, 475.7775pt x 371.3875pt>
 File: schematics-eps-converted-to.pdf Graphic file (type pdf)
 
 <use schematics-eps-converted-to.pdf>
-Package pdftex.def Info: schematics-eps-converted-to.pdf used on input line 369
+Package pdftex.def Info: schematics-eps-converted-to.pdf used on input line 415
 .
 (pdftex.def)             Requested size: 285.46869pt x 222.83421pt.
- [14 <./hardwareimages/breadboard.jpg> <./hardwareimages/testaufbau.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
+ [16 <./hardwareimages/breadboard.jpg> <./hardwareimages/testaufbau.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 
  []
 
-<hardwareimages/harz.jpg, id=96, 2601.72pt x 1943.26pt>
+<hardwareimages/harz.jpg, id=114, 2601.72pt x 1943.26pt>
 File: hardwareimages/harz.jpg Graphic file (type jpg)
 
 <use hardwareimages/harz.jpg>
-Package pdftex.def Info: hardwareimages/harz.jpg used on input line 384.
+Package pdftex.def Info: hardwareimages/harz.jpg used on input line 430.
 (pdftex.def)             Requested size: 364.23833pt x 272.05455pt.
- [15 <./schematics-eps-converted-to.pdf>]
-Overfull \hbox (49.75404pt too wide) in paragraph at lines 389--392
-\T1/cmr/m/n/12 (Abb. 12(a)[] und 12(b)[] Die I$[]$C Ver-bin-dung mit dem Sen-so
+ [17 <./schematics-eps-converted-to.pdf>]
+Overfull \hbox (49.75404pt too wide) in paragraph at lines 435--438
+\T1/cmr/m/n/12 (Abb. 14(a)[] und 14(b)[] Die I$[]$C Ver-bin-dung mit dem Sen-so
 r er-folgt über einen Hirschmannstecker$[]$
  []
 
@@ -810,14 +860,14 @@ Package epstopdf Info: Source file: <hardwareimages/kabel.eps>
 (epstopdf)                    size: 7284 bytes
 (epstopdf)             Command: <epstopdf --outfile=hardwareimages/kabel-eps-co
 nverted-to.pdf hardwareimages/kabel.eps>
-(epstopdf)             \includegraphics on input line 395.
+(epstopdf)             \includegraphics on input line 441.
 Package epstopdf Info: Output file is already uptodate.
-<hardwareimages/kabel-eps-converted-to.pdf, id=107, 418.56375pt x 475.7775pt>
+<hardwareimages/kabel-eps-converted-to.pdf, id=125, 418.56375pt x 475.7775pt>
 File: hardwareimages/kabel-eps-converted-to.pdf Graphic file (type pdf)
 
 <use hardwareimages/kabel-eps-converted-to.pdf>
 Package pdftex.def Info: hardwareimages/kabel-eps-converted-to.pdf used on inpu
-t line 395.
+t line 441.
 (pdftex.def)             Requested size: 334.85144pt x 380.6225pt.
 Package epstopdf Info: Source file: <hardwareimages/hirschmann_i2c.eps>
 (epstopdf)                    date: 2012-08-10 15:40:41
@@ -828,78 +878,78 @@ d-to.pdf>
 (epstopdf)                    size: 4657 bytes
 (epstopdf)             Command: <epstopdf --outfile=hardwareimages/hirschmann_i
 2c-eps-converted-to.pdf hardwareimages/hirschmann_i2c.eps>
-(epstopdf)             \includegraphics on input line 403.
+(epstopdf)             \includegraphics on input line 449.
 Package epstopdf Info: Output file is already uptodate.
 
-<hardwareimages/hirschmann_i2c-eps-converted-to.pdf, id=108, 389.455pt x 389.45
+<hardwareimages/hirschmann_i2c-eps-converted-to.pdf, id=126, 389.455pt x 389.45
 5pt>
 File: hardwareimages/hirschmann_i2c-eps-converted-to.pdf Graphic file (type pdf
 )
  <use hardwareimages/hirschmann_i2c-eps-converted-to.pdf>
 Package pdftex.def Info: hardwareimages/hirschmann_i2c-eps-converted-to.pdf use
-d on input line 403.
+d on input line 449.
 (pdftex.def)             Requested size: 194.72702pt x 194.72702pt.
 
-Overfull \hbox (9.72362pt too wide) in paragraph at lines 401--423
+Overfull \hbox (9.72362pt too wide) in paragraph at lines 447--469
 []$[]$  $[]$ 
  []
 
-[16 <./hardwareimages/harz.jpg>]
+[18 <./hardwareimages/harz.jpg>]
 Overfull \vbox (3.0495pt too high) has occurred while \output is active []
 
 
-[17 <./hardwareimages/kabel-eps-converted-to.pdf> <./hardwareimages/hirschmann_
+[19 <./hardwareimages/kabel-eps-converted-to.pdf> <./hardwareimages/hirschmann_
 i2c-eps-converted-to.pdf>]
-<hardwareimages/arduinobox.jpg, id=123, 1943.26pt x 2601.72pt>
+<hardwareimages/arduinobox.jpg, id=142, 1943.26pt x 2601.72pt>
 File: hardwareimages/arduinobox.jpg Graphic file (type jpg)
 
 <use hardwareimages/arduinobox.jpg>
-Package pdftex.def Info: hardwareimages/arduinobox.jpg used on input line 433.
+Package pdftex.def Info: hardwareimages/arduinobox.jpg used on input line 479.
 (pdftex.def)             Requested size: 199.16928pt x 266.61848pt.
 
-<hardwareimages/arduinoboxregen.jpg, id=124, 1943.26pt x 2601.72pt>
+<hardwareimages/arduinoboxregen.jpg, id=143, 1943.26pt x 2601.72pt>
 File: hardwareimages/arduinoboxregen.jpg Graphic file (type jpg)
 
 <use hardwareimages/arduinoboxregen.jpg>
 Package pdftex.def Info: hardwareimages/arduinoboxregen.jpg used on input line 
-437.
+483.
 (pdftex.def)             Requested size: 199.16928pt x 266.61848pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
+Underfull \hbox (badness 10000) in paragraph at lines 491--492
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 451--453
+Underfull \hbox (badness 10000) in paragraph at lines 497--499
 
  []
 
-[18 <./hardwareimages/arduinobox.jpg> <./hardwareimages/arduinoboxregen.jpg>]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 454.
+[20 <./hardwareimages/arduinobox.jpg> <./hardwareimages/arduinoboxregen.jpg>]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 500.
 
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 457--458
+Underfull \hbox (badness 10000) in paragraph at lines 503--504
 
  []
 
-<registerstransp.png, id=128, 1302.8675pt x 151.56625pt>
+<registerstransp.png, id=147, 1302.8675pt x 151.56625pt>
 File: registerstransp.png Graphic file (type png)
 
 <use registerstransp.png>
-Package pdftex.def Info: registerstransp.png used on input line 471.
+Package pdftex.def Info: registerstransp.png used on input line 517.
 (pdftex.def)             Requested size: 467.71985pt x 54.41116pt.
 
-Overfull \hbox (19.5889pt too wide) in paragraph at lines 471--472
+Overfull \hbox (19.5889pt too wide) in paragraph at lines 517--518
 [][] 
  []
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2004/09/05 1.3 listings language file
-) [19 <./registerstransp.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 488--491
+) [21 <./registerstransp.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 534--537
 
  []
 
@@ -911,31 +961,31 @@ Package epstopdf Info: Source file: <bitops.eps>
 (epstopdf)                    size: 9516 bytes
 (epstopdf)             Command: <epstopdf --outfile=bitops-eps-converted-to.pdf
  bitops.eps>
-(epstopdf)             \includegraphics on input line 512.
+(epstopdf)             \includegraphics on input line 558.
 Package epstopdf Info: Output file is already uptodate.
-<bitops-eps-converted-to.pdf, id=138, 576.1525pt x 418.56375pt>
+<bitops-eps-converted-to.pdf, id=156, 576.1525pt x 418.56375pt>
 File: bitops-eps-converted-to.pdf Graphic file (type pdf)
 
 <use bitops-eps-converted-to.pdf>
-Package pdftex.def Info: bitops-eps-converted-to.pdf used on input line 512.
+Package pdftex.def Info: bitops-eps-converted-to.pdf used on input line 558.
 (pdftex.def)             Requested size: 288.07553pt x 209.28136pt.
- [20]
-Underfull \hbox (badness 10000) in paragraph at lines 531--532
-
- []
-
-[21 <./bitops-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 573--574
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 575--576
-
- []
-
-[22]
+ [22]
 Underfull \hbox (badness 10000) in paragraph at lines 577--578
+
+ []
+
+[23 <./bitops-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 619--620
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 621--622
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 623--624
 
  []
 
@@ -947,115 +997,139 @@ Package epstopdf Info: Source file: <auslesen.eps>
 (epstopdf)                    size: 11668 bytes
 (epstopdf)             Command: <epstopdf --outfile=auslesen-eps-converted-to.p
 df auslesen.eps>
-(epstopdf)             \includegraphics on input line 583.
+(epstopdf)             \includegraphics on input line 629.
 Package epstopdf Info: Output file is already uptodate.
-<auslesen-eps-converted-to.pdf, id=159, 583.17876pt x 627.34375pt>
+<auslesen-eps-converted-to.pdf, id=177, 583.17876pt x 627.34375pt>
 File: auslesen-eps-converted-to.pdf Graphic file (type pdf)
 
 <use auslesen-eps-converted-to.pdf>
-Package pdftex.def Info: auslesen-eps-converted-to.pdf used on input line 583.
+Package pdftex.def Info: auslesen-eps-converted-to.pdf used on input line 629.
 (pdftex.def)             Requested size: 320.74931pt x 345.04012pt.
- [23 <./auslesen-eps-converted-to.pdf>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 598.
+ [25 <./auslesen-eps-converted-to.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 644.
 
 
 (/usr/local/texlive/2011/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 598.
- [24]
-<sinusnoise.png, id=174, 1117.17375pt x 307.1475pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 644.
+ [26]
+<sinusnoise.png, id=193, 1117.17375pt x 307.1475pt>
 File: sinusnoise.png Graphic file (type png)
  <use sinusnoise.png>
-Package pdftex.def Info: sinusnoise.png used on input line 638.
+Package pdftex.def Info: sinusnoise.png used on input line 684.
 (pdftex.def)             Requested size: 446.86159pt x 122.85681pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 643--644
-
- []
-
-[25]
-Overfull \hbox (53.97696pt too wide) in paragraph at lines 654--655
-[]\T1/cmr/m/n/12 Untersucht wur-de da-bei ei-ne Viel-zahl von Pa-ra-me-tern dur
-ch den Ein-satz von Hochgeschwindigkeits-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 654--655
-
- []
-
-[26 <./sinusnoise.png (PNG copy)>]
-<wakiki/firstexample2.png, id=182, 633.36626pt x 921.4425pt>
-File: wakiki/firstexample2.png Graphic file (type png)
-
-<use wakiki/firstexample2.png>
-Package pdftex.def Info: wakiki/firstexample2.png used on input line 669.
-(pdftex.def)             Requested size: 316.68236pt x 460.72012pt.
- [27] [28 <./wakiki/firstexample2.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 678--679
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 686--687
-
- []
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 689--690
 
  []
 
+[27] [28 <./sinusnoise.png (PNG copy)>]
+Overfull \hbox (53.97696pt too wide) in paragraph at lines 702--703
+[]\T1/cmr/m/n/12 Untersucht wur-de da-bei ei-ne Viel-zahl von Pa-ra-me-tern dur
+ch den Ein-satz von Hochgeschwindigkeits-
+ []
 
-Overfull \hbox (2.70474pt too wide) in paragraph at lines 693--694
+
+Underfull \hbox (badness 10000) in paragraph at lines 702--703
+
+ []
+
+<wakiki/firstexample2.png, id=201, 633.36626pt x 921.4425pt>
+File: wakiki/firstexample2.png Graphic file (type png)
+
+<use wakiki/firstexample2.png>
+Package pdftex.def Info: wakiki/firstexample2.png used on input line 718.
+(pdftex.def)             Requested size: 316.68236pt x 460.72012pt.
+ [29] [30 <./wakiki/firstexample2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 727--728
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 735--736
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 738--739
+
+ []
+
+
+Overfull \hbox (2.70474pt too wide) in paragraph at lines 742--743
 []\T1/cmr/m/n/12 Korrelation zwi-schen Ge-schwin-dig-keit (Ra-dar-ge-mes-sen) u
 nd ge-mes-se-ner Be-schleu-ni-gung?
  []
 
-<hardwareimages/tisch.jpg, id=189, 1885.0425pt x 1831.84375pt>
+<hardwareimages/tisch.jpg, id=208, 1885.0425pt x 1831.84375pt>
 File: hardwareimages/tisch.jpg Graphic file (type jpg)
 
 <use hardwareimages/tisch.jpg>
-Package pdftex.def Info: hardwareimages/tisch.jpg used on input line 703.
+Package pdftex.def Info: hardwareimages/tisch.jpg used on input line 752.
 (pdftex.def)             Requested size: 245.06413pt x 238.14804pt.
- [29] [30 <./hardwareimages/tisch.jpg>]
-<hardwareimages/asc.jpg, id=196, 602.25pt x 421.575pt>
+ [31]
+Underfull \hbox (badness 10000) in paragraph at lines 759--761
+
+ []
+
+
+Overfull \hbox (18.04837pt too wide) in paragraph at lines 764--765
+[]\T1/cmr/m/n/12 Zur ge-naue-ren Be-trach-tung der Ver-ti-kal-be-we-gung ist in
+ Ab-bil-dung 22[] nur die Y-Komponente
+ []
+
+<wakiki/tischmovement3.png, id=213, 651.43375pt x 928.46875pt>
+File: wakiki/tischmovement3.png Graphic file (type png)
+
+<use wakiki/tischmovement3.png>
+Package pdftex.def Info: wakiki/tischmovement3.png used on input line 769.
+(pdftex.def)             Requested size: 325.71606pt x 464.23325pt.
+ [32 <./hardwareimages/tisch.jpg>]
+<wakiki/tischmovement_y.png, id=217, 933.4875pt x 725.71124pt>
+File: wakiki/tischmovement_y.png Graphic file (type png)
+
+<use wakiki/tischmovement_y.png>
+Package pdftex.def Info: wakiki/tischmovement_y.png used on input line 776.
+(pdftex.def)             Requested size: 373.38838pt x 290.27936pt.
+ [33 <./wakiki/tischmovement3.png>] [34 <./wakiki/tischmovement_y.png (PNG copy
+)>]
+<hardwareimages/asc.jpg, id=224, 602.25pt x 421.575pt>
 File: hardwareimages/asc.jpg Graphic file (type jpg)
 
 <use hardwareimages/asc.jpg>
-Package pdftex.def Info: hardwareimages/asc.jpg used on input line 736.
+Package pdftex.def Info: hardwareimages/asc.jpg used on input line 812.
 (pdftex.def)             Requested size: 301.12425pt x 210.78697pt.
 
-<unsymmetrisch.png, id=197, 434.3427pt x 112.2594pt>
+<unsymmetrisch.png, id=225, 434.3427pt x 112.2594pt>
 File: unsymmetrisch.png Graphic file (type png)
  <use unsymmetrisch.png>
-Package pdftex.def Info: unsymmetrisch.png used on input line 745.
+Package pdftex.def Info: unsymmetrisch.png used on input line 821.
 (pdftex.def)             Requested size: 304.03781pt x 78.58102pt.
 
-[31 <./hardwareimages/asc.jpg>]
-<symmetrisch.png, id=203, 426.6339pt x 112.7412pt>
+[35 <./hardwareimages/asc.jpg>]
+<symmetrisch.png, id=230, 426.6339pt x 112.7412pt>
 File: symmetrisch.png Graphic file (type png)
  <use symmetrisch.png>
-Package pdftex.def Info: symmetrisch.png used on input line 761.
+Package pdftex.def Info: symmetrisch.png used on input line 837.
 (pdftex.def)             Requested size: 298.64168pt x 78.91829pt.
 
-<hardwareimages/diamondmm16at.jpg, id=204, 602.25pt x 594.22pt>
+<hardwareimages/diamondmm16at.jpg, id=231, 602.25pt x 594.22pt>
 File: hardwareimages/diamondmm16at.jpg Graphic file (type jpg)
 
 <use hardwareimages/diamondmm16at.jpg>
-Package pdftex.def Info: hardwareimages/diamondmm16at.jpg used on input line 77
-9.
+Package pdftex.def Info: hardwareimages/diamondmm16at.jpg used on input line 85
+5.
 (pdftex.def)             Requested size: 240.89572pt x 237.68379pt.
- [32 <./unsymmetrisch.png> <./symmetrisch.png>] <interrupt.png, id=211, 312.688
+ [36 <./unsymmetrisch.png> <./symmetrisch.png>] <interrupt.png, id=237, 312.688
 2pt x 195.6108pt>
 File: interrupt.png Graphic file (type png)
  <use interrupt.png>
-Package pdftex.def Info: interrupt.png used on input line 794.
+Package pdftex.def Info: interrupt.png used on input line 870.
 (pdftex.def)             Requested size: 437.76048pt x 273.85323pt.
 
-[33 <./hardwareimages/diamondmm16at.jpg>] [34 <./interrupt.png>]
+[37 <./hardwareimages/diamondmm16at.jpg>] [38 <./interrupt.png>]
 Package epstopdf Info: Source file: <fifolifo.eps>
 (epstopdf)                    date: 2012-09-12 10:33:01
 (epstopdf)                    size: 29140 bytes
@@ -1064,164 +1138,186 @@ Package epstopdf Info: Source file: <fifolifo.eps>
 (epstopdf)                    size: 6314 bytes
 (epstopdf)             Command: <epstopdf --outfile=fifolifo-eps-converted-to.p
 df fifolifo.eps>
-(epstopdf)             \includegraphics on input line 812.
+(epstopdf)             \includegraphics on input line 888.
 Package epstopdf Info: Output file is already uptodate.
 
-<fifolifo-eps-converted-to.pdf, id=219, 453.695pt x 420.57124pt>
+<fifolifo-eps-converted-to.pdf, id=246, 453.695pt x 420.57124pt>
 File: fifolifo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use fifolifo-eps-converted-to.pdf>
-Package pdftex.def Info: fifolifo-eps-converted-to.pdf used on input line 812.
+Package pdftex.def Info: fifolifo-eps-converted-to.pdf used on input line 888.
 (pdftex.def)             Requested size: 317.58434pt x 294.39786pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 817--818
+Underfull \hbox (badness 10000) in paragraph at lines 893--894
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 819--820
+Underfull \hbox (badness 10000) in paragraph at lines 895--896
 
  []
 
-[35 <./fifolifo-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 837--837
+[39 <./fifolifo-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 913--913
 [][]\T1/cmr/m/n/10 http://files.diamondsystems.com/cdrom/Software/Universal%20D
 river/Demos/DMM16-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 839--840
-
- []
-
-[36]
-Underfull \hbox (badness 10000) in paragraph at lines 843--844
-
- []
-
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 854.
-[37]
-Underfull \hbox (badness 10000) in paragraph at lines 894--895
-
- []
-
-[38]
-Underfull \hbox (badness 10000) in paragraph at lines 925--926
-
- []
-
-[39]
-Underfull \hbox (badness 10000) in paragraph at lines 949--950
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 951--952
+Underfull \hbox (badness 10000) in paragraph at lines 915--916
 
  []
 
 [40]
-Underfull \hbox (badness 10000) in paragraph at lines 1002--1003
+Underfull \hbox (badness 10000) in paragraph at lines 919--920
 
  []
 
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 930.
 [41]
-Overfull \hbox (8.77832pt too wide) in paragraph at lines 1022--1024
+Underfull \hbox (badness 10000) in paragraph at lines 970--971
+
+ []
+
+[42]
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1002
+
+ []
+
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 1025--1026
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1027--1028
+
+ []
+
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 1078--1079
+
+ []
+
+[45]
+Overfull \hbox (8.77832pt too wide) in paragraph at lines 1098--1100
 []\T1/cmr/m/n/12 In Zei-le 1 fin-det die Über-prü-fung statt, ob die ak-tu-el-l
 e Po-si-ti-on im Buf-fer (\T1/cmtt/m/n/12 dscs.transfers
  []
 
-<samplebuffer.png, id=246, 817.0525pt x 472.76625pt>
+<samplebuffer.png, id=273, 817.0525pt x 472.76625pt>
 File: samplebuffer.png Graphic file (type png)
  <use samplebuffer.png>
-Package pdftex.def Info: samplebuffer.png used on input line 1027.
+Package pdftex.def Info: samplebuffer.png used on input line 1103.
 (pdftex.def)             Requested size: 449.38028pt x 260.02223pt.
 
-Overfull \hbox (1.24933pt too wide) in paragraph at lines 1027--1028
+Overfull \hbox (1.24933pt too wide) in paragraph at lines 1103--1104
  [][] 
  []
 
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 1036--1037
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 1112--1113
 
  []
 
-[43 <./samplebuffer.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1064--1065
+[47 <./samplebuffer.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1140--1141
 
  []
 
-[44] (./schwingungsmessystem.bbl
+[48] <targets.jpg, id=284, 1943.26pt x 2601.72pt>
+File: targets.jpg Graphic file (type jpg)
+ <use targets.jpg>
+Package pdftex.def Info: targets.jpg used on input line 1150.
+(pdftex.def)             Requested size: 252.63266pt x 338.23547pt.
+
+<geoauswertung/a_vs_z.png, id=285, 1684.2925pt x 954.56625pt>
+File: geoauswertung/a_vs_z.png Graphic file (type png)
+
+<use geoauswertung/a_vs_z.png>
+Package pdftex.def Info: geoauswertung/a_vs_z.png used on input line 1164.
+(pdftex.def)             Requested size: 505.29166pt x 286.37209pt.
+
+Overfull \hbox (57.1607pt too wide) in paragraph at lines 1164--1165
+ [][] 
+ []
+
+[49 <./targets.jpg>] [50 <./geoauswertung/a_vs_z.png (PNG copy)>]
+(./schwingungsmessystem.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 14--17
 []\T1/cmr/m/n/12 Arduino.  Ar-dui-no wi-re li-bra-ry, 2012.  URL
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--63
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
 []\T1/cmr/m/n/12 Eberhard Seng-piel.  Sym-me-tri-sche und un-sym-me-tri-sche si
 -gnal-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--63
+Underfull \hbox (badness 10000) in paragraph at lines 74--79
 \T1/cmr/m/n/12 über-tra-gung.  Tu-to-ri-um UdK Ber-lin, March 2001.  URL
  []
 
 
-Overfull \hbox (60.75865pt too wide) in paragraph at lines 58--63
+Overfull \hbox (60.75865pt too wide) in paragraph at lines 74--79
 \T1/cmtt/m/n/12 http://www.sengpielaudio.com/SymmetrischeUndUnsymmetrischeSigna
 luebertragung.pdf\T1/cmr/m/n/12 . 
  []
 
-[45
+[51
 
-]) [46] (./schwingungsmessystem.aux) ) 
+]) [52] (./schwingungsmessystem.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8576 strings out of 493633
- 125017 string characters out of 3143377
- 333956 words of memory out of 3000000
- 11692 multiletter control sequences out of 15000+200000
+ 8618 strings out of 493633
+ 125985 string characters out of 3143377
+ 334250 words of memory out of 3000000
+ 11727 multiletter control sequences out of 15000+200000
  23620 words of font info for 56 fonts, out of 3000000 for 9000
  831 hyphenation exceptions out of 8191
  47i,15n,49p,695b,1865s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/local/texlive/2011/texmf-dist/fonts
-/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texlive/2011/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2011/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2011/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2011/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmr12.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmr17.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmr7.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy10.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmsy8.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/l
-atxfont/lcircle1.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-
-super/sfbx1000.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-su
-per/sfbx1095.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-supe
-r/sfbx1200.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/
-sfbx1440.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sf
-rm0700.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm
-0800.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm10
-00.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm1095
-.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm1200.p
-fb></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb
-></usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfsl1200.pfb><
-/usr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb></u
-sr/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfsx2488.pfb></usr
-/local/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/l
-ocal/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/loc
-al/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sfti1200.pfb></usr/local
-/texlive/2011/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/local/t
-exlive/2011/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb></usr/local/tex
-live/2011/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on schwingungsmessystem.pdf (46 pages, 18318548 bytes).
+{/usr/local/texlive/2011/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+</usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
+/local/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/l
+ocal/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
+/texlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
+exlive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texl
+ive/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2011/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/20
+11/texmf-dist/fonts/type1/public/amsfonts/latxfont/lcircle1.pfb></usr/local/tex
+live/2011/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/texli
+ve/2011/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/local/texlive
+/2011/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texlive/2
+011/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive/201
+1/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2011/
+texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/local/texlive/2011/te
+xmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2011/texm
+f-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/texlive/2011/texmf-
+dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2011/texmf-di
+st/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2011/texmf-dist
+/fonts/type1/public/cm-super/sfsl1200.pfb></usr/local/texlive/2011/texmf-dist/f
+onts/type1/public/cm-super/sfsx1200.pfb></usr/local/texlive/2011/texmf-dist/fon
+ts/type1/public/cm-super/sfsx2488.pfb></usr/local/texlive/2011/texmf-dist/fonts
+/type1/public/cm-super/sfti0800.pfb></usr/local/texlive/2011/texmf-dist/fonts/t
+ype1/public/cm-super/sfti1095.pfb></usr/local/texlive/2011/texmf-dist/fonts/typ
+e1/public/cm-super/sfti1200.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1
+/public/cm-super/sftt1000.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/p
+ublic/cm-super/sftt1095.pfb></usr/local/texlive/2011/texmf-dist/fonts/type1/pub
+lic/cm-super/sftt1200.pfb>
+Output written on schwingungsmessystem.pdf (52 pages, 19697910 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 243 compressed objects within 3 object streams
+ 397 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 141 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

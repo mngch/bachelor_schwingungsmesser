@@ -1,34 +1,34 @@
 \select@language {ngerman}
-\contentsline {section}{\numberline {1}Abstrakt}{3}
+\contentsline {section}{\numberline {1}Kurzfassung}{3}
 \contentsline {section}{\numberline {2}Motivation}{4}
-\contentsline {section}{\numberline {3}Beschleunigungssensoren}{5}
-\contentsline {subsection}{\numberline {3.1}Piezoresistive Sensoren}{7}
-\contentsline {subsection}{\numberline {3.2}Kapazitative Sensoren}{7}
-\contentsline {section}{\numberline {4}Entwicklung des Schwingungsmesssystems: Prototyp (BMA180)}{11}
-\contentsline {subsection}{\numberline {4.1}Bosch BMA180}{11}
-\contentsline {subsection}{\numberline {4.2}Arduino}{11}
-\contentsline {subsection}{\numberline {4.3}Schnittstellen}{12}
-\contentsline {subsubsection}{\numberline {4.3.1}I$^2$C}{12}
-\contentsline {subsubsection}{\numberline {4.3.2}Serieller Port}{13}
-\contentsline {subsection}{\numberline {4.4}Aufbau und Schaltung}{14}
-\contentsline {subsubsection}{\numberline {4.4.1}Testaufbau}{14}
-\contentsline {subsubsection}{\numberline {4.4.2}Fester Aufbau}{15}
-\contentsline {subsection}{\numberline {4.5}Software}{18}
-\contentsline {subsubsection}{\numberline {4.5.1}Arduino}{18}
-\contentsline {subsubsection}{\numberline {4.5.2}Restitution}{24}
-\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{24}
-\contentsline {section}{\numberline {5}Berechnung der Wegwerte aus den Beschleunigungsdaten}{25}
-\contentsline {subsection}{\numberline {5.1}Numerische Integration}{25}
-\contentsline {subsection}{\numberline {5.2}Problematik des Integrierens Noisebehafteter Daten}{25}
-\contentsline {section}{\numberline {6}Experimente in Waakirchen}{26}
-\contentsline {section}{\numberline {7}Ergebnisse der Messungen in Waakirchen}{28}
-\contentsline {subsection}{\numberline {7.1}Messungen an der Radarantenne}{28}
-\contentsline {subsection}{\numberline {7.2}Messungen am Autoklavenaufbau}{30}
-\contentsline {section}{\numberline {8}Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}{31}
-\contentsline {subsection}{\numberline {8.1}ASC 5511LN-002}{31}
-\contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{33}
-\contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{34}
-\contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{35}
-\contentsline {subsection}{\numberline {8.3}Software}{36}
-\contentsline {section}{\numberline {9}Experimente am Geomatikum}{44}
-\contentsline {section}{\numberline {10}Verbesserungen}{44}
+\contentsline {section}{\numberline {3}Beschleunigungssensoren}{7}
+\contentsline {subsection}{\numberline {3.1}Piezoresistive Sensoren}{9}
+\contentsline {subsection}{\numberline {3.2}Kapazitative Sensoren}{9}
+\contentsline {section}{\numberline {4}Entwicklung des Schwingungsmesssystems: Prototyp (BMA180)}{13}
+\contentsline {subsection}{\numberline {4.1}Bosch BMA180}{13}
+\contentsline {subsection}{\numberline {4.2}Arduino}{13}
+\contentsline {subsection}{\numberline {4.3}Schnittstellen}{14}
+\contentsline {subsubsection}{\numberline {4.3.1}I$^2$C}{14}
+\contentsline {subsubsection}{\numberline {4.3.2}Serieller Port}{15}
+\contentsline {subsection}{\numberline {4.4}Aufbau und Schaltung}{16}
+\contentsline {subsubsection}{\numberline {4.4.1}Testaufbau}{16}
+\contentsline {subsubsection}{\numberline {4.4.2}Fester Aufbau}{17}
+\contentsline {subsection}{\numberline {4.5}Software}{20}
+\contentsline {subsubsection}{\numberline {4.5.1}Arduino}{20}
+\contentsline {subsubsection}{\numberline {4.5.2}Restitution}{26}
+\contentsline {subsubsection}{\numberline {4.5.3}PC Logger}{26}
+\contentsline {section}{\numberline {5}Berechnung der Wegwerte aus den Beschleunigungsdaten}{27}
+\contentsline {subsection}{\numberline {5.1}Numerische Integration}{27}
+\contentsline {subsection}{\numberline {5.2}Problematik des Integrierens Noisebehafteter Daten}{27}
+\contentsline {section}{\numberline {6}Experimente in Waakirchen}{29}
+\contentsline {section}{\numberline {7}Ergebnisse der Messungen in Waakirchen}{30}
+\contentsline {subsection}{\numberline {7.1}Messungen an der Radarantenne}{30}
+\contentsline {subsection}{\numberline {7.2}Messungen am Autoklavenaufbau}{32}
+\contentsline {section}{\numberline {8}Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}{35}
+\contentsline {subsection}{\numberline {8.1}ASC 5511LN-002}{35}
+\contentsline {subsection}{\numberline {8.2}Diamond-MM-16-AT PC/104 Analog I/O Module}{37}
+\contentsline {subsubsection}{\numberline {8.2.1}Interrupts}{38}
+\contentsline {subsubsection}{\numberline {8.2.2}FIFO Speicher}{39}
+\contentsline {subsection}{\numberline {8.3}Software}{40}
+\contentsline {section}{\numberline {9}Experimente am Geomatikum}{49}
+\contentsline {section}{\numberline {10}Zusammenfassung}{50}

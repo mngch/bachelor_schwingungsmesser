@@ -131,11 +131,57 @@ title=\lstname,                 				% show the filename of files included with \
 
 
 
-\section{Abstrakt}
+\section{Kurzfassung}
 
 \newpage
 
 \section{Motivation}
+
+Mit einem Dopplerradar lassen sich vulkanische Eruptionen quantitativ erfassen und auswerten. In vielen Studien haben diese Messungen bereits neue Erkenntnisse über die dahinter liegenden Prozesse gebracht. 
+
+Ursprünglich in der Metrologie zur Regenmessung eingesetzt, ermöglichen Dopplerradargeräte Geschwindigkeiten von Partikeln in der Eruptionssäule zu ermitteln. Ein Radar der Firma Metek ist in Abbildung \ref{radar} zu sehen.
+
+Über eine Satellitenantenne wird ein Radarstrahl mit der Wellenlänge von 1.25cm gebündelt und auf die Eruptionssäule gerichtet.
+Aus der zurückgestreuten Energie ermittelt das Radar dann eine Geschwindigkeitsverteilung der Streukörper. 
+
+Ein Radar kann entweder klassisch mit gepulsten Signalen oder mit einer zeitlich konstanten Sendeleistung arbeiten.
+Im ersten Fall ergibt sich die Entfernung eines Objektes durch die Laufzeit eines abgestrahlten Pulses. 
+Wir arbeiten jedoch mit einem konstanten Signal und bestimmen die Entfernung über eine Frequenzmodulation. Dieses Verfahren nennt man \textit{Frequency Modulated Continous Wave}. Die zeitliche Auflösung ist zwar nicht so hoch wie bei einem gepulsten Radar, aber dafür ist der Energieverbrauch deutlich geringer.
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.3]{hardwareimages/radar.jpg}
+\caption{Aufbau des Metek Dopplerradars auf Stromboli mit Martin Vögele}
+\label{radar}
+\end{figure}
+
+Das Funktionsprinzip des Doppler Radars beruht auf dem Frequenzunterschied zwischen gesendetem und empfangenen Signal. Dieser Unterschied ist direkt proportional zur Geschwindigkeit eines Objekts, welches sich entlang des Radarstrahls bewegt. Eine genaue Beschreibung des Prinzips ist in \citep{Hort:2003fk} zu finden. \\
+
+Sehr langsame Bewegungen rufen einen zu geringen Frequenzunterschied hervor und sind aus diesem Grund nicht auflösbar. Betrachtet man allerdings die Phasenverschiebung des Signals, so lässt sich aus diesen Informationen auch die langsame Änderung der Entfernung eines Objekts sehr genau bestimmen. 
+Mit dieser sogenannten \textit{Phasenmessung} können zum Beispiel relativ langsam ablaufende Deformationsprozesse von Vulkanen im Millimeterbereich untersucht werden.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.8]{phasenmessung.eps}
+\caption{Prinzip der Phasenmessung. Zum besseren Verständnis dargestellt für ein gepulstes Radar.}
+\label{phasenmessung}
+\end{figure}
+
+Das Funktionsprinzip ist ins Abbildung \ref{phasenmessung} zu sehen. Aus Gründen der Darstellbarkeit und des besseren Verständnisses verwende zur Erklärung ein gepulstes Radar.
+
+Das empfangene Signal wird mit dem ausgehenden Verglichen. Dabei tritt ein Phasenunterschied $\phi$ auf, der vom Abstand $d$ zwischen Radar und Reflektor abhängt. Jede Änderung im Phasenunterschied bedeutet eine Änderung des Abstandes. Zu beachten ist, dass dieses Verfahren keinen absoluten Abstand liefert, sondern immer nur eine relative Änderung zu einem gewählten Referenzpunkt.\\
+
+Mit dieser Vorgehensweise konnten am Santiaguito Vulkan in Guatemala 2007 bereits Hebungen und Senkungen von mehreren Zentimetern Höhe wenige Sekunden vor und nach einer Eruption festgestgestellt werden \citep{Scharff:2007uq}. \\
+
+Bei diesen Messverfahren wird stets davon augegangen, dass das Radar fest auf einem Stativ fixiert ist und sich nicht bewegt. Sämtliche gemessene Bewegung wird als Bewegung der beobachteten Objekte gewertet. 
+In der Praxis kann es allerdings vorkommen, dass sich das Radar aufgrund von Wind, Erschütterungen oder Deformationen des Untergrunds sehr wohl bewegt und in Schwingung gerät. Mit einer alleinigen Abstandsmessung lassen sich diese Bewegungen des Messgerätes nicht von denen des Messobjektes unterscheiden.\\
+
+Aus diesem Grund entwickle ich in dieser Arbeit ein Schwingungsmessystem mit einem dreiachsigen Beschleunigungssensor und teste dieses anhand einiger Experimente.
+
+Das Ziel ist es, zusätzlich zu den Radardaten Beschleunigungen aufzuzeichnen und aus diesen die Bewegung des Radarsystems zu berechnen. Damit ließen sich die Radardaten korrigieren und man könnte mit größerer Sicherheit sagen, ob eine Beobachtete Bewegung in den Radaraufzeichnungen auf eine Bewegung des Messobjektes oder auf eine Bewegung des Radars selber zurückzuführen ist.\\
+
+{\color{red}(Vorgehen und Aufbau der Arbeit beschreiben??)}
 
 \newpage
 
@@ -644,6 +690,8 @@ Das Resultat ist in Abbildung \ref{sinusnoise} zu erkennen. Ich habe in Matlab e
 
 Um diesen Effekt zu verhindern, müssen die Daten gefiltert werden. Die sich dafür bietenden Möglichkeiten möchte ich in der jeweiligen Auswertung besprechen.
 
+\newpage
+
 \section{Experimente in Waakirchen}
 
 Um das System in der Anwendung zu testen, habe ich im Mai 2012 an Eruptionsdynamikexperimenten in Waakirchen, in der Nähe von München, teilgenommen. Diese Experimente wurden gemeinsam mit der Ludwig-Maximilians-Universität München, der Universität Catania und dem Istituto Nazionale di Geofisica e Vulcanologia (Sezione di Catania and Dept. of Seismology and Tectonophysics, Rome) durchgeführt. 
@@ -653,7 +701,8 @@ Die Experimente wurden wiederholt durchgeführt und dabei potentielle Einflussgr
 
 Untersucht wurde dabei eine Vielzahl von Parametern durch den Einsatz von Hochgeschwindigkeits- Thermo- und optischen Kameras, Piezo Sensoren, einem akustischen Array und unserem Doppler Radar.\\
 
-Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, da bei vorherigen Experimenten in den Radardaten in einigen Fällen negative Geschwindigkeiten auftraten, für die es bisher keine vollständige Erklärung gibt. 
+Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, um herauszufinden, ob dessen Bewegung Einfluss auf die Messungen haben kann.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -705,6 +754,33 @@ Vergleicht man den Zeitpunkt des Maximalausschlags (15:10:20.465 Uhr) mit dem vo
 \label{tisch}
 \end{figure}
 
+Während Experiment 16 habe ich den Beschleunigungsmesser am Bein des Autoklavenaufbaus befestigt. Die Ausrichtung der Achsen ist in Abbildung \ref{tisch} verdeutlicht.
+
+Es wurde wiederum mit einer Aufnahmefrequenz von 32Hz aufgezeichnet und der Messbereich war auf $\pm 4g$ eingestellt.
+In Abbildung \ref{tischmovement3} sind die Ergebnisse zu sehen.\\
+
+Zum Explosionszeitpunkt sind Beschleunigungen in allen drei Raumrichtungen zu erkennen. Der Messbereich war zu fein gewählt, die aufgetretenen Beschleunigungen sind teilweise größer als $4g$. 
+
+Zur genaueren Betrachtung der Vertikalbewegung ist in Abbildung \ref{tischmovement_y} nur die Y-Komponente der Beschleunigung aufgetragen. 
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.5]{wakiki/tischmovement3.png}
+\caption{Restituierte Beschleunigungsdaten am Autoklavenaufbau. Experiment 16. Die Ausrichtung der Achsen kann Abbildung \ref{tisch} entnommen werden. }
+\label{tischmovement3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.4]{wakiki/tischmovement_y.png}
+\caption{Y-Komponente der Beschleunigung. Der Tisch führt eine gedämpfte Schwingung aus. Deutlich erkennbar ist der zu gering gewählte Messbereich, der Erstausschlag ist nach oben hin 'abgeschnitten'}
+\label{tischmovement_y}
+\end{figure}
+
+Die Messung zeigt, dass der Tisch eine gedämpfte Schwingung ausführt. Der Erstausschlag ist positiv, also bewegt sich der Tisch zunächst nach oben. Dann fällt er wieder auf den Boden zurück und schwingt ca.  eine Sekunde lang nach.
+
+Mit der bei der Messung an der Antennenschüssel bereits angewandten Abschätzung der Geschwindigkeit erhalten wir zu Beginn eine Maximalgeschwindigkeit von ca. $1.33 m/s$. Der wahre Wert ist größer, da das Maximum der Beschleunigung nicht korrekt erfasst wurde. 
 
 
 
@@ -1065,11 +1141,35 @@ Die Zeitstempel erhalte ich durch eine eine Methode aus der \texttt{mvTime} Klas
 
 Der Nachteil bei dieser Art der Datenaufnahme ist, dass ein neuer Zeitstempel nur bei jedem Schleifendurchlauf (drei Mal pro Sekunde) entsteht. Es haben daher immer mehrere Samples den gleichen Zeitstempel. In der Auswertung muss also zunächst ein neuer Zeitstempel generiert werden.
 
+\newpage
+
 \section{Experimente am Geomatikum}
 
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.13]{targets.jpg}
+\caption{Ausrichtung des Radars auf ein Haus in der Renzelstraße bzw. auf ein Gebäude der Pharmazie}
+\label{targets}
+\end{figure}
 
 
-\section{Verbesserungen}
+Der Zweite Sensor wurde auf dem Balkon des 13. Stocks des Geomatikums gestestet. Gemeinsam mit Lea Scharff habe ich das Radar zunächst auf ein etwa 400m entferntes Haus in der Renzelstraße ausgerichtet, später auch auf das Gebäude der Pharmazie in etwa 100m Entfernung. Der Sensor war in der Mitte der Radarschüssel fixiert. 
+
+Wir haben mit dem Radar eine Phasenmessung durchgeführt, um kleine Änderungen in der Entfernung zwischen Radarsystem und dem jeweiligen Gebäude aufzunehmen. Dann haben wir mit der Hand an der Radarschüssel gerüttelt und später das Radar auf einem fahrbaren Tisch vor und zurück bewegt.
+
+Da die Gebäude unbeweglich sind, sollten sich die Bewegungsdaten des Beschleunigungssensors und die Phasendaten entsprechen. 
+ 
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.3]{geoauswertung/a_vs_z.png}
+\caption{Vergleich von aus Phasendaten mittels zweifacher Ableitung berechneter Beschleunigung und der vom ASC Sensor aufgenommenen Beschleunigung (bei 40Hz Tiefpass gefiltert).}
+\label{a_vs_z}
+\end{figure}
+
+
+\section{Zusammenfassung}
+
+
 
 bessere Zeitstempel, nicht nur 3 Mal pro Sekunde
 
@@ -1077,8 +1177,8 @@ bessere Zeitstempel, nicht nur 3 Mal pro Sekunde
 \newpage
 \singlespacing
 \appendix
-% \bibliographystyle{plainnat}
-\bibliographystyle{jureco}
+\bibliographystyle{plainnat}
+%\bibliographystyle{jureco}
 \bibliography{bachelor}
 
 
