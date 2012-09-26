@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{scrartcl}
+\documentclass[12pt,a4paper,twoside,BCOR=12.5mm]{scrartcl}
 
 %========================================================================================
 %SPRACHE
@@ -11,6 +11,7 @@
 %\usepackage{supertabular} % schraege tabellen etc
 %\usepackage{pdfpages}     % pdfs einbinden
 
+%\areaset[1.5cm]{15cm}{22cm}
 
 \usepackage{setspace}
 
@@ -67,7 +68,7 @@ numbers=left,                   				% where to put the line-numbers
 numberstyle=\footnotesize,      			% the size of the fonts that are used for the line-numbers
 stepnumber=1,                   				% the step between two line-numbers. If it's 1, each line 
                                 					% will be numbered			
-commentstyle=\color{PineGreen},					
+commentstyle=\color{Gray},					
 numbersep=-7pt,                  			% how far the line-numbers are from the code
 backgroundcolor=\color{white},  		% choose the background color. You must add \usepackage{color}
 showspaces=false,               			% show spaces adding particular underscores
@@ -94,12 +95,24 @@ title=\lstname,                 				% show the filename of files included with \
 %\fancyfoot[C]{\thepage} 					% Seitennummer unten mittig
 
 \usepackage[headsepline,plainheadsepline]{scrpage2}
-\pagestyle{scrheadings}
-\ihead[\rightmark]{\rightmark} \chead[]{}
-\ohead[\pagemark]{\pagemark} \cfoot[]{}
 
-\automark{section}
-\renewcommand{\sectionmark}[1]{\markright{\ #1}}
+\automark[section]{subsection} 
+\clearscrheadings 
+\ihead{} 
+\ohead{\rightmark} 
+\ofoot[scrplain-außen]{\thepage}
+
+
+\pagestyle{scrheadings}
+
+
+%\pagestyle{scrheadings}
+%\ihead[\rightmark]{\rightmark} \chead[]{}
+%\ohead[]{} \cfoot[]{}
+
+%\automark{section}
+%\automark[subsection]{section}
+%\renewcommand{\sectionmark}[1]{\markright{\ #1}}
 
 
 \usepackage[small, nooneline, bf]{caption}
@@ -119,46 +132,98 @@ title=\lstname,                 				% show the filename of files included with \
 \begin{document}
 
 \title {Entwicklung eines Schwingungsmesssystems für ein Radar}
-\author{Sebastian Beyer}
+\author{\textbf{\large Bachelorarbeit}}
+\date{~}
+
 \maketitle
 \thispagestyle{empty}
+
+\begin{center}
+vorgelegt von
+Sebastian Beyer
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+Institut für Geophysik\\
+Universität Hamburg\\
+\vspace{\baselineskip}September 2012
+\end{center}
+
+
+
+\cleardoublepage
+\newpage
+~
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+
+
+\begin{center}\textbf{Kurzfassung} \end{center}
+\thispagestyle{empty}
+
+
+
+\cleardoublepage
 \newpage
 
 \tableofcontents
 \thispagestyle{empty}
-\newpage
 
 
 
-
-\section{Kurzfassung}
-
-\newpage
-
+\cleardoublepage
+\newpage 
+\setcounter{page}{1}
 \section{Motivation}
 
-Mit einem Dopplerradar lassen sich vulkanische Eruptionen quantitativ erfassen und auswerten. In vielen Studien haben diese Messungen bereits neue Erkenntnisse über die dahinter liegenden Prozesse gebracht. 
+Mit einem Dopplerradar lassen sich vulkanische Eruptionen quantitativ erfassen und auswerten. In vielen Studien haben diese Messungen bereits zu neuen Erkenntnissen über die dahinter liegenden Prozesse geführt. 
 
-Ursprünglich in der Metrologie zur Regenmessung eingesetzt, ermöglichen Dopplerradargeräte Geschwindigkeiten von Partikeln in der Eruptionssäule zu ermitteln. Ein Radar der Firma Metek ist in Abbildung \ref{radar} zu sehen.
+Ursprünglich in der Meteorologie zur Regenmessung eingesetzt, ermöglichen Dopplerradargeräte die Messung der Geschwindigkeiten von Partikeln in der Eruptionssäule. Ein solches Radar der Firma Metek ist in Abbildung \ref{radar} zu sehen.
 
-Über eine Satellitenantenne wird ein Radarstrahl mit der Wellenlänge von 1.25cm gebündelt und auf die Eruptionssäule gerichtet.
-Aus der zurückgestreuten Energie ermittelt das Radar dann eine Geschwindigkeitsverteilung der Streukörper. 
+Über die Satellitenantenne wird ein Radarstrahl mit der Wellenlänge von 1.25cm gebündelt und auf die Eruptionssäule gerichtet.
+Aus den Eigenschaften des zurückgestreuten Signals ermittelt das Radar dann eine Geschwindigkeitsverteilung der Streukörper. 
 
 Ein Radar kann entweder klassisch mit gepulsten Signalen oder mit einer zeitlich konstanten Sendeleistung arbeiten.
 Im ersten Fall ergibt sich die Entfernung eines Objektes durch die Laufzeit eines abgestrahlten Pulses. 
-Wir arbeiten jedoch mit einem konstanten Signal und bestimmen die Entfernung über eine Frequenzmodulation. Dieses Verfahren nennt man \textit{Frequency Modulated Continous Wave}. Die zeitliche Auflösung ist zwar nicht so hoch wie bei einem gepulsten Radar, aber dafür ist der Energieverbrauch deutlich geringer.
+Wir arbeiten jedoch mit einem konstanten Signal und bestimmen die Entfernung über eine Frequenzmodulation. Dieses Verfahren nennt man \textit{Frequency Modulated Continous Wave}; es hat den Vorteil, dass der Energieverbrauch deutlich geringer ist.
 
 
 \begin{figure}[htb]
 \centering
 \includegraphics[scale=.3]{hardwareimages/radar.jpg}
-\caption{Aufbau des Metek Dopplerradars auf Stromboli mit Martin Vögele}
+\caption{Testaufbau des Metek Dopplerradars auf Stromboli mit Martin Vögele}
 \label{radar}
 \end{figure}
 
-Das Funktionsprinzip des Doppler Radars beruht auf dem Frequenzunterschied zwischen gesendetem und empfangenen Signal. Dieser Unterschied ist direkt proportional zur Geschwindigkeit eines Objekts, welches sich entlang des Radarstrahls bewegt. Eine genaue Beschreibung des Prinzips ist in \citep{Hort:2003fk} zu finden. \\
+Das Funktionsprinzip des Doppler Radars beruht auf dem Frequenzunterschied zwischen gesendetem und empfangenen Signal. Dieser Unterschied ist direkt proportional zur Geschwindigkeit eines Objekts, welches sich entlang des Radarstrahls bewegt. Eine genaue Beschreibung des Prinzips ist zum Beispiel in \citep{Hort:2003fk} zu finden. \\
 
-Sehr langsame Bewegungen rufen einen zu geringen Frequenzunterschied hervor und sind aus diesem Grund nicht auflösbar. Betrachtet man allerdings die Phasenverschiebung des Signals, so lässt sich aus diesen Informationen auch die langsame Änderung der Entfernung eines Objekts sehr genau bestimmen. 
+Sehr langsame Bewegungen rufen einen sehr kleinen Frequenzunterschied hervor, der unter Umständen nicht mehr messbar ist. Betrachtet man allerdings die Phasenverschiebung des Signals, so lässt sich aus diesen Informationen auch die langsame Änderung der Entfernung eines Objekts sehr genau bestimmen. 
 Mit dieser sogenannten \textit{Phasenmessung} können zum Beispiel relativ langsam ablaufende Deformationsprozesse von Vulkanen im Millimeterbereich untersucht werden.
 
 \begin{figure}[htb]
@@ -168,18 +233,18 @@ Mit dieser sogenannten \textit{Phasenmessung} können zum Beispiel relativ langs
 \label{phasenmessung}
 \end{figure}
 
-Das Funktionsprinzip ist ins Abbildung \ref{phasenmessung} zu sehen. Aus Gründen der Darstellbarkeit und des besseren Verständnisses verwende zur Erklärung ein gepulstes Radar.
+Das Funktionsprinzip ist in Abbildung \ref{phasenmessung} zu sehen. Aus Gründen der Darstellbarkeit und des besseren Verständnisses verwende ich zur Erklärung ein gepulstes Radar.
 
-Das empfangene Signal wird mit dem ausgehenden Verglichen. Dabei tritt ein Phasenunterschied $\phi$ auf, der vom Abstand $d$ zwischen Radar und Reflektor abhängt. Jede Änderung im Phasenunterschied bedeutet eine Änderung des Abstandes. Zu beachten ist, dass dieses Verfahren keinen absoluten Abstand liefert, sondern immer nur eine relative Änderung zu einem gewählten Referenzpunkt.\\
+Das empfangene Signal wird mit dem ausgehenden verglichen. Dabei tritt ein Phasenunterschied $\phi$ auf, der vom Abstand $d$ zwischen Radar und Reflektor abhängt. Jede Änderung im Phasenunterschied bedeutet eine Änderung des Abstandes. Zu beachten ist, dass dieses Verfahren keinen absoluten Abstand liefert, sondern immer nur eine relative Änderung zu einem gewählten Referenzpunkt.\\
 
-Mit dieser Vorgehensweise konnten am Santiaguito Vulkan in Guatemala 2007 bereits Hebungen und Senkungen von mehreren Zentimetern Höhe wenige Sekunden vor und nach einer Eruption festgestgestellt werden \citep{Scharff:2007uq}. \\
+Mit dieser Vorgehensweise konnten am Santiaguito Vulkan in Guatemala 2007 bereits Hebungen und Senkungen von mehreren Zentimetern Höhe wenige Sekunden vor und nach einer Eruption festgestellt werden \citep{Scharff:2007uq}. \\
 
-Bei diesen Messverfahren wird stets davon augegangen, dass das Radar fest auf einem Stativ fixiert ist und sich nicht bewegt. Sämtliche gemessene Bewegung wird als Bewegung der beobachteten Objekte gewertet. 
+Bei der Interpretation dieser Deformationsdaten wird stets davon ausgegangen, dass das Radar fest auf einem Stativ fixiert ist und sich nicht bewegt. Sämtliche gemessene Bewegung wird als Bewegung der beobachteten Objekte gewertet. 
 In der Praxis kann es allerdings vorkommen, dass sich das Radar aufgrund von Wind, Erschütterungen oder Deformationen des Untergrunds sehr wohl bewegt und in Schwingung gerät. Mit einer alleinigen Abstandsmessung lassen sich diese Bewegungen des Messgerätes nicht von denen des Messobjektes unterscheiden.\\
 
 Aus diesem Grund entwickle ich in dieser Arbeit ein Schwingungsmessystem mit einem dreiachsigen Beschleunigungssensor und teste dieses anhand einiger Experimente.
 
-Das Ziel ist es, zusätzlich zu den Radardaten Beschleunigungen aufzuzeichnen und aus diesen die Bewegung des Radarsystems zu berechnen. Damit ließen sich die Radardaten korrigieren und man könnte mit größerer Sicherheit sagen, ob eine Beobachtete Bewegung in den Radaraufzeichnungen auf eine Bewegung des Messobjektes oder auf eine Bewegung des Radars selber zurückzuführen ist.\\
+Das Ziel ist es, zusätzlich zu den Radardaten Beschleunigungen aufzuzeichnen und aus diesen die Bewegung des Radarsystems zu berechnen. Damit ließen sich die Radardaten korrigieren und man könnte mit größerer Sicherheit feststellen, ob eine beobachtete Bewegung in den Radaraufzeichnungen auf eine Bewegung des Messobjektes oder auf eine Bewegung des Radars selber zurückzuführen ist.\\
 
 {\color{red}(Vorgehen und Aufbau der Arbeit beschreiben??)}
 
@@ -187,18 +252,18 @@ Das Ziel ist es, zusätzlich zu den Radardaten Beschleunigungen aufzuzeichnen un
 
 \section{Beschleunigungssensoren}
 \onehalfspacing
-Beschleunigungssensoren messen die Beschleunigung, die auf ein System wirkt, indem sie die auf eine Testmasse wirkenden Kräfte bestimmen. Nach Newton  Die auf einen Körper wirkende Beschleunigung setzt sich aus der Gravitation und Trägheitskräften zusammen. Isoliert man die Trägheitskräfte, so lässt sich daraus die Translationsbeschleunigung bestimmen. Mithilfe dieser und dem zweiten newtonschen Gesetz lässt sich die Positionsänderung des Systems berechnen: 
+Beschleunigungssensoren messen die Beschleunigung, die auf ein System wirkt, indem sie die auf eine Testmasse wirkenden Kräfte bestimmen.  Die auf einen Körper wirkende Beschleunigung setzt sich nach Newton aus der Gravitation und Trägheitskräften zusammen. Isoliert man die Trägheitskräfte, so lässt sich daraus die Translationsbeschleunigung bestimmen. Mithilfe dieser und dem zweiten newtonschen Gesetz lässt sich die Positionsänderung des Systems berechnen: 
 
 \begin{equation}
 F = m \cdot a
 \end{equation}
 
-Es gibt verschiedene Prinzipien, mit denen Beschleunigung gemessen werden kann. Am gebräuchlichsten ist das der Federwaage.
+Es gibt verschiedene Prinzipien, mit denen die Beschleunigung gemessen werden kann. Am gebräuchlichsten ist das der Federwaage.
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.7]{federmasse.eps}
-\caption{Masse-Feder-System zur Beschleunigungsmessung. k, d, m und $x$ bezeichnen Federkonstante, Dämpfung, Masse und Auslenkung. nach \citep{Klingbeil:2006qy}.}
+\caption{Masse-Feder-System zur Beschleunigungsmessung. k, d, m und $x$ bezeichnen Federkonstante, Dämpfung, Masse und Auslenkung (nach \citep{Klingbeil:2006qy})}
 \label{federwaage}
 \end{figure}
 
@@ -209,13 +274,13 @@ a = \frac{k}{m} \cdot x
 
 Zu beachten ist die Ausrichtung des Sensors: a entspricht immer der Projektion der Beschleunigung auf die Auslenkungsrichtung von m.\\
 
-Das System führt eine gedämpfte harmonische Schwingung aus. Einmal angeregt beginnt es zu schwingen, die Amplitude nimmt dann aber kontinuierlich ab. Die Bewegungsgleichung lautet: (vergleiche auch \citep{Meschede:2001fk})
+Das System führt eine gedämpfte harmonische Schwingung aus. Einmal angeregt beginnt es mit konstanter Frequenz zu schwingen, die Amplitude nimmt kontinuierlich ab. Die Bewegungsgleichung lautet (vergleiche auch \citep{Meschede:2001fk}):
 
 \begin{equation}
 m \ddot x + d \dot x + kx = 0
 \end{equation}
 
-Wobei $m$ die Masse, $d$ die Dämpfung und $k$ die Federkonstante ist.
+Wobei $d$ die Dämpfung ist.
 Eine Lösung dieser Differentialgleichung lautet:
 
 \begin{equation}
@@ -228,19 +293,13 @@ Die Lösung ist aus zwei elementaren Funktionen zusammengesetzt, wobei die eine 
 \end{equation}
 die gedämpfte Eigenfrequenz genannt wird und einen entscheidenden Einfluss auf das Schwingverhalten hat.
 
-Bei kleinem $\delta$ ist die Dämpfung gering und es gilt
+Bei $\delta < \omega_0$ ist die Dämpfung gering und es gilt
 \begin{equation}
 \omega_d \approx \omega_0
 \end{equation}
-Dies nennt man den \textit{Schwingungsfall}
+Dies nennt man den \textit{Schwingungsfall}.\\
 
-Wenn die Dämpfung jedoch so groß wird, dass
-\begin{equation}
-\delta = \omega_0
-\end{equation}
-gilt, wird $\omega_d = 0$ und das System kommt in kürzestmöglicher Zeit zur Ruhe. Man spricht vom \textit{aperiodischen Grenzfall}. Dieses Verhalten ist bei Beschleunigungsaufnehmern erwünscht, weil man so die höchste Wiederholfrequenz von Messungen erreicht, ohne dass sich die Anregungen gegenseitig überlagern.\\
-
-Wird $\delta$ noch größer, so wird der Term unter der Wurzel negativ und $\omega_d$ damit imaginär. Aus 
+Wird $\delta$ sehr groß gegenüber $\omega$, so wird der Term unter der Wurzel negativ und $\omega_d$ damit imaginär. Aus 
 \begin{equation}
 e^{i\omega_d t}
 \end{equation}
@@ -248,21 +307,29 @@ wird
 \begin{equation}
 e^{-k t}
 \end{equation}
-und bewirkt eine zusätzliche Dämpfung. Eine Schwingung existiert nicht mehr und das System erreicht seine Ruhelage nach längerer Zeit als beim aperiodischen Grenzfall. Dieses als \textit{Kriechfall} bezeichnete Verhalten ist in den meisten Fällen unerwünscht. \\
+und bewirkt eine zusätzliche Dämpfung. Eine Schwingung existiert nicht mehr und das System erreicht seine Ruhelage nach sehr langer Zeit. Dieses als \textit{Kriechfall} bezeichnete Verhalten ist in den meisten Fällen unerwünscht. \\
+
+
+Wenn die Dämpfung jedoch genau so groß wird, dass
+\begin{equation}
+\delta = \omega_0
+\end{equation}
+gilt, wird $\omega_d = 0$ und das System kommt in kürzestmöglicher Zeit zur Ruhe. Man spricht vom \textit{aperiodischen Grenzfall}. Dieses Verhalten ist bei Beschleunigungsaufnehmern erwünscht, weil man so die höchste Wiederholfrequenz von Messungen erreicht, ohne dass sich die Anregungen gegenseitig überlagern.\\
 
 
 
-Mittlerweile sind Beschleunigungssensoren in den meisten Fällen als MEMS realisiert (\textbf{M}icro \textbf{E}lectro \textbf{M}echanical \textbf{S}ystems). Sehr kleine mechanische Elemente (1-100 Mikrometer) werden zusammen mit elektronischen Schaltungen auf einen Siliziumwafer aufgebracht. Dabei werden Techniken aus der Fabrikation von integrierten Schaltkreisen (ICs) verwendet. So können komplizierte elektromechanische System in winziger Größe und hoher Stückzahl hergestellt werden. Der geringe Preis ist maßgeblich dafür verantwortlich, dass die Sensoren in immer mehr Anwendungen integriert werden (Autos, Smartphones, Quadrokopter…).
 
-Die Beschleunigungsmessung erfolgt also über die Messung der Auslenkung einer Testmasse. Dazu haben sich zwei Verfahren durchgesetzt, die ich im Folgenden kurz erläutern möchte. 
+Mittlerweile sind Beschleunigungssensoren in den meisten Fällen als MEMS realisiert (\textbf{M}icro \textbf{E}lectro \textbf{M}echanical \textbf{S}ystems). Sehr kleine mechanische Elemente (1-100 Mikrometer) werden zusammen mit elektronischen Schaltungen auf einen Siliziumwafer aufgebracht. Dabei werden Techniken aus der Fabrikation von integrierten Schaltkreisen (ICs) verwendet. So können komplizierte elektromechanische Systeme in winziger Größe und hoher Stückzahl hergestellt werden. Der geringe Preis ist maßgeblich dafür verantwortlich, dass die Sensoren in immer mehr Anwendungen integriert werden (Autos, Smartphones, Quadrokopter…).
+
+Die Beschleunigungsmessung erfolgt wie oben beschrieben über die Messung der Auslenkung einer Testmasse. Dazu haben sich zwei Verfahren durchgesetzt, die ich im Folgenden kurz erläutern möchte. 
 
 \subsection{Piezoresistive Sensoren}
-Piezoresistive Sensoren machen sich den piezoelektrischen Effekt zunutze. In der Feder der Testmasse befinden sich Piezoelemente, welche sich bei Auslenkung verformen und damit ihren Widerstand ändern. Silizium ist ein geeignetes Material, da es sehr empfindlich und linear reagiert und gleichzeitig gut mit der MEMS Technik kombinierbar ist \citep{Kanda:1991gf}.
+Piezoresistive Sensoren machen sich den piezoelektrischen Effekt zunutze. In der Feder der Testmasse befinden sich Piezoelemente, welche sich bei Auslenkung verformen und damit ihren Widerstand ändern. Silizium ist ein geeignetes Material, da es sehr empfindlich ist, linear reagiert und gleichzeitig gut mit der MEMS Technik kombinierbar ist \citep{Kanda:1991gf}.
 
 \subsection{Kapazitative Sensoren}
 
 \begin{figure}[htb]
-	\centering
+	%\centering
 	\subfigure[Sensor in Ruhe, Abstand der Kondensatorplatten ist gleich, $C_1 = C_2$] {
 		\label{adxl_ruhe}
 		\includegraphics[width=7cm]{adxl_ruhe.png}
@@ -285,18 +352,18 @@ Piezoresistive Sensoren machen sich den piezoelektrischen Effekt zunutze. In der
 
 
 Die Auslenkung lässt sich auch über eine Kapazitätsmessung bestimmen, wenn man je eine Elektrode an der Testmasse und am fixen Referenzpunkt anbringt \citep{S.J.-Sherman:1992ul}. Eine mögliche Realisierung ist in Abbildung \ref{adxl} a,b zu sehen: Es handelt sich um einen sogenannten Differentialkondensatorsensor \citep{:2002fk}. \\
-Die seismische Masse befindet sich zwischen zwei fest verankerten Platten, die zusammen zwei Kondensatoren $C_1$ und $C_2$ bilden (Abb. \ref{adxl_ruhe}). Eine auftretende Beschleunigung führt also zu einer Auslenkung der Mittelelektrode des Kondensatorenpaares (seismische Masse) um die Länge $\pm x$ und damit zu einer symmetrischen Kapazitätsänderung um $\pm \Delta C$ (Abb. \ref{adxl_action}). Dieser Aufbau ist eine sogenannte Einzelzelle. In einem Sensor befinden sich viele Einzelzellen, um die Kapazitätsvariation und damit die Sensibilität zu erhöhen (Abb. \ref{adxl_micro}
+Die seismische Masse befindet sich zwischen zwei fest verankerten Platten, die zusammen zwei Kondensatoren $C_1$ und $C_2$ bilden (Abb. \ref{adxl_ruhe}). Eine auftretende Beschleunigung führt also zu einer Auslenkung der Mittelelektrode des Kondensatorenpaares (seismische Masse) um die Länge $\pm x$ und damit zu einer symmetrischen Kapazitätsänderung um $\pm \Delta C$ (Abb. \ref{adxl_action}). Dieser Aufbau ist eine sogenannte Einzelzelle. In einem Sensor befinden sich viele Einzelzellen, um die Kapazitätsvariation und damit die Sensibilität zu erhöhen (Abb. \ref{adxl_micro}).
 
-Um diese Variation in ein elektrisches Ausgangssignal umzusetzen, wird eine sogenannte Brückenschaltung verwendet (Abb. \ref{bruecke}).
-
-\begin{figure}[H]
+\begin{figure}[htb]
 \centering
 \includegraphics[scale=2]{schaltung_beschleunigungssensor.png}
 \caption{Brückenschaltung mit Differentialkondensator (Die mit $U_a$ verbundenen Elektroden von $C_1$ und $C_2$ bilden eine gemeinsame Platte) \citep{:2002fk}}
 \label{bruecke}
 \end{figure}
 
+Um diese Variation in ein elektrisches Ausgangssignal umzusetzen, wird eine sogenannte Brückenschaltung verwendet (Abb. \ref{bruecke}).
 Die folgende Herleitung ist aus \citep{:2002fk} entnommen:
+
 
 Wird eine Wechselspannung an die Brücke angelegt, so ergibt sich nach der Spannungsteilerregel für den Ausgang $U_a$:
 
@@ -320,35 +387,80 @@ U_a = - U_0 \frac{x}{2 d_0}
 Diese Spannung lässt sich nun digitalisieren und auslesen. In vielen MEMS Bausteinen ist bereits ein integrierter Analog Digital Wandler eingebaut, sodass die Messwerte direkt digital abrufbar sind. 
 
 \newpage
+\clearpage
 
-\section{Entwicklung des Schwingungsmesssystems: Prototyp (BMA180)}
+\section{Berechnung der Wegwerte aus den Beschleunigungsdaten}
 
-Um abschätzen zu können wie groß die auftretenden Beschleunigungen an der Radarantenne sind, habe ich damit begonnen einen günstigen und einfach zu verwendenden Prototypen zu entwickeln. Letzteres ist vor Allem wichtig, um entscheiden zu können, für welchen Messbereich und welche Frequenzen der eigentliche Sensor ausgelegt sein muss. \\
+\subsection{Numerische Integration}  \label{integratechapter}
+Um aus den gemessenen Beschleunigungen die gesuchten Wegwerte (Ausschläge) zu ermitteln, müssen die Messwerte zweifach über die Zeit integiert werden. Da die zu integrierenden Funktionen als begrenzte Anzahl von Abtastpunkten in diskreten Zeitabständen vorliegen, bietet es sich an, numerische Integrationsverfahren anzuwenden. Die dazu möglichen Verfahren, wie z.B. Rechteckverfahren, Trapezformel, Rombergverfahren, unterscheiden sich durch die Art der Interpolation zwischen den Abtastpunkten \citep[S. 760ff]{Bronstein:1995fk}. Die Wahl des Integrationsverfahrens beeinflusst dabei die Genauigkeit des Ergebnisses.
+
+In dieser Arbeit verwende ich die Trapezformel und erhalte damit für den Weg folgende Rekursionsformel:
+
+\begin{equation}
+y_{i+1} = \Delta t^2 \cdot a_i - y_{i-1} + 2 \cdot y_i
+\end{equation}
+
+Mit dieser Formel kann aus den vorherigen Wegwerten $y_{i-1}$ und $y_i$ sowie den gemessenen Beschleunigungen $a_i$ und dem Zeitintervall $\Delta t$ der nächste Wegwert bestimmt werden.
+
+Die Startwerte für $i=1$ sind vorerst nicht bekannt und können z.B. $y_0 = y_1 = 0$ gewählt werden. Dies führt allerdings zu systematischen Fehlern, die anschließend behoben werden müssen.
+
+
+\subsection{Problematik der Integration Noisebehafteter Daten}
+\label{noiseproblem}
+Wie alle nicht synthetischen Daten enthalten die aufgenommen Beschleunigungsmessungen ein gewisses Rauschen. Schwankungen in der Spannungsversorgung, elektromagnetische Einstreuungen oder thermisches Rauschen sind einige Beispiele für mögliche Ursachen. Solange das Signal deutlich größer ist als das Rauschen, ist das kein Problem. Man spricht von einem guten Signal- zu Rauschverhältnis. 
+
+Bei der Integration der Beschleunigungswerte zu Wegwerten handelt es sich jedoch gewissermaßen um eine Addition aller Messwerte und damit einer Addition allen Rauschens. Je länger die Zeit ist, über die integriert wird, desto größer wird der Fehler in den Wegdaten. 
+
+\begin{figure}[htb]
+%\centering
+\includegraphics[scale=.55]{sinusnoise.png}
+\caption{Numerische Integration von $sin(x)$. Oben: ohne Noise Unten: Mit Noise einer Varianz von 0.3}
+\label{sinusnoise}
+\end{figure}
+
+Das Resultat ist in Abbildung \ref{sinusnoise} zu erkennen. Ich habe in Matlab eine Sinusfunktion mit 1000 Stützstellen numerisch integriert. Dabei habe ich zunächst keinen Noise hinzugefügt. Bei der unteren Abbildung jedoch liegt auf dem Sinus ein Rauschen mit einer Varianz von $0.3$. Es ist eine deutliche Drift und eine langwellige Störung der resultierenden Daten zu sehen. Bei der zweifachen Integration, die man benötigt um aus den Beschleunigungsdaten Wegdaten zu berechnen, tritt dieser Effekt sogar noch verstärkt auf. Die Fehler der Messungen überlagern die eigentlichen Messergebnisse und führen damit zu völlig falschen Wegstrecken. \\
+
+Um diesen Effekt zu verhindern, müssen die Daten gefiltert werden. Die sich dafür bietenden Möglichkeiten möchte ich in der jeweiligen Auswertung besprechen. \\
+
+An dieser Stelle sei auch auf das Nyquist Theorem verwiesen. Es besagt, dass ein Signal immer mindestens mit der doppelten Frequenz des hochfrequentesten Anteils im Signal abgetastet werden muss, damit es komplett rekonstruiert werden kann.  \citep[vgl.][]{Shannon:1949uq}\\
+
+\newpage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\section{Entwicklung des Schwingungsmesssystems: Prototyp}
+
+Um abschätzen zu können wie groß die auftretenden Beschleunigungen an der Radarantenne sind, habe ich damit begonnen, einen günstigen und einfach zu verwendenden Prototypen zu entwickeln. Letzteres ist vor Allem wichtig, um entscheiden zu können, für welchen Messbereich und welche Frequenzen der eigentliche Sensor ausgelegt sein muss. \\
 
 \subsection{Bosch BMA180}
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.4]{hardwareimages/bma180_breakout.jpg}
-\caption{BMA180 Breakoutboard von Sparkfun}
+\caption{BMA180 Breakoutboard von Sparkfun. Der eigentliche Sensor ist in dem kleinen schwarzen Kasten auf dem Board verborgen.\\ Bild: https://www.sparkfun.com/products/9723}
 \label{bma180_breakout}
 \end{figure}
 
-Die Wahl fiel auf einen digitalen, dreiachsigen MEMS Beschleunigungssensor \textit{Bosch BMA180}. Er verfügt über einen eingebauten 14-bit Analog-Digital Wandler und sieben per Software verstellbaren Messbereiche von $\pm1$ bis $\pm16$g.
+Für den Prototyp fiel meine Wahl auf den digitalen, dreiachsigen MEMS Beschleunigungssensor \textit{Bosch BMA180}. Er verfügt über einen eingebauten 14-bit Analog-Digital Wandler und sieben per Software verstellbare Messbereiche von $\pm1$ bis $\pm16$g.
 Die Kommunikation kann über SPI (Serial Peripheral Interface)  oder I$^2$C (Inter-Integrated Circuit) erfolgen.
 
-Ich nutze ein Breakoutboard von Sparkfun (Abb. \ref{bma180_breakout}), welches die IC Pins (SMD Technik) mit praktische Lötösen verbindet. Außerdem sind bereits zwei spannungsstabilisierende Kondensatoren mit auf der Platine verbaut.
+Ich nutze ein Breakoutboard von Sparkfun (Abb. \ref{bma180_breakout}), welches die IC Pins (SMD Technik) mit praktischen Lötösen verbindet. Außerdem sind bereits zwei spannungsstabilisierende Kondensatoren mit auf der Platine verbaut.
 
 \subsection{Arduino}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[scale=.2]{hardwareimages/ArduinoUno_R3_Front.jpg}
-\caption{Arduino UNO}
+\caption{Arduino UNO \\ http://arduino.cc/en/Main/ArduinoBoardUno}
 \label{Arduino}
 \end{figure}
 
 
-Arduino ist eine auf ATmega Mikroprozessoren basierende Open-Source Entwicklungsplattform zur Verarbeitung von analogen und digitalen Signalen. Die Programmierung kann über eine eigene Entwicklungsumgebung in einer an \textit{Processing\footnote{processing.org}} angelehnten Sprache erfolgen, die im Prinzip ein vereinfachtes C/C++ darstellt.\\
+Um den Sensor zu steuern und die Daten zur weiteren Bearbeitung an einen Rechner zu senden, benutze ich einen Arduino, eine auf ATmega Mikroprozessoren basierende Open-Source Entwicklungsplattform zur Verarbeitung von analogen und digitalen Signalen. Die Programmierung kann über eine eigene Entwicklungsumgebung in einer an \textit{Processing\footnote{processing.org}} angelehnten Sprache erfolgen, die im Prinzip ein vereinfachtes C/C++ darstellt.\\
 Die Plattform ist auf Prototyping und Experimente ausgelegt. Es ist bereits ein Bootloader vorinstalliert, so kann die Programmierung direkt über die serielle Schnittstelle erfolgen. Die Boards machen die meisten Pins des ATmegas für eigene Schaltungen verfügbar, in den gängigen Boards sind das 14 Pins, die frei als Ein- oder Ausgänge genutzt werden können.
 Die Stromversorgung kann über USB oder eine externe 5V Quelle erfolgen. Als Kommunikationsinterfaces werden SPI, ICSP (In-Circuit Serial Programming) und I$^2$C angeboten.\\
 Der ATmega arbeitet mit 16 MHz und hat einen geringen Energieverbrauch.
@@ -358,7 +470,7 @@ Der ATmega arbeitet mit 16 MHz und hat einen geringen Energieverbrauch.
 
 \subsubsection{I$^2$C}
 Zur Kommunikation zwischen Beschleunigungssensor und Arduino habe ich den  I$^2$C Bus \citep{:2012fj} gewählt.
-Dabei handelt es sich um einen von Phillips entwickelten seriellen Datenbus, der ursprünglich entwickelt wurde, um Chips in Fernsehgeräten steuern zu können. Inzwischen ist das Patent ausgelaufen und er wird in vielen Hardwareprojekten verwendet, da er sehr einfach zu verstehen und zu verwenden ist. 
+Dabei handelt es sich um einen von Philips entwickelten seriellen Datenbus, der ursprünglich gebaut wurde, um Chips in Fernsehgeräten steuern zu können. Inzwischen ist das Patent ausgelaufen und er wird in vielen Hardwareprojekten verwendet, da er sehr einfach zu verstehen und zu verwenden ist. 
 
 Ich benutze die Arduino Wire Library \citep{:2012vn}, welche die gesamte Kommunikation über I$^2$C steuert und einfache Funktionsaufrufe, wie zum Beispiel Senden und Empfangen, zur Verfügung stellt.
 
@@ -370,16 +482,16 @@ Zum einfachen Anschluss des Arduinos an einen PC oder Datenlogger wird eine seri
 
 \subsubsection{Testaufbau}
 
-Um die korrekte Verschaltung zu überprüfen und die Software für das Auslesen der Daten zu zu entwickeln, habe ich zunächst auf dem Breadboard gearbeitet. Der dazu verwendete Schaltplan ist in Abbildung \ref{schematics} zu sehen.
+Um die korrekte Verschaltung zu überprüfen und die Software für das Auslesen der Daten zu entwickeln, habe ich zunächst auf dem Breadboard gearbeitet (Abb. \ref{breadboard}). Der dazu verwendete Schaltplan ist in Abbildung \ref{schematics} zu sehen.
 
-Da der Sensor sowohl im I$^2$C- sowie im SPI-Modus betrieben werden kann, ist es notwendig, den Modus bereits bei der Verschaltung einzustellen. Über den CS Pin (Pin 4) ist dies möglich. Schaltet man ihn auf High (3.3V), so benutzt der Chip I$^2$C, verbindet man ihn mit GND, so wird ISP verwendet. Je nach Modus haben die Pins unterschiedliche Funktionen. In Tabelle \ref{i2cmode} sind die verschiedenen Konfigurationen aufgeführt.
+Da der Sensor sowohl im I$^2$C- sowie im SPI-Modus betrieben werden kann, ist es notwendig, den Modus bereits bei der Verschaltung einzustellen. Über den CS Pin (Pin 4) ist dies möglich: Schaltet man ihn auf High (3.3V), so benutzt der Chip I$^2$C, verbindet man ihn mit GND, so wird ISP verwendet. Je nach Modus haben die Pins unterschiedliche Funktionen. In Tabelle \ref{i2cmode} sind die verschiedenen Konfigurationen aufgeführt.
 
 Pin 6 legt im von mir benutzten I$^2$C Modus die Adresse des Chips fest. Ist dieser auf Low (GND), so ist die Adresse 0x40.
 
 
 
 \begin{figure}[htb]
-	\centering
+	
 	\subfigure[Testaufbau auf dem Breadboard] {
 		\label{breadboard}
 		\includegraphics[width=7cm]{hardwareimages/breadboard.jpg}
@@ -395,7 +507,7 @@ Pin 6 legt im von mir benutzten I$^2$C Modus die Adresse des Chips fest. Ist die
 
 \begin{table}[htb]
 \begin{tabular}{@{}lll@{}}      
-    	\cmidrule(r){1-2}\morecmidrules\cmidrule(r){1-2}
+    	\cmidrule(r){1-3}\morecmidrules\cmidrule(r){1-3}
        	Pin & SPI mode & I2C mode\\
       	\midrule
  	7 & SDI input & SDA birectional (!) \\ 
@@ -412,7 +524,7 @@ Pin 6 legt im von mir benutzten I$^2$C Modus die Adresse des Chips fest. Ist die
 
 \begin{figure}[ht]
 \centering
-\includegraphics[scale=.6]{schematics.eps}
+\includegraphics[scale=.59]{schematics.eps}
 \caption{Schaltplan Testaufbau. Der Interrupt ist nicht verbunden, VDD und CS sind auf 3.3V geschaltet, GND und SDO auf die Masse des Arduinos gezogen, die I$^2$C Datenleitungen SCK und SDI sind mit den Arduinopins A4 und A5 verbunden, wobei zusätzlich 10k$\Omega$ Pull-Up-Widerstände eingebaut sind.}
 \label{schematics}
 \end{figure}
@@ -421,9 +533,9 @@ Pin 6 legt im von mir benutzten I$^2$C Modus die Adresse des Chips fest. Ist die
 \newpage
 \subsubsection{Fester Aufbau}
 
-Um das System praktisch nutzen zu können muss es natürlich fest aufgebaut werden und mit einem Gehäuse versehen werden, das es erlaubt, ihn fest an einem Testobjekt anzubringen und ihn gleichzeitig vor Schäden durch mechanische oder witterungsbedingte Einflüsse schützt.
+Um das System praktisch nutzen zu können, muss es natürlich fest aufgebaut werden und mit einem Gehäuse versehen werden, welches es erlaubt, ihn fest an einem Testobjekt anzubringen und ihn gleichzeitig vor Schäden durch mechanische oder witterungsbedingte Einflüsse schützt.
 
-Um die eigentliche Sensoreinheit möglichst kompakt zu halten, habe ich mich entschieden, den Beschleunigungssensor vom Arduino zu trennen und auf eine kleine Lochrasterplatine zu löten. Diese wird in einen festen Block aus Polyurethanharz\footnote{OPTICALLY CLEAR POLYURETHANE, RS COMPONENTS, RS 195-984A} eingegossen, womit sie gleichzeitig gut geschützt und leicht anzubringen ist (Abb. \ref{harz}). \\
+Um die eigentliche Sensoreinheit möglichst kompakt zu halten, habe ich mich entschieden, den Beschleunigungssensor vom Arduino zu trennen und auf eine kleine Lochrasterplatine zu löten. Diese wird in einen festen Block aus Polyurethanharz\footnote{OPTICALLY CLEAR POLYURETHANE, RS COMPONENTS, RS 195-984A} eingegossen, womit sie gleichzeitig gut geschützt und leicht anzubringen ist \mbox{(Abb. \ref{harz})}. \\
 
 \begin{figure}[H]
 \centering
@@ -432,47 +544,12 @@ Um die eigentliche Sensoreinheit möglichst kompakt zu halten, habe ich mich ent
 \label{harz}
 \end{figure}
 
-Der Arduino ist in ein ABS Gehäuse (zum Beispiel von BOSS Endloseres) eingebaut (Abb. \ref{arduinobox} und \ref{arduinoboxregen}
-Die I$^2$C Verbindung mit dem Sensor erfolgt über einen Hirschmannstecker™ mit 7 Polen, von denen 4 beschaltet sind, wie in Abbildung \ref{hirschmann_i2c} zu sehen ist.
+Der Arduino ist in ein ABS Gehäuse (zum Beispiel von BOSS Enclosures) eingebaut (Abb. \ref{arduinobox} und \ref{arduinoboxregen}).
+Die I$^2$C Verbindung mit dem Sensor erfolgt über einen Hirsch\-mann\-steck\-er™ mit 7 Polen, von denen 4 beschaltet sind  (siehe Abb. \ref{hirschmann_i2c}).
 Mit dem Logger ist der Arduino über ein USB-Kabel verbunden, über das die Kommunikation per RS232 geführt wird.
 
-\begin{figure}[ht]
-\centering
-\includegraphics[scale=.8]{hardwareimages/kabel.eps}
-\caption{Verbindungen zwischen BMA180, Arduino und Logger per I$^2$C bzw. RS232}
-\label{kabel}
-\end{figure}
-
-\begin{figure}[H]
-	\begin{minipage}[H]{8cm}
-		\centering
-		\includegraphics[scale=.5]{hardwareimages/hirschmann_i2c.eps}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[H]{8cm}
-		\centering
-		\begin{tabular}{@{}lllll@{}}    
-      			\cmidrule(r){1-5}\morecmidrules\cmidrule(r){1-5}
-       			Pin & I2C & Arduino & BMA180 & Farbe\\
-      			\midrule
- 			1 & 3.3V & 3.3V & VDD & Rot \\ 
- 			2 & & & &\\
- 			3 & SDA & A4 & SDI & Gelb\\
- 			4 & SCL & A5 & SCK & Grün\\
- 			5 & & & &\\
- 			6 & & & &\\
- 			7 & GND & GND & GND & Schwarz\\
-   			\addlinespace
-   			\bottomrule
- 		\end{tabular}
-	\end{minipage}
-	\caption{I$^2$C Beschaltung des Hirschmannsteckers™}
-	\label{hirschmann_i2c}
-\end{figure}
-
-
 \begin{figure}[htb]
-	\centering
+	%\centering
 	\subfigure[ABS Box, welche den Arduino enthält] {
 		\label{arduinobox}
 		\includegraphics[width=7cm]{hardwareimages/arduinobox.jpg}
@@ -486,18 +563,55 @@ Mit dem Logger ist der Arduino über ein USB-Kabel verbunden, über das die Komm
 \end{figure}
 
 
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=.8]{hardwareimages/kabel.eps}
+\caption{Verbindungen zwischen BMA180, Arduino und Logger per I$^2$C bzw. RS232}
+\label{kabel}
+\end{figure}
+
+\begin{figure}[H]
+	\subfigure[] {
+		\includegraphics[scale=.4]{hardwareimages/hirschmann_i2c.eps}
+	}
+	\subfigure[] {
+			\begin{tabular}{@{}l|lcl|l@{}}    
+			Pin & & Bedeutung & & Farbe\\
+      			\cmidrule(r){1-5}\morecmidrules\cmidrule(r){1-5}			
+       			 & I2C & Arduino & BMA180 & \\
+      			\midrule
+ 			1 & 3.3V & 3.3V & VDD & Rot \\ 
+ 			2 &   -     &     -   &    -   & n.c. \\
+ 			3 & SDA & A4 & SDI & Gelb\\
+ 			4 & SCL & A5 & SCK & Grün\\
+ 			5 & -       &    -     &   -   & n.c. \\
+ 			6 & -       &    -     &   -   & n.c. \\
+ 			7 & GND & GND & GND & Schwarz\\
+   			\addlinespace
+   			\bottomrule
+			
+ 		\end{tabular}
+	}
+	\caption{I$^2$C Beschaltung des Hirschmannsteckers™ (n.c. = not connected)}
+	\label{hirschmann_i2c}
+\end{figure}
+
+
+
+
 \subsection{Software} 
 
 Die Software besteht aus zwei Teilen: Der Code auf dem Arduino fragt die Daten vom Sensor ab und stellt sie per RS232 zur Verfügung. Der zweite Teil auf dem Logger sammelt die Messungen über den Seriellen Port und schreibt diese gemeinsam mit der jeweils aktuellen Uhrzeit in eine Datei.\\
 
-Bei der Erläuterung des Codes möchte ich mich auf die wesentlichen Punkte beschränken. Die vollständigen Quelltexte befinden sich im Anhang.
+Bei der Erläuterung des Codes möchte ich mich auf die wesentlichen Punkte beschränken. Die vollständigen Quelltexte befinden sich auf der beiliegenden CD-ROM.
 
 \subsubsection{Arduino}
 
-Der Arduino ist für die Kommunikation mit dem BMA180 über I$^2$C zuständig. Für diese Aufgabe nutze ich die Arduino Bibliothek bma180\footnote{Selbst nach ausführlicher Recherche ist es mir nicht gelungen den Originalauthor der Bibliothek zu ermitteln. Ich habe sie von John Mc Combs, welcher allerdings nicht der Ursprungsauthor ist. \\ https://bitbucket.org/johnmccombs/arduino-libraries/src/058c7101c8da/bma180 (August 2012)}. Sie enthält eine Sammlung von Lese und Schreibroutinen, die ich für meine Zwecke angepasst habe.
+Der Arduino ist für die Kommunikation mit dem BMA180 über I$^2$C zuständig. Für diese Aufgabe nutze ich die Arduino Bibliothek bma180\footnote{Selbst nach ausführlicher Recherche ist es mir nicht gelungen, den Originalautor der Bibliothek zu ermitteln. Ich habe sie von John Mc Combs, welcher allerdings nicht der Ursprungsautor ist. \\ https://bitbucket.org/johnmccombs/arduino-libraries/src/058c7101c8da/bma180 (August 2012)}. Sie enthält eine Sammlung von Lese- und Schreibroutinen, die ich für meine Zwecke angepasst habe.
 Hier möchte ich die einzelnen Schritte beschreiben, die notwendig sind, um eine Messung zu erhalten und diese an den Logger weiterzuleiten. \\
 
-Die Steuerung des BMA180 erfolgt über direkte Zugriffe auf die Register. Entweder schreibt man einen neuen Wert in ein Register oder man liest ein Register aus. Es gibt fünf Arten von Registern - \texttt{test}, \texttt{control}, \texttt{image}, \texttt{status} und \texttt{data}.
+Die Steuerung des BMA180 erfolgt über direkte Zugriffe auf die Register. Entweder schreibt man einen neuen Wert in ein Register, oder man liest ein Register aus. Es gibt fünf Arten von Registern: \texttt{test}, \texttt{control}, \texttt{image}, \texttt{status} und \texttt{data}.
 Davon interessieren uns nur die \texttt{control} und die \texttt{data} Register. Weitere Informationen über die zusätzlichen Register lassen sich im Datenblatt \citep{Sensortec:2009rt} nachschlagen.
 
 Die \texttt{control} Register dienen dazu, den Beschleunigungssensor zu steuern, vornehmlich also den Messbereich festzulegen und eventuell einen zusätzlichen digitalen Bandfilter einzustellen. Dazu müssen Werte in Register hineingeschrieben werden. Dazu geht man folgendermaßen vor:\\
@@ -514,14 +628,14 @@ Da ein Register immer ein Byte (8 Bit) groß ist, finden sich oftmals verschiede
 
 \begin{figure}[H]
 %\centering
-\includegraphics[scale=.359]{registerstransp}
+\includegraphics[scale=.33]{registerstransp}
 \caption{Memory Map BMA180, Ausschnitt \citep{Sensortec:2009rt}}
 \label{registermap}
 \end{figure}
 
-Die relevanten Bits befinden sich im Register \texttt{0x35}\footnote{Ein vorangestelltes \texttt{0x} bedeutet, dass es sich um eine Zahl im Hexadezimalsystem handelt}, Bit eins, zwei und drei\footnote{Es wird von rechts nach links gezählt und mit 0 begonnen} (siehe Abb. \ref{registermap} Hier die entsprechenden Zeilen aus dem Quellcode:
+Die relevanten Bits befinden sich im Register \texttt{0x35}\footnote{Ein vorangestelltes \texttt{0x} bedeutet, dass es sich um eine Zahl im Hexadezimalsystem handelt}, Bit eins, zwei und drei\footnote{Es wird von rechts nach links gezählt und mit 0 begonnen} (siehe Abb. \ref{registermap}). Hier die entsprechenden Zeilen aus dem Quellcode:
 
-\lstset{language=C++,caption={Funktion zum Einstellen des Messbereichs aus der bma180 Bibliothek\\ maxg ist eine dem Wertebereich zugeordnete Binärzahl zwischen 000 und 110 },label=sensitivity}
+\lstset{language=C++,caption={Funktion zum Einstellen des Messbereichs aus der bma180 Bibliothek\\ maxg ist eine dem Messbereich zugeordnete Binärzahl zwischen 000 und 110 },label=sensitivity}
 \lstset{frameround=fttt}
 \begin{lstlisting}[frame=trBL]
 	void BMA180::setGSensitivty(GSENSITIVITY maxg) //1, 1.5 2 3 4 8 16
@@ -533,7 +647,7 @@ Die relevanten Bits befinden sich im Register \texttt{0x35}\footnote{Ein vorange
  
 Die aufgerufene Funktion $setRegValue$ (Zeile 3) bekommt als Argumente das zu schreibende Register (\texttt{0x35}), den zu schreibenden Wert ($maxg << 1$) und zusätzlich eine Maske, die angibt, welche Bits des Registers nicht(!) verändert werden sollen.\\
 Da das letzte Bit (Bit Null) eine andere Funktion hat, 'schieben' wir $maxg$ mit Hilfe der \textit{bitshift Operation} $<<$ um ein Bit nach links.\\
-Bei $gSense$ (Zeile 4) handelt es sich um eine Statusvariable, die später benutzt wird, um den genutzten Wertebereich mit zu dokumentieren.\\
+Bei $gSense$ (Zeile 4) handelt es sich um eine Statusvariable (Membervariable der Klasse bma180), die später benutzt wird, um den genutzten Wertebereich mit zu dokumentieren.
 
 
 \lstset{language=C++,caption={Funktion zum Schreiben eines Registers aus der BMA180 Bibliothek},label=writeregister}
@@ -550,10 +664,10 @@ Bei $gSense$ (Zeile 4) handelt es sich um eine Statusvariable, die später benut
 	}
 \end{lstlisting}
 
-Nun lesen wir zunächst den bisherigen Wert des Registers ein (Zeile 3)  und maskieren ihn mit der übergebenen Maske, so dass wir alle Bits übernehmen, außer die, welche wir verändern wollen (Zeile 4). Dann schreiben wir in das Register, wobei wir nach dem oben beschriebenen Schema vorgehen. Beim Senden der Daten verknüpfen wir jedoch $orgval$ mittels eines bitweisen $OR$ mit dem zu schreibenden Wert (Zeile 7). So haben wir sichergestellt, dass wir nur die relevanten Bits verändern.\\
+Nun lesen wir zunächst den bisherigen Wert des Registers ein (Zeile 3)  und maskieren ihn mit der übergebenen Maske, so dass wir alle Bits übernehmen, außer denen, welche wir verändern wollen (Zeile 4). Dann schreiben wir in das Register, wobei wir nach dem oben beschriebenen Schema vorgehen. Beim Senden der Daten (Zeile 7) verknüpfen wir jedoch $orgval$ mittels eines bitweisen $OR$ mit dem zu schreibenden Wert. So haben wir sichergestellt, dass wir nur die relevanten Bits verändern.\\
 In Abbildung \ref{bitops} ist das Vorgehen noch einmal dargestellt.
 
-\begin{figure}[H]
+\begin{figure}[htb]
 \centering
 \includegraphics[scale=.5]{bitops.eps}
 \caption{Beispiel eines Schreibvorgangs in das Register \texttt{0x35}. Nur die grau markierten Bits werden verändert.}
@@ -566,7 +680,7 @@ In die data Register werden die gemessenen Beschleunigungsdaten geschrieben. Da 
 Hier benötigen wir das Konzept der \textbf{Bitwertigkeit}:
 
 In einer Zahl haben die Stellen unterschiedlichen Wert. Verändert man zum Beispiel bei der Zahl 4650 die letzte Stelle, so ist der Unterschied maximal 9 (4650 verglichen zu 4659). Wird hingegen die dritte Stelle (von hinten) verändert, so kann der Unterschied bis zu 900 betragen. Analog verhält es sich mit den binären Zahlen. 
-Dabei bezeichnen wir das höchstwertige Bit als \textbf{m}ost-\textbf{s}ignificant-\textbf{b}it \textbf{(msb)} und das geringwertige Bit als \textbf{l}east-\textbf{s}ignificant-\textbf{b}it \textbf{(msb)}.
+Dabei bezeichnen wir das höchstwertige Bit als \textbf{m}ost-\textbf{s}ignificant-\textbf{b}it \textbf{(msb)} und das geringwertige Bit als \textbf{l}east-\textbf{s}ignificant-\textbf{b}it \textbf{(lsb)}.
 
 Analog dazu spricht man vom höchstwertigen Byte \textbf{m}ost-\textbf{s}ignificant-\textbf{b}yte \textbf{(MSB)} und geringwertigen Byte \textbf{l}east-\textbf{s}ignificant-\textbf{b}yte \textbf{(LSB)}.
 
@@ -616,25 +730,23 @@ Um die Beschleunigungsdaten vom Sensor zu laden, ist so vorzugehen:
 	}
 \end{lstlisting}
 
-Das Register, bei dem wir beginnen wollen zu lesen, ist \texttt{0x02}, (Zeile 6) und wir benötigen die nächsten 7 Bytes (Zeile 8). Jeweils zwei Bytes MSB und LSB für die drei Achsen und als letztes Byte lesen wir zusätzlich die aktuelle Temperatur aus. Diese wird jedoch im Weiteren nicht verwendet.\\
+Das Register, bei dem wir beginnen wollen zu lesen, ist \texttt{0x02}, (Zeile 6) und wir benötigen die nächsten 7 Bytes (Zeile 8). Jeweils zwei Bytes MSB und LSB für die drei Achsen und als letztes Byte lesen wir zusätzlich die aktuelle Temperatur aus. Diese wird jedoch im Weiteren nicht verwendet. Das Vorgehen ist noch einmal in Abbildung \ref{auslesen} gezeigt.\\
 
 Mit $Wire.requestFrom(adress, n)$ fordern wir einen Stapel von $n$ Bytes vom Sensor (Zeile 8). $Wire.read()$ entfernt immer das oberste Byte von diesem Stapel und gibt seinen Wert aus. Da das LSB an Stelle null und eins für den Messwert nicht relevante Bits enthält, entfernen wir diese per Bitshift (Zeile 11). Dann shiften wir das MSB im ganzen um sechs Stellen nach links, um es dann mit dem LSB zu addieren und damit den kompletten Messwert zu erhalten (Zeile 13).\\
 
-Da die Daten im sogenannten Zweierkomplement (näheres in \citep{Tietze:2002fk}) ausgegeben werden und es sich bei x (sowie bei y und z) um Integer Variablen handelt, müssen wir das Vorzeichenbit an vorderster Stelle setzen. Dies geschieht in Zeile 14 (bzw. Zeile 18 für y und Zeile 24 für z).\\
+Da die Daten im sogenannten Zweierkomplement (näheres in \citep{Tietze:2002fk}) ausgegeben werden und es sich bei x (sowie bei y und z) um Integer Variablen handelt, müssen wir das Vorzeichenbit an vorderster Stelle setzen. Dies geschieht in Zeile 14 (bzw. Zeile 18 für y und Zeile 24 für z) mittels masking und OR Operator.\\
 
-
-
-\begin{figure}[H]
+\begin{figure}[htb]
 \centering
-\includegraphics[scale=.55]{auslesen.eps}
-\caption{Auslesen und zusammenfügen der Daten. MSB und LSB werden addiert. Mittels IF Abfrage und Masking wird überprüft, ob es sich um eine negative Zahl handelt; Falls ja, so wird das korrekte Zweierkomplement gebildet und als Integer gespeichert.}
+\includegraphics[scale=.7]{auslesen.eps}
+\caption{Auslesen und zusammenfügen der Daten. MSB und LSB werden addiert. Mittels IF Abfrage und Masking wird überprüft, ob es sich um eine negative Zahl handelt (hochwertigstes bit = 1); Falls ja, so wird das korrekte Zweierkomplement gebildet und als Integer gespeichert.}
 \label{auslesen}
 \end{figure}
 
-
+\clearpage
 \subsubsection{Restitution}
 
-Jetzt haben wir eine Beschleunigungsmessung, jedoch ist diese noch in gerätespezifischen 'count' Einheiten. Diese müssen nun die physikalisch bestimmte Einheit der Beschleunigung umgerechnet werden. Der Vorgang wird als Restitution bezeichnet und der entsprechende Code ist in Listing \ref{restitution} zu sehen.
+Jetzt haben wir eine Beschleunigungsmessung, jedoch ist diese noch in gerätespezifischen 'count' Einheiten. Diese müssen nun in die physikalisch bestimmte Einheit der Beschleunigung umgerechnet werden. Der Vorgang wird als Restitution bezeichnet und der entsprechende Code ist in Listing \ref{restitution} zu sehen. \\
 
 \lstset{language=C++,caption={Restitution der aufgenommenen Beschleunigungsdaten. Ausgabe als Vielfaches von der Erdbeschleunigung $g = 9.81m/s^2$},label=restitution}
 \begin{lstlisting}[frame=trBL]
@@ -645,86 +757,48 @@ Jetzt haben wir eine Beschleunigungsmessung, jedoch ist diese noch in gerätespe
 	}
 \end{lstlisting}
 
-Aus dem Datenblatt \citep{Sensortec:2009rt} lässt sich entnehmen, dass $10~0000~0000~0000$ den geringstmöglichen Wert in jedem Messbereich darstellt und $01~1111~1111~1111$ de größten. Das erste Bit gibt dabei das Vorzeichen an (Zweierkomplement). Teilt man den Wert durch 8191, was in Binärdarstellung $1~1111~1111~1111$ entspricht, erhält man nach einer Multiplikation mit dem Messbereich (GSENSE) die Beschleunigung als Vielfaches der Erdbeschleunigung $g = 9.81 m/s^2$.
+Aus dem Datenblatt \citep{Sensortec:2009rt} lässt sich entnehmen, dass $10~0000~0000~0000$ den geringstmöglichen Wert in jedem Messbereich darstellt und $01~1111~1111~1111$ den Größten. Das erste Bit gibt dabei das Vorzeichen an (Zweierkomplement). Teilt man den Wert durch 8191, was in Binärdarstellung $1~1111~1111~1111$ entspricht, erhält man nach einer Multiplikation mit dem Messbereich (GSENSE) die Beschleunigung als Vielfaches der Erdbeschleunigung $g = 9.81 m/s^2$.
 
 
 \subsubsection{PC Logger}
 
-Das Programm, welches auf dem PC läuft und die Daten aufzeichnet, ist ein Python Script, welches ich von Matthias Hort übernommen und angepasst habe. Sobald es gestartet ist und eine kurze Beschreibung für das aktuelle Experiment eingegeben wurde, nimmt es sämtliche Nachrichten auf dem eingestellten Comport entgegen und schreibt diese mit der jeweils aktuellen Systemzeit in eine Datei.
+Das Programm, welches auf dem PC läuft und die Daten aufzeichnet, ist ein Python Script, welches ich von Matthias Hort übernommen und angepasst habe. Sobald es gestartet ist und eine kurze Beschreibung für das aktuelle Experiment eingegeben wurde, nimmt es sämtliche Nachrichten auf dem eingestellten COM-Port entgegen und schreibt diese mit der jeweils aktuellen Systemzeit in eine Datei.
 
-Die exakte Zeit ist sehr wichtig, um die Ergebnisse später mit anderen Messungen vergleichen zu können. Zu diesem Zweck ist der PC mit einem NTP (Network Time Protocol) Server verbunden, welcher stets die korrekte Uhrzeit von GPS-Satelliten empfängt und im Netzwerk zur Synchronisation bereitstellt. Ein Programm auf dem PC (Domain Time II) korrigiert mit dieser GPS Zeit die computerinterne Uhr.
-
-\newpage
-
-\section{Berechnung der Wegwerte aus den Beschleunigungsdaten}
-
-\subsection{Numerische Integration}
-
-Um aus den gemessenen Beschleunigungen die gesuchten Wegwerte (Ausschläge) zu ermitteln, müssen die Messwerte zweifach über die Zeit integiert werden. Da die zu integrierenden Funktionen als begrenzte Anzahl von Abtastpunkten in diskreten Zeitabständen vorliegen, bietet es sich an, numerische Integrationsverfahren anzuwenden. Die dazu möglichen Verfahren, wie z.B. Rechteckverfahren, Trapezformel, Rombergverfahren, unterscheiden sich durch die Art der Interpolation zwischen den Abtastpunkten \citep[S. 760ff]{Bronstein:1995fk}. Die Wahl des Integrationsverfahrens beeinflusst dabei die Genauigkeit des Ergebnisses.
-
-In dieser Arbeit verwende ich die Trapezformel und komme damit für den Weg auf folgende Rekursionsformel:
-
-\begin{equation}
-y_{i+1} = \Delta t^2 \cdot a_i - y_{i-1} + 2 \cdot y_i
-\end{equation}
-
-Mit dieser Formel kann aus den vorherigen Wegwerten $y_{i-1}$ und $y_i$ sowie den gemessenen Beschleunigungen $a_i$ und dem Zeitintervall $\Delta t$ der nächste Wegwert bestimmt werden.
-
-Die Startwerte für $i=1$ sind vorerst nicht bekannt und können z.B. $y_0 = y_1 = 0$ gewählt werden. Dies führt allerdings zu systematischen Fehlern, die später behoben werden müssen.
+Die exakte Zeit ist sehr wichtig, um die Ergebnisse später mit anderen Messungen vergleichen zu können. Zu diesem Zweck ist der PC mit einem NTP (Network Time Protocol) Server verbunden, welcher stets die korrekte Uhrzeit von GPS-Satelliten empfängt und im Netzwerk zur Synchronisation bereitstellt. Ein Programm auf dem PC (Domain Time II) synchronisiert die computerinterne Uhr mit dieser GPS Zeit.
 
 
-\subsection{Problematik des Integrierens Noisebehafteter Daten}
-
-Wie alle nicht synthetischen Daten enthalten die aufgenommen Beschleunigungsmessungen ein gewisses Rauschen. Schwankungen in der Spannungsversorgung, elektromagnetische Einstreuungen oder thermisches Rauschen sind einige Beispiele für mögliche Ursachen. Solange das Signal deutlich größer ist als das Rauschen, ist das kaum ein Problem. Man spricht von einem guten Signal- zu Rauschverhältnis. 
-
-Bei der Integration der Beschleunigungswerten zu Wegwerten handelt es sich jedoch gewissermaßen um eine Addition aller Messwerte und damit einer Addition allen Rauschens. Je länger die Zeit ist, über die integiert wird, desto größer wird der Fehler in den Wegdaten. 
-
-\begin{figure}[htb]
-\centering
-\includegraphics[scale=.4]{sinusnoise.png}
-\caption{Numerische Integration von $sin(x)$. Oben: ohne Noise Unten: Mit Noise einer Varianz von 0.3}
-\label{sinusnoise}
-\end{figure}
-
-Das Resultat ist in Abbildung \ref{sinusnoise} zu erkennen. Ich habe in Matlab eine Sinusfunktion mit 1000 Stützstellen numerisch integriert. Dabei habe ich zunächst keinen Noise hinzugefügt. Bei der unteren Abbildung jedoch liegt auf dem Sinus ein Rauschen mit einer Varianz von $0.3$. Es ist eine deutliche Drift der resultierenden Daten zu sehen. Bei der zweifachen Integration, die man benötigt um aus den Beschleunigungsdaten Wegdaten zu berechnen, tritt dieser Effekt sogar noch verstärkt auf. Die Fehler der Messungen überlagern die eigentlichen Messergebnisse und führen damit zu völlig falschen Wegstrecken. \\
-
-Um diesen Effekt zu verhindern, müssen die Daten gefiltert werden. Die sich dafür bietenden Möglichkeiten möchte ich in der jeweiligen Auswertung besprechen.
-
-\newpage
-
-\section{Experimente in Waakirchen}
+\section{Experimente in Waakirchen, erster Einsatz des Prototyp}
 
 Um das System in der Anwendung zu testen, habe ich im Mai 2012 an Eruptionsdynamikexperimenten in Waakirchen, in der Nähe von München, teilgenommen. Diese Experimente wurden gemeinsam mit der Ludwig-Maximilians-Universität München, der Universität Catania und dem Istituto Nazionale di Geofisica e Vulcanologia (Sezione di Catania and Dept. of Seismology and Tectonophysics, Rome) durchgeführt. 
 
 Bei diesen Experimenten wurden künstliche Explosionen in Autoklaven \citep{Spieler:2004fk} verschiedener Geometrie (von 16 cm bis 40 cm Länge) ausgelöst. Es kamen dabei zwei Aufbauten zum Einsatz, von denen einer das Erhitzen der Proben auf bis zu $850\circ C$ und damit der Wirklichkeit nähere Umgebungsbedingungen ermöglichte. Bei den verwendeten Samples handelte es sich um Proben von verschiedenen Vulkanen (sowohl Asche als auch festes Lavagestein) und Analogmaterialien.
-Die Experimente wurden wiederholt durchgeführt und dabei potentielle Einflussgrößen wie Korngröße, Mischverhältnis, Druck und Temperatur variiert.
+Die Experimente wurden wiederholt durchgeführt und potentielle Einflussgrößen wie Korngröße, Mischverhältnis, Druck und Temperatur variiert.
 
-Untersucht wurde dabei eine Vielzahl von Parametern durch den Einsatz von Hochgeschwindigkeits- Thermo- und optischen Kameras, Piezo Sensoren, einem akustischen Array und unserem Doppler Radar.\\
+Untersucht wurde eine Vielzahl von Parametern durch den Einsatz von Hoch\-ge\-schwindig\-keits-, Thermo- und optischen Kameras, Piezo Sensoren, einem akustischen Array und unserem Doppler Radar.\\
 
-Mein Ziel war dabei vor Allem, den Prototypen im Feld zu testen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, um herauszufinden, ob dessen Bewegung Einfluss auf die Messungen haben kann.
+Mein Ziel bei diesem Experiment war es insbesondere, den Prototypen im Feld zu testen und Informationen über die Größenordnung der an der Radarantenne auftretenden Geschwindigkeiten zu gewinnen. Zusätzlich wollte ich die Bewegung des Autoclavenaufbaus untersuchen, um herauszufinden, ob dessen Bewegung Einfluss auf die Messungen haben kann.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Ergebnisse der Messungen in Waakirchen}
+\subsection{Ergebnisse der Messungen in Waakirchen}
 
 
 
-\subsection{Messungen an der Radarantenne}
+\subsubsection{Messungen an der Radarantenne}
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.5]{wakiki/firstexample2.png}
-\caption{Restituierte Beschleunigungsdaten in 3 Komponenten während Experiment 7.\\ Die X-Achse entspricht der Querachse (Nickachse) des Radars, die Y-Achse seiner Hochachse und die Z-Achse der Längsachse, welche in Radarstrahlrichtung ausgerichtet ist. }
+\includegraphics[scale=.6]{wakiki/firstexample2.png}
+\caption{Restituierte Beschleunigungsdaten in 3 Komponenten in Experiment 7.\\ Die X-Achse entspricht der Querachse (Nickachse) des Radars, die Y-Achse seiner Hochachse und die Z-Achse der Längsachse, welche in Radarstrahlrichtung ausgerichtet ist. }
 \label{firstexample}
 \end{figure}
 
-In Abbildung \ref{firstexample} sind exemplarisch die Beschleunigungsdaten aus Experiment 7 zu sehen. Es wurde mit 32 Hz aufgenommen und der Messbereich auf $\pm 1.5g$ eingestellt. {\color{red}(Auf andere verweisen? alle anhängen??)} Auf der Z-Achse ist ein deutlicher Ausschlag um ca. $0.4 m/s^2$ zu sehen, welcher durch die Druckwelle der Explosion zustande kommt. 
+In Abbildung \ref{firstexample} sind exemplarisch die Beschleunigungsdaten aus Experiment 7 zu sehen. Die gesamten Experimente befinden sich auf der CD-ROM. Es wurde, technisch bedingt, nur mit 32 Hz aufgenommen und der Messbereich auf $\pm 1.5g$ eingestellt. Auf der Z-Achse ist ein deutlicher Ausschlag um ca. $0.4 m/s^2$ zu sehen, welcher höchstwahrscheinlich durch die Druckwelle der Explosion zustande kommt. 
 
 Die Bewegung der Schüssel wird allerdings lediglich durch ein einziges Sample erfasst. Es ist nicht sichergestellt, ob hier wirklich das Maximum an Beschleunigung abgebildet ist und wie die Bewegung genau verläuft. Eine Bestimmung der Geschwindigkeit oder des Weges durch Integration ist damit praktisch nicht möglich. 
 
-An dieser Stelle sei auch auf das Nyquist Theorem verwiesen. Es besagt, dass ein Signal immer mindestens mit der doppelten Frequenz des hochfrequentesten Anteils im Signal abgetastet werden muss, damit es komplett rekonstruiert werden kann.  \citep[vgl.][]{Shannon:1949uq}\\
 
 Betrachtet man lediglich das Sample, bei dem die Beschleunigung auftritt und interpoliert linear zu den nächsten beiden Samples, welche noch keine Beschleunigung anzeigen, so lässt sich dennoch eine Geschwindigkeit abschätzen. Diese ergibt sich demnach als:
 
@@ -732,25 +806,22 @@ Betrachtet man lediglich das Sample, bei dem die Beschleunigung auftritt und int
 v = \frac{1}{2} ~a \cdot t
 \end{equation}
 
-Im betrachteten Experiment 7 ist $v = 0.012 m/s$. Diese Geschwindigkeit ist sehr gering und kann vom Radar nicht aufgelöst werden. Aus den eben genannten Gründen ist dieses Ergebnis vorsichtig zu betrachten. Eine höhere Abtastrate ist notwendig um sicherere Aussagen treffen zu können.\\
+Im betrachteten Experiment 7 ist $v = 0.012 m/s$. Diese Geschwindigkeit ist sehr gering und kann vom Radar nicht aufgelöst werden. Aus den eben genannten Gründen ist dieses Ergebnis vorsichtig zu betrachten. Eine höhere Abtastrate ist notwendig, um zuverlässige Aussagen treffen zu können.\\
 
 
-Vergleicht man den Zeitpunkt des Maximalausschlags (15:10:20.465 Uhr) mit dem vom Radar ermittelten Explosionszeitpunkt (15:10:20.274 Uhr), so ergibt sich ein Unterschied von $191$ Millisekunden. Diese Differenz lässt sich nicht durch die langsamere Ausbreitungsgeschwindigkeit der Druckwelle erklären. Es gab offensichtlich ein Problem mit der Zeitsynchronisation, so dass das Radar nicht zu jedem Zeitpunkt eine korrekte GPS Zeit besaß. \\
-
-
-
-{\color{red}Korrelation zwischen Geschwindigkeit (Radargemessen) und gemessener Beschleunigung? bringt mit den 3 Experimenten, wo alles gemeinsam zu sehen ist wenig... }
+Vergleicht man den Zeitpunkt des Maximalausschlags (15:10:20.465 Uhr) mit dem vom Radar ermittelten Explosionszeitpunkt (15:10:20.274 Uhr), so ergibt sich ein Unterschied von $191$ Millisekunden. Diese Differenz lässt sich nicht durch die langsamere Ausbreitungsgeschwindigkeit der Druckwelle erklären. Es gab offensichtlich ein Problem mit der Zeitsynchronisation, so dass das Radar oder der Logger nicht zu jedem Zeitpunkt über eine korrekte GPS Zeit verfügten. \\
 
 
 
 
-\subsection{Messungen am Autoklavenaufbau}
+
+\subsubsection{Messungen am Autoklavenaufbau}
 
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=.13]{hardwareimages/tisch.jpg}
-\caption{Messaufbau: Bewegungsmessung des Autoklavenaufbaus. Der Beschleunigungssensor ist am Bein des Aufbaus befestigt (roter Kreis).}
+\caption{Messaufbau: Bewegungsmessung des Autoklavenaufbaus. Der Beschleunigungssensor ist am Tischbein des Aufbaus befestigt (roter Kreis).}
 \label{tisch}
 \end{figure}
 
@@ -766,29 +837,42 @@ Zur genaueren Betrachtung der Vertikalbewegung ist in Abbildung \ref{tischmoveme
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.5]{wakiki/tischmovement3.png}
+\includegraphics[scale=.7]{wakiki/tischmovement3.png}
 \caption{Restituierte Beschleunigungsdaten am Autoklavenaufbau. Experiment 16. Die Ausrichtung der Achsen kann Abbildung \ref{tisch} entnommen werden. }
 \label{tischmovement3}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.4]{wakiki/tischmovement_y.png}
+\includegraphics[scale=.5]{wakiki/tischmovement_y.png}
 \caption{Y-Komponente der Beschleunigung. Der Tisch führt eine gedämpfte Schwingung aus. Deutlich erkennbar ist der zu gering gewählte Messbereich, der Erstausschlag ist nach oben hin 'abgeschnitten'}
 \label{tischmovement_y}
 \end{figure}
 
 Die Messung zeigt, dass der Tisch eine gedämpfte Schwingung ausführt. Der Erstausschlag ist positiv, also bewegt sich der Tisch zunächst nach oben. Dann fällt er wieder auf den Boden zurück und schwingt ca.  eine Sekunde lang nach.
 
-Mit der bei der Messung an der Antennenschüssel bereits angewandten Abschätzung der Geschwindigkeit erhalten wir zu Beginn eine Maximalgeschwindigkeit von ca. $1.33 m/s$. Der wahre Wert ist größer, da das Maximum der Beschleunigung nicht korrekt erfasst wurde. 
+Mit der bei der Messung an der Antennenschüssel bereits angewandten Abschätzung der Geschwindigkeit erhalten wir zu Beginn eine Maximalgeschwindigkeit von ca. $1.33 m/s$. Der wahre Wert ist größer, da das Maximum der Beschleunigung nicht korrekt erfasst wurde. \\
 
+
+Es lässt sich festhalten, dass sich sowohl die Radarschüssel, als auch der Autoklavenaufbau bei einer Explosion bewegen. Die Geschwindigkeiten sind, verglichen mit den gemessenen Radargeschwindigkeiten, aber vernachlässigbar klein.
+
+In beiden Versuchen ist festzustellen, dass die Abtastfrequenz deutlich zu gering ist. Aussagen über die in den Versuchen auftretenden Beschleunigungen und Geschwindigkeiten sind nur bedingt möglich. Die verwendete Hardware ermöglicht zwar eine höhere Abtastrate, doch bei höheren Datenraten wird die Verbindung zwischen Sensor und Logger zunehmend instabil.
+
+Die Auswahl des Messbereichs ist kritisch für ein Gelingen der Messung. Sind die untersuchten Beschleunigungen größer als das Maximum des Messbereichs, übersteuert der Sensor und die Daten werden in den entsprechenden Momenten unbrauchbar. Wird der Bereich jedoch zu groß gewählt, führt dies zu einer wesentlich geringeren Auflösung und kleine Änderungen der Beschleunigung sind nicht mehr zu erkennen.
+
+Um verlässlichere Aussagen über die am Radar auftretenden Bewegungen zu machen, ist es notwendig ein leistungsfähigeres System zu entwickeln.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \newpage
 \section{Entwicklung des Schwingungsmesssystems: ASC 5511LN-002}
 
 
-Mit den bisher gewonnenen Erkenntnissen konnte ich nun das zweite Schwingungsmesssystem mit dem ASC Chip (ASC 5511LN-002) realisieren. Durch die höhere Auflösung und Samplerate und geringeres Rauschen, ergibt sich ein besser nutzbares Signal. Einen Vergleich der relevanten technischen Daten enthält Tabelle \ref{sensorcompare}.
+Mit den bisher gewonnenen Erkenntnissen konnte ich das zweite Schwingungsmesssystem mit dem ASC Chip (ASC 5511LN-002) realisieren. Durch die höhere Auflösung und Samplerate und geringeres Rauschen, ergibt sich ein besser nutzbares Signal. Den Vergleich der relevanten technischen Daten enthält Tabelle \ref{sensorcompare}.
 
 \begin{table}[ht]
 \begin{tabular}{@{}llll@{}}    
@@ -810,15 +894,15 @@ Mit den bisher gewonnenen Erkenntnissen konnte ich nun das zweite Schwingungsmes
 \begin{figure}[H]
 \centering
 \includegraphics[scale=.5]{hardwareimages/asc.jpg}
-\caption{ASC 5511LN-010 von Advanced Sensors Calibration}
+\caption{ASC 5511LN-010 von Advanced Sensors Calibration (die Zahl am Ende der Typenbezeichnung gibt den Messbereich in g an: im Bild 10g, der von mir verwendete 2g)\\http://www.asc-sensors.de}
 \label{asc5511}
 \end{figure}
 
 Bei dem ASC 5511LN-002 handelt es sich ebenfalls um einen kapazitativen MEMS Sensor. Er ist allerdings von hochwertigerer Qualität als der BMA180 und gibt das Signal analog als Spannung aus. Aus diesem Grund wird ein externer AD-Wandler benötigt.
-Durch das Aluminiumgehäuse ist die Elektronik bereits gut geschützt und die symmetrische Ausführung der Signalkabel sorgt dafür, dass äußere elektromagnetische Einflüsse auf dem Weg zum AD-Wandler vermieden werden. Das Signal wird als auf zwei Leitungen ausgegeben, wobei das Signal auf der einen Leitung invertiert ist (Abb. \ref{symmetrisch}). Störungen wirken auf beide Adern und somit kann man sie an der Empfangsstation per Differenzbildung leicht entfernen. 
+Durch das Aluminiumgehäuse ist die Elektronik bereits gut geschützt und die symmetrische Ausführung der Signalkabel sorgt dafür, dass äußere elektromagnetische Einflüsse auf dem Weg zum AD-Wandler vermieden werden. Das Signal wird auf zwei Leitungen ausgegeben, wobei das Signal auf der einen Leitung invertiert ist. Störungen wirken auf beide Adern und somit kann man sie an der Empfangsstation per Differenzbildung leicht entfernen. 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.7]{unsymmetrisch.png}
+\includegraphics[scale=.9]{unsymmetrisch.png}
 \caption{Unsymmetrische Signalübertragung mit Störung 'Zacke'. \citep{Sengpiel:2001fk}}
 \label{unsymmetrisch}
 \end{figure}
@@ -827,19 +911,19 @@ Durch das Aluminiumgehäuse ist die Elektronik bereits gut geschützt und die sy
 Bei unsymmetrischer Signalführung wird das Störsignal ebenso stark verstärkt, wie das Nutzsignal (Abb. \ref{unsymmetrisch}). Mathematisch lässt sich dies so ausdrücken \citep{Sengpiel:2001fk}:
 
 \begin{equation}
-U_a = v \cdot (U_e + U_{stoer} = v \cdot U_e + v \cdot U_{stoer}
+U_a = v \cdot (U_e + U_{stoer}) = v \cdot U_e + v \cdot U_{stoer}
 \end{equation}
 
-wobei $U_a$ dem Ausgangssignal, $U_e$ dem Eingangssignal, $U_stoer$ dem Störsignal und $v$ dem Verstärkungsfaktor entspricht.
+wobei $U_a$ dem Ausgangssignal, $U_e$ dem Eingangssignal, $U_{stoer}$ dem Störsignal und $v$ dem Verstärkungsfaktor entspricht.
 
 \begin{figure}[H]
 \centering
-\includegraphics[scale=.7]{symmetrisch.png}
+\includegraphics[scale=.9]{symmetrisch.png}
 \caption{Symmetrische Signalübertragung mit sich aufhebender Störung. \citep{Sengpiel:2001fk}}
 \label{symmetrisch}
 \end{figure}
 
-Symmetrische Signalführung hingegen sorgt dafür, dass sich der Störeinfluss auslöscht:
+Symmetrische Signalführung (Abb. \ref{symmetrisch}) hingegen sorgt dafür, dass sich der Stör\-einfluss auslöscht:
 
 \begin{equation}
 U_a = U_e + U_{stoer} - ( -U_e + U_{stoer} ) = 2 \cdot U_e
@@ -859,7 +943,7 @@ Das Resultat ist ein besseres Signal zu Rausch Verhältnis.
 
 
 
-Als AD-Wandler verwende ich ein \textit{Diamond-MM-16-AT PC/104 Analog I/O Module}. Das Board verfügt über 8 Eingänge (16 wenn man sie nicht als Differentialeingänge verwendet) und eine maximale Samplingrate von 100kHz. Außerdem besitzt es einen 512-Sample \textit{FIFO Speicher} und verwendet \textit{Interrupts}, worauf ich in den beiden nächsten Punkten eingehen möchte.
+Als AD-Wandler verwende ich ein \textit{Diamond-MM-16-AT PC/104 Analog I/O Module}. Das Board verfügt über 8 Eingänge (16 wenn man sie nicht als Differential\-eingänge verwendet) und eine maximale Samplingrate von 100kHz. Außerdem besitzt es einen 512-Sample \textit{FIFO Speicher} und verwendet \textit{Interrupts}, worauf ich in den beiden nächsten Punkten eingehen möchte.
 Mit dem Computer kommunizert das Board über den \textit{PC/104 Bus}.
 
 
@@ -872,11 +956,11 @@ Mit dem Computer kommunizert das Board über den \textit{PC/104 Bus}.
 \label{interrupt}
 \end{figure}
 
-Ein Interrupt beschreibt in der Informatik eine kurzzeitige Unterbrechung des normalen Programmflusses, um eine andere Operation auszuführen. Diese andere Operation ist Zeitkritisch und ihr exaktes Auftreten nicht vorher bestimmbar. Sobald sie beendet ist, setzt das Programm seine Ausführung an der vorher unterbrochenen Stelle fort.
+Ein Interrupt beschreibt in der Informatik eine kurzzeitige Unterbrechung des normalen Programmflusses, um eine andere Operation auszuführen. Diese andere Operation ist zeitkritisch und ihr exaktes Auftreten nicht vorher bestimmbar. Sobald sie beendet ist, setzt das Programm seine Ausführung an der vorher unterbrochenen Stelle fort.
 
 Genutzt werden Interrupts zum Beispiel von Ein- und Ausgabegeräten, wie Maus und Tastatur. Ohne Interrupts müssten alle Programme zyklisch nachfragen, ob es eine neue Eingabe gibt und diese dann entsprechend bearbeiten (sogenanntes Polling). Da ein Programm in dieser Zeit nichts anderes machen kann, ist diese Art der Abfrage höchst ineffizient.
 
-Die am weitesten verbreitete Analogie zur Verdeutlichung des Prinzips ist eine Wohnungstür mit Klingel. Man kann den ganzen Tag in der Wohnung seinen Aufgaben nachgehen und zwischendurch klingeln Gäste, mit denen man sich dann kurz beschäftigt. Das klingeln ist hier also der Interrupt. Dann kann man wieder weiter mit der Arbeit machen bis der nächste klingelt. Hat man nun aber keine Klingel, so muss man ständig zur Tür rennen und nachsehen, ob eventuell jemand dort steht und gerne hereinkommen möchte (Polling).
+Die am weitesten verbreitete Analogie zur Verdeutlichung des Prinzips ist eine Wohnungstür mit Klingel. Man kann den ganzen Tag in der Wohnung seinen Aufgaben nachgehen und zwischendurch klingeln Gäste, mit denen man sich dann kurz beschäftigt. Das Klingeln ist hier also der Interrupt. Dann kann man wieder mit der Arbeit fortfahren bis der Nächste klingelt. Hat man aber keine Klingel, so muss man ständig zur Tür rennen und nachsehen, ob eventuell jemand dort steht und gerne hereinkommen möchte (Polling).
 
 An dieser Analogie kann man auch erkennen, dass Interrupts zusätzliche Hardware (eine Klingel) erfordern.
 
@@ -892,10 +976,10 @@ An dieser Analogie kann man auch erkennen, dass Interrupts zusätzliche Hardware
 
 Ein FIFO (First In First Out) ist ein Speicherverfahren, bei dem die Elemente, die als erstes gespeichert werden, auch als erstes wieder entnommen werden. Es wird auch als Warteschlangenprinzip (Queue) bezeichnet und in vielen Bereichen der Datenverarbeitung verwendet. Besonders bei Schnittstellen und Kommunikationsprotokollen ist es wichtig, dass die Daten in der Reihenfolge verarbeiten werden, in der sie angekommen sind, beziehungsweise abgesendet wurden. Das gegensätzliche Prinzip ist das LIFO (Last In First Out), auch Stapelprinzip (engl. Stack) genannt.\\
 
-Im AD-Wandler sorgt der FIFO dafür, dass wirklich alle digitalisierten Samples vom Computer gespeichert werden, auch wenn dieser aufgrund von starker Prozesserbelastung nicht in der Lage ist diese sofort zu verarbeiten. Die digitalisierten Daten werden unabhängig vom PC immer sofort in den FIFO gespeichert und können dort angefordert werden. Ein Problem ergibt sich erst wenn der PC die Sample so langsam ausliest, dass der FIFO Speicher voll wird. In diesem Fall spricht man von einem Speicherüberlauf und bereits aufgenommene Daten werden überschrieben.\\
+Im AD-Wandler sorgt der FIFO dafür, dass wirklich alle digitalisierten Samples vom Computer gespeichert werden, auch wenn dieser aufgrund starker Prozessorbelastung nicht in der Lage ist diese sofort zu verarbeiten. Die digitalisierten Daten werden unabhängig vom PC immer sofort in den FIFO gespeichert und können dort angefordert werden. Ein Problem ergibt sich erst wenn der PC die Samples so langsam ausliest, dass der FIFO Speicher voll wird. In diesem Fall spricht man von einem Speicherüberlauf und die ältesten bereits aufgenommenen Daten werden überschrieben.\\
 
 
-Zusammen mit Interrupts erlaubt der FIFO Speicher eine konstante Messwertdigitalisierung mit hoher Frequenz, ohne den Prozessor des PCs zu stark zu beanspruchen. Dazu werden die Daten kontinuierlich vom Board in den FIFO geschrieben und sobald ein festgelegter Grenzwert (threshold) erreicht ist, löst es einen Interrupt aus. Darauf reagiert nun der PC, indem er das komplette Datenpaket auf einmal (also so viele Samples, wie der threshold Wert eingestellt ist) aus dem FIFO liest und auf seine Festplatte speichert. Währenddessen werden weiterhin Daten digitalisiert und es geht kein Sample verloren.
+Zusammen mit Interrupts erlaubt der FIFO Speicher eine konstante Messwertdigitalisierung mit hoher Frequenz, ohne den Prozessor des PCs zu stark zu beanspruchen. Dazu werden die Daten kontinuierlich vom Board in den FIFO geschrieben und sobald ein festgelegter Grenzwert (threshold) erreicht ist, löst es einen Interrupt aus. Darauf reagiert nun der PC, indem er das komplette Datenpaket auf einmal (also so viele Samples, wie mit dem threshold Wert eingestellt sind) aus dem FIFO liest und auf seine Festplatte speichert. Währenddessen werden weiterhin Daten digitalisiert und es geht kein Sample verloren.
 
 Würde bei jedem neuen Sample ein Interrupt ausgelöst werden und die Daten jedes Mal einzeln abgerufen und gespeichert, so würde dies bei hohen Abtastfrequenzen zu extremer Prozessorbelastung führen. Der FIFO dient also gleichzeitig auch zur Verringerung der Interrupt Rate:
 
@@ -911,8 +995,7 @@ Bei einem Kanal und einer Abtastfrequenz von $100000 Hz$ resultiert, bei einem t
 Für das Diamond Board existiert die \textit{Universal Driver Software}\footnote{http://www.diamondsystems.com/products/dscud}, eine C-basierte Programmbibliothek, die eine große Zahl von Funktionen zur Datenaquisition zur Verfügung stellt. Die Low-Level-Programmierung, bei der auf die einzelnen Register zugegriffen wird, entfällt damit. 
 
 Bei der Entwicklung habe ich mich an der \textit{DSCADScanInt} Demo\footnote{http://files.diamondsystems.com/cdrom/Software/Universal\%20Driver/Demos/DMM16-AT\_5.91\_Demo.zip (September 2012)} aus den Beispielen der Treibersoftware orientiert.
-
-Ich möchte wiederum nur die wichtigsten Teile des Quellcodes erläutern. Der komplette Code findet sich im Anhang. \\
+Ich möchte wiederum nur die wichtigsten Teile des Quellcodes erläutern. Der komplette Code findet sich auf der beiliegenden CD-ROM. \\
 
 Das Programm wird mit zwei Parametern aufgerufen: Dem Namen des Logfiles, in das die Daten geschrieben werden und der Anzahl an Samples, die aufgenommen werden sollen. 
 
@@ -934,9 +1017,9 @@ Der Programmablauf ist folgendermaßen gegliedert:
 
 
 
-\textbf{Initialisierung des Treibers}
+\textbf{1. Initialisierung des Treibers}
 
-In Listing \ref{initdriver} wird zunächst der Treiber für das Board initialisiert, dabei wird überprüft, ob die korrekte Treiberversion installiert ist.
+ Zunächst wird der Treiber für das Board initialisiert (Listing \ref{initdriver}), dabei wird überprüft, ob die korrekte Treiberversion installiert ist.
 \lstset{language=C++,caption={Initialisierung der Treibersoftware},label=initdriver}
 \begin{lstlisting}[frame=trBL]
 	if( dscInit( DSC_VERSION ) != DE_NONE )
@@ -948,9 +1031,9 @@ In Listing \ref{initdriver} wird zunächst der Treiber für das Board initialisi
 \end{lstlisting}
 
 
-\textbf{Initialisierung des Boards}
+\textbf{2. Initialisierung des Boards}
 
-Als nächstes wird das Board selbst initialisiert (Lst. \ref{initboard}). Dazu notwendig sind die Bus-Adresse (Zeile 3) und das Interrupt-Level (Zeile 4), die auf dem Board per Jumper eingestellt werden können. Es ist dadruch möglich mehrere Boards gleichzeitig in einem Computer zu betreiben.
+Als nächstes wird das Board selbst initialisiert (Lst. \ref{initboard}). Dazu notwendig sind die Bus-Adresse (Zeile 3) und das Interrupt-Level (Zeile 4), die auf dem Board per Jumper eingestellt werden können. Es ist dadurch möglich mehrere Boards gleichzeitig in einem Computer zu betreiben.
 
 \lstset{language=C++,caption={Initialisierung des Boards},label=initboard}
 \begin{lstlisting}[frame=trBL]
@@ -969,12 +1052,12 @@ Als nächstes wird das Board selbst initialisiert (Lst. \ref{initboard}). Dazu n
 
 Der Ablauf der Konfiguration ist in allen Punkten einheitlich. Zunächst werden die entsprechenden Werte in eine Struktur geschrieben, dann wird diese als ganzes an das Board übergeben. Sollten dabei Fehler auftreten, so werden diese ausgegeben und das Programm bricht ab. \\
 
-\textbf{Setzen der Konfigurationsvariablen für den AD-Wandler}
+\textbf{3. Setzen der Konfigurationsvariablen für den AD-Wandler}
 
 Der AD-Wandler kann in verschiedenen Messbereichen arbeiten und außerdem eine gewisse Signalverstärkung (gain) vornehmen. Die dazu notwendigen Einstellungen sind in Listing \ref{initad} aufgeführt. 
 Der \textit{ASC 5511LN-002} gibt eine maximale Spannung von 5V aus, daher ist \texttt{RANGE\_5} der richtige Eintrag. In unserem Fall muss die Spannung auch nicht verstärkt werden. 
 
-Über eine längere Zeit und vor allem mit der Änderung der Temperatur neigen AD-Wandler dazu, eine gewisse Drift aufzuweisen. Dies liegt daran, dass sich der Ohmsche Widerstand, welcher als Referenz zur gemessenen Spannung dient, mit der Temperatur ändert. Das \textit{Diamond-MM-16-AT} verfügt über einen Autokalibrationsmechanismus. Indem es vorher exakt bekannte Ohmsche Widerstände misst und die Messungen mit den bekannten Werten vergleicht, kann die genaue Drift bestimmt und herausgerechnet werden\citep[siehe auch][]{Miller:2006fk}.
+Über eine längere Zeit und vor allem mit der Änderung der Temperatur neigen AD-Wandler dazu, eine gewisse Drift aufzuweisen. Dies liegt daran, dass sich der Ohmsche Widerstand, welcher als Referenz zur gemessenen Spannung dient, mit der Temperatur ändert. Das \textit{Diamond-MM-16-AT} verfügt über einen Autokalibrationsmechanismus. Indem es vorher exakt bekannte Ohmsche Widerstände misst und die Messungen mit den bekannten Werten vergleicht, kann die genaue Drift bestimmt und herausgerechnet werden \citep[siehe auch][]{Miller:2006fk}.
 
 Ob diese Autokalibration genutzt werden soll, legt \texttt{load\_cal} in Zeile 4 fest.
 
@@ -990,15 +1073,15 @@ Zeile 5 setzt den aktuellen Kanal, bei dem die Digitalisierung beginnen soll fes
 \end{lstlisting}
 
 
-\textbf{Konfigurieren des Interrupts und des FIFOs}
+\textbf{4. Konfigurieren des Interrupts und des FIFOs}
 
 An dieser Stelle (Lst. \ref{initint}) wird festgelegt, dass der FIFO benutzt werden soll (Zeile 9) und wie groß der treshold ist, bei dem ein Interrupt ausgelöst wird (Zeile 11). Die Größe des FIFOs (\texttt{fifo\_depth}) ist durch die Hardware auf 256 Byte festgelegt.
 
 \texttt{Low\_channel} (Zeile 5) und \texttt{high\_channel} (Zeile 6) geben an, welche der 8 Eingänge des Boards genutzt werden sollen. Obwohl der Beschleunigungssensor nur 3 Komponenten hat, verwende ich hier 4 Kanäle, da dies die Ausleselogik vereinfacht.
 
-In Zeile 2 wird die Samplingrate festgelegt. Sie ist immer auf alle Kanäle bezogen, so dass sich bei einer Samplingfrequenz von 1000 Hz und 4 Kanälen eine letztendliche Abtastrate von 250 Mal pro Sekunde pro Kanal ergibt. 
+In Zeile 2 wird die Samplingrate festgelegt. Sie ist immer auf alle Kanäle bezogen, so dass sich bei einer Samplingfrequenz von 1000 Hz und 4 Kanälen eine effektive Abtastrate von 250Hz pro Kanal ergibt. 
 
-Theoretisch lassen sich mit dem Board Samplingraten von bis zu 100 000 Mal pro Sekunde erreichen. Dazu ist jedoch eine genaue Kalibrierung aller Parameter und weitere Codeoptimierung notwendig, was nicht mehr Teil dieser Arbeit sein soll. \\
+Theoretisch lassen sich mit dem Board Samplingraten von bis zu 100 000Hz erreichen. Dazu ist jedoch eine genaue Kalibrierung aller Parameter und weitere Codeoptimierung notwendig, was nicht mehr Teil dieser Arbeit sein soll. \\
 
 
 \lstset{language=C++,caption={Setzen der Variablen für den Interrupt},label=initint}
@@ -1018,19 +1101,20 @@ Theoretisch lassen sich mit dem Board Samplingraten von bis zu 100 000 Mal pro S
 
 In Zeile 3 lässt sich zwischen \textit{One-Shot-Mode} und \textit{Recycle-Mode} wechseln. Im One-Shot-Mode wird ein Buffer ein Mal mit Daten gefüllt und danach beendet sich die Routine. \texttt{Num\_conversions} gibt dabei die Größe des Buffers an, und damit wie viele Samples aufgenommen werden sollen.
 
-Im Recycle-Mode wird bei Erreichen des Bufferendes zum Anfang des Buffers gesprungen und dort die alten Daten überschrieben. Der Parameter \texttt{num\_conversions} gibt in diesem Fall die Größe des Buffers an. Somit enthält dieser immer die letzten $n$ Samples, wobei $n$ die Buffergröße ist.
+Im Recycle-Mode wird bei Erreichen des Bufferendes zum Anfang des Buffers gesprungen und dort die alten Daten überschrieben (Ringbuffer Prinzip). Der Parameter \texttt{num\_conversions} gibt auch in diesem Fall die Größe des Buffers an, hat jedoch nichts mehr mit der Anzahl maximal aufzunehmender Samples zu tun. Somit enthält der Buffer immer die letzten $n$ Samples, wobei $n$ die Buffergröße ist.
 
-Um herauszufinden, an welcher Stelle im Buffer grade geschrieben wurde, dienen die beiden Variablen \texttt{DSCS.transfers} und \texttt{DSCS.total\_transfers}. \texttt{DSCS.transfers} gibt an, wie viele Samples im aktuellen Zyklus bereits im Buffer gespeichert wurden und wird immer auf 0 gesetzt wenn ein neuer Zyklus beginnt. \texttt{DSCS.total\_transfers} gibt die Gesamtzahl an bisher digitalisierter Werte in der gesamten Operation an.
+Um herauszufinden, an welcher Stelle im Buffer gerade geschrieben wurde, dienen die beiden Variablen \texttt{DSCS.transfers} und \texttt{DSCS.total\_transfers}. 
 
+\texttt{DSCS.transfers} gibt an, wie viele Samples im aktuellen Zyklus bereits im Buffer gespeichert wurden und wird immer auf 0 gesetzt wenn ein neuer Zyklus beginnt. \texttt{DSCS.total\_transfers} gibt die Gesamtzahl der bisher digitalisierten Werte in der gesamten Operation an.
 Damit ist es möglich, die Daten in der korrekten Reihenfolge in eine Datei zu speichern.\\
 
 Die weiteren in Listing \ref{initint} aufgeführten Variablen sind für unseren Anwendungsfall nicht relevant.\\
 
 
-\textbf{Auslesen und Speichern der Daten}
+\textbf{5. Auslesen und Speichern der Daten}
 
 
-Wie bereits beschrieben verläuft das Speichern der neuen Samples in den zirkulären Buffer automatisch durch die Interrupts. Sobald der \texttt{dump\_treshold} erreicht ist, werden die Daten vom FIFO in den Buffer übertragen. Um sie von dort aus in eine Datei zu schreiben, bedienen wir uns einer Programmschleife, die mehrmals pro Sekunde überprüft, ob neue Samples vorliegen (Lst. \ref{loop}). 
+Wie bereits beschrieben verläuft das Speichern der neuen Samples in den Ringbuffer automatisch durch die Interrupts. Sobald der \texttt{dump\_treshold} erreicht ist, werden die Daten vom FIFO in den Buffer übertragen. Um sie von dort aus in eine Datei zu schreiben, bedienen wir uns einer Programmschleife, die mehrmals pro Sekunde überprüft, ob neue Samples vorliegen (Lst. \ref{loop}). 
 
 \lstset{language=C++,caption={Programmschleife, die den Buffer auf neue Daten überprüft und diese in eine Datei schreibt. Der Code zum Auslesen und Schreiben der Samples ist in diesem Listing entfernt und seperat in Listing \ref{placedafter} und \ref{placedbefore} abgebildet.},label=loop}
 \begin{lstlisting}[frame=trBL]
@@ -1077,10 +1161,10 @@ In Zeile 1 wird mit \texttt{sleep\_ms = 300} festgelegt, dass die Schleife ca. 3
 
 Schlägt einer dieser Checks fehl, so wird das Programm mit einer entsprechenden Fehlermeldung beendet.\\
 
-Treten keine Fehler auf, werden die Daten aus dem zirkulären Buffer herausgelesen und in eine Datei gespeichert.
-Dies geschiet so lange, bis die Zahl der aufzunehmenden Samples erreicht ist (Zeile 32 und 33).
+Treten keine Fehler auf, werden die Daten aus dem Ringbuffer herausgelesen und in eine Datei gespeichert.
+Dies geschieht so lange, bis die Zahl der aufzunehmenden Samples erreicht ist (Zeile 32 und 33).
 
-Da der Buffer zirkulär ist, also beim Erreichen des Endes wieder vom Anfang beschrieben wird, gibt es zwei Möglichkeiten wo die neuen Daten darin gespeichert wurden. Im einfachen Fall befinden sie sich zwischen der zuletzt ausgelesenen Position und dem Bufferende. Dieser Fall wird der Code in Listing \ref{placedafter} ausgeführt. 
+Da der Buffer zirkulär ist, also beim Erreichen des Endes wieder vom Anfang beschrieben wird, gibt es zwei Möglichkeiten wo die neuen Daten darin gespeichert wurden. Im einfachen Fall befinden sie sich zwischen der zuletzt ausgelesenen Position und dem Bufferende. In diesem Fall wird der Code in Listing \ref{placedafter} ausgeführt. 
 
 \lstset{language=C++,caption={Auslesen und Speichern der Daten. Fall 1: Im zirkulären Buffer wurden neue Samples nur zwischen der zuletzt ausgelesenen Position und dem Ende des Speichers geschrieben.},label=placedafter}
 \begin{lstlisting}[frame=trBL]
@@ -1095,7 +1179,7 @@ Da der Buffer zirkulär ist, also beim Erreichen des Endes wieder vom Anfang bes
 			}
 \end{lstlisting}		
 
-In Zeile 1 findet die Überprüfung statt, ob die aktuelle Position im Buffer (\texttt{dscs.transfers} größer ist als die zuletzt ausgelesene Position \texttt{last\_transfers} (Also Fall 1 eingetreten ist). 
+In Zeile 1 findet die Überprüfung statt, ob die aktuelle Position im Buffer (\texttt{dscs.transfers}) größer ist als die zuletzt ausgelesene Position \texttt{last\_transfers}, also Fall 1 eingetreten ist. 
 Um die nächsten Zeilen zu verstehen, ist es wichtig zu wissen, wie die einzelnen Samples im Buffer strukturiert sind. Abbildung \ref{samplebuffer} zeigt diese Struktur. 
 
 \begin{figure}[H]
@@ -1126,7 +1210,7 @@ Es gibt allerdings zwei for Schleifen. Die erste liest Samples, die nach der zul
 					}
 					fprintf(logFile,"%s counts: %5d %5d %5d  Volts: %5.3lf %5.3lf %5.3lf \n",uhr.GetTimeStamp().c_str(),dscaioint.sample_values[i],dscaioint.sample_values[i+1], dscaioint.sample_values[i+2],voltage[0],voltage[1],voltage[2]);
 				}
-            for ( i = 0; i < dscs.transfers; i++ ) // in between beginning and last transfers
+	for ( i = 0; i < dscs.transfers; i++ ) // in between beginning and last transfers
 				if ( i%4 == 0 ) {
 					uhr = mvTime::Now();   // get actual time
 					for ( k = 0; k < 3; k++ ) { // conversion into volts
@@ -1137,9 +1221,9 @@ Es gibt allerdings zwei for Schleifen. Die erste liest Samples, die nach der zul
         }
 \end{lstlisting}
 
-Die Zeitstempel erhalte ich durch eine eine Methode aus der \texttt{mvTime} Klasse. Diese stammt aus der Radarserver Software von Malte Vöge. \\
+Die Zeitstempel erhalte ich durch eine eine Methode aus der \texttt{mvTime} Klasse. Diese stammt aus der Radarserver Software von Malte Vöge\footnote{Die entsprechenden Klassen befinden sich auf der CD}. \\
 
-Der Nachteil bei dieser Art der Datenaufnahme ist, dass ein neuer Zeitstempel nur bei jedem Schleifendurchlauf (drei Mal pro Sekunde) entsteht. Es haben daher immer mehrere Samples den gleichen Zeitstempel. In der Auswertung muss also zunächst ein neuer Zeitstempel generiert werden.
+Der Nachteil bei dieser Art der Datenaufnahme ist, dass ein neuer Zeitstempel nur bei jedem Schleifendurchlauf (drei Mal pro Sekunde) entsteht. Es haben daher immer alle neu aufgenommenen Samples den Zeitstempel, der bei der Auslösung des Interrupts aktuell ist. In der Auswertung muss also zunächst ein neuer Zeitstempel generiert werden.
 
 \newpage
 
@@ -1153,25 +1237,135 @@ Der Nachteil bei dieser Art der Datenaufnahme ist, dass ein neuer Zeitstempel nu
 \end{figure}
 
 
-Der Zweite Sensor wurde auf dem Balkon des 13. Stocks des Geomatikums gestestet. Gemeinsam mit Lea Scharff habe ich das Radar zunächst auf ein etwa 400m entferntes Haus in der Renzelstraße ausgerichtet, später auch auf das Gebäude der Pharmazie in etwa 100m Entfernung. Der Sensor war in der Mitte der Radarschüssel fixiert. 
+Der Zweite Sensor wurde auf dem Balkon des 13. Stocks des Geomatikums getestet. Gemeinsam mit Lea Scharff habe ich das Radar zunächst auf ein etwa 400m entferntes Haus in der Renzelstraße ausgerichtet, später auch auf das Gebäude der Pharmazie in etwa 100m Entfernung. Der Sensor war in der Mitte der Radarschüssel fixiert. 
 
-Wir haben mit dem Radar eine Phasenmessung durchgeführt, um kleine Änderungen in der Entfernung zwischen Radarsystem und dem jeweiligen Gebäude aufzunehmen. Dann haben wir mit der Hand an der Radarschüssel gerüttelt und später das Radar auf einem fahrbaren Tisch vor und zurück bewegt.
+Wir haben mit dem Radar eine Phasenmessung durchgeführt, um kleine Änderungen in der Entfernung zwischen Radarsystem und dem jeweiligen Gebäude aufzunehmen. Dann haben wir mit der Hand an der Radarschüssel gerüttelt und später das Radar auf einem Verschiebetisch vor und zurück bewegt.
 
-Da die Gebäude unbeweglich sind, sollten sich die Bewegungsdaten des Beschleunigungssensors und die Phasendaten entsprechen. 
+Da die Gebäude unbeweglich sind, sollten sich die Bewegungsdaten des Beschleunigungssensors und die Phasendaten entsprechen.
+
+Im folgenden betrachte ich ausschließlich die Bewegung in Richtung des Radarstrahls, da sich nur diese direkt vergleichen lässt. 
  
+ 
+ 
+
+Nach dem Import der Daten versehe ich die Beschleunigungsdaten zunächst mit neuen Zeitstempeln, indem ich zwischen den nur drei Mal pro Sekunde erneuerten Werten linear interpoliere.
+Anschließend lässt sich aus den Daten der gleiche Ausschnitt wählen und untersuchen.\\
+
+\textbf{Probleme mit den Zeitstempeln}
+
+Ebenso wie bei den Experimenten in Waakirchen gibt es ein Problem mit den Zeitstempeln der Daten. Die Radardaten enthalten normalerweise Informationen über die Genauigkeit der Synchronisation der internen Uhr mit der vom NTP-Server bereitgestellten GPS-Zeit. Leider fehlen diese Informationen, was nahelegt, dass das Radar zum Zeitpunkt der Messung noch keine erfolgreiche Synchronisation  durchgeführt hat.
+
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=.5]{geoauswertung/radarzeit.png}
+\caption{Vergleich der Zeitstempel des Radars mit einem generierten linear verlaufenden Zeitvektor.}
+\label{radarzeit}
+\end{figure}
+
+Vergleicht man den Zeitstempel des Radars mit einer linear verlaufenden Zeit, so erhält man Unterschiede von bis zu 80ms in einigen Samples (Abb \ref{radarzeit}). Ähnlich sieht es bei den Zeitstempeln des Beschleunigungssensors aus.
+
+Eine mögliche Erklärung ist, dass während der Messungen die Computeruhren von Domaintime angepasst wurden.\\
+
+Damit diese Anomalien keinen Einfluss auf die Datenbearbeitung haben, habe ich in Matlab einen neuen Zeitvektor generiert, indem ich zwischen dem ersten und letzten Zeitpunkt der Messung linear interpoliert habe. Dieser wird bei den Berechnungen verwendet.
+
+Das Problem mit der Zeitsynchronisation muss auf jeden Fall noch näher untersucht werden.\\
+
+\textbf{Vergleich von aufgenommenen und berechneten Beschleunigungsdaten}
+
 \begin{figure}[htb]
 \centering
-\includegraphics[scale=.3]{geoauswertung/a_vs_z.png}
-\caption{Vergleich von aus Phasendaten mittels zweifacher Ableitung berechneter Beschleunigung und der vom ASC Sensor aufgenommenen Beschleunigung (bei 40Hz Tiefpass gefiltert).}
+
+\includegraphics[scale=.4]{geoauswertung/a_vs_z.png}
+\caption{Vergleich von Beschleunigungsdaten aus Experiment r4. \\Links: aus Phasendaten mittels zweifacher Ableitung berechnete Beschleunigung. \\Rechts: vom ASC Sensor aufgenommenen Beschleunigung (bei 40Hz Tiefpass gefiltert).}
 \label{a_vs_z}
 \end{figure}
 
+Um zu überprüfen, ob sich die aufgenommenen Daten ähneln, bilde ich die zweifache Ableitung der Phasendaten des Radars (nach dem neu definierten Zeitvektor) und erhalte damit eine Beschleunigung. In Abbildung \ref{a_vs_z} ist diese verglichen mit der vom ASC Sensor aufgenommenen Beschleunigung zu sehen. Dabei habe ich aus den Daten des ASC Sensors mit einem 40Hz Tiefpassfilter ein wenig hochfrequenten Noise entfernt.
 
-\section{Zusammenfassung}
+Vor allem zu Beginn der Messreihe sind sich die Daten sehr ähnlich. Zu späteren Zeitpunkten sind die aus den Phasendaten berechneten Werte deutlich größer.\\
+
+Die Ähnlichkeit der Daten zeigt, dass die Datenaufnahme und Restitution korrekt durchgeführt wurde. Außerdem wird deutlich, dass die vom Radar gemessene Entfernungsänderung im direkten Zusammenhang mit der Bewegung des Radars steht.\\
+
+
+\textbf{Integration der Beschleunigung zu Wegdaten}
+
+Um aus den Beschleunigungsdaten des ASC Sensors Bewegungen  des Radars zu errechnen, müssen diese zweifach über die Zeit integriert werden (siehe Kapitel \ref{integratechapter}).
+
+Dabei wird das in Abschnitt \ref{noiseproblem} bereits besprochene Problem der sich aufaddierenden Fehler deutlich.
+Schon bei der einfachen Integration zur Geschwindigkeit ist eine Drift zu sehen (Abb. \ref{v_trend}), die deutlich größer ist als das eigentliche Signal. Integriert man ein weiteres Mal, führt das dazu, dass das Bewegungssignal komplett von der Drift überlagert ist. 
+
+ \begin{figure}[htb]
+%\centering
+\includegraphics[scale=.6]{geoauswertung/v_trend.png}
+\caption{Aus der gemessenen Beschleunigung berechnete Geschwindigkeit. Eine deutliche Drift ist zu erkennen. Die Geschwindigkeit ist über den gesamten Messzeitraum negativ}
+\label{v_trend}
+\end{figure}
+
+Das Ergebnis ist in Abbildung \ref{riesenfehler} zu sehen. Die berechnete Position ist nach dem Messzeitraum von ca. 3 Minuten auf $-140m$ gefallen, was ein sehr unrealistisches Ergebnis ist.
+
+ \begin{figure}[htb]
+\centering
+\includegraphics[scale=.5]{geoauswertung/riesenfehler.png}
+\caption{Berechnete Position (blau) verglichen mit der vom Radar ermittelten Position (rot). Die berechnete Position ist um so viel größer, dass die Variation der vom Radar ermittelten Position in dieser Darstellung nicht zu erkennen ist.}
+\label{riesenfehler}
+\end{figure}
+
+Um dieses Verhalten zu verhindern, nehme ich an, dass die 'wahre' Geschwindigkeit im Allgemeinen um Null oszilliert. 
+Indem ich einen gleitenden Mittelwert (running mean) bilde, und diesen von den Geschwindigkeitswerten abziehe, erreiche ich eine Oszillation um Null \citep[vlg.][]{Neitzel:2007vn}. Die Größe des Filterfensters ist so zu wählen, dass der unerwünschte Trend aus den Daten entfernt wird, das Signal aber intakt bleibt. Ich habe es durch Ausprobieren auf 300 Samples festgelegt. 
+
+In Abbildung \ref{compare_v} sind die so gebildeten Geschwindigkeiten mit den einmal abgeleiteten Phasendaten verglichen.
+Eine Kreuzkorrelation ergibt zwar nur eine maximale Übereinstimmung von 0.25 (bei einer Normierung auf 1), qualitativ lassen sich einzelne Strukturen aber sehr gut wiedererkennen.
+
+Integriert man die bearbeiteten Geschwindigkeitsdaten, erhält man die in Abbildung \ref{best} sichtbaren Positionswerte.\\
+
+ \begin{figure}[htb]
+\centering
+\includegraphics[scale=.40]{geoauswertung/compare_v.png}
+\caption{Vergleich der mittels 'running mean' gefilterten integrierten Geschwindigkeit (rechts) mit der durch Differenzieren der Phasendaten erhaltenen(links).}
+\label{compare_v}
+\end{figure}
 
 
 
-bessere Zeitstempel, nicht nur 3 Mal pro Sekunde
+\begin{figure}[htb]
+\centering
+\includegraphics[scale=.4]{geoauswertung/best.png}
+\caption{Berechnete Position (blau) verglichen mit der vom Radar ermittelten Position (rot). Mit auf die Geschwindigkeit angewandter running-mean Korrektur.\\Der Rote Balken am Anfang der Datenreihe gibt die Wellenlänge des Radars an um eventuelle Fehler beim phase unwrapping zu erkennen.}
+\label{best}
+\end{figure}
+
+
+
+Es fällt sofort auf, dass durch die Entfernung des Trends aus den Geschwindigkeitsdaten auch wirklich vorhandene Trends verloren gehen. Das führt dazu, dass nur kurzeitige Änderungen in der Position erfasst werden können. Dauerhafte Änderungen in der Entfernung zum Objekt werden entfernt.
+
+Dazu kommt das Problem der nicht erfassten Positionsänderung des Radars in die beiden anderen Raumrichtungen. Da die Fläche des Zielobjekts nicht rechtwinklig zum Radarstrahl verlief, kann ein kleines Verdrehen des Radars bereits eine sehr große Distanzänderung verursachen.
+
+Das macht es natürlich schwierig, mit diesen Daten die gemessenen Phasendaten zu korrigieren, um die Bewegung des Radars gänzlich herauszurechnen. 
+Dennoch können die Daten helfen, bei einer mit dem Radar aufgenommenen Bewegung zu ermitteln, ob diese möglicherweise durch eine Bewegung des Radarsystems zu erklären sind. Ist beispielsweise in den Beschleunigungsdaten keinerlei Bewegung zu sehen, so ist gezeigt, dass die gemessene Bewegung auf eine Bewegung des Messobjekts zurückzuführen ist.
+
+\newpage
+\clearpage
+\section{Zusammenfassung und Ausblick}
+
+Im Rahmen meiner Arbeit habe ich zwei Beschleunigungsmessysteme entwickelt und in Experimenten getestet. Dazu habe ich die Theorie der Beschleunigungsmessung untersucht und dann sowohl an der Hardware als auch an der Software gearbeitet. \\
+
+Bereits mit einem relativ günstigen System lassen sich interessante Ergebnisse erzielen. Das größte Problem dabei ist zunächst nicht die notwendige Genauigkeit des Sensors, als vielmehr die zu geringe Abtastrate. Mit einigen Änderungen an der Software lässt sich diese jedoch möglicherweise noch erhöhen.
+
+In Experimenten in Waakirchen konnte ich mit dem Prototyp zeigen, dass sich die Radarschüssel durch die Druckwelle der Explosion bewegt. Diese Bewegung ist, ebenso wie durch Wind induzierte Bewegung, deutlich zu gering, als dass sie die Geschwindigkeitsmessung des Radars beeinflussen oder verfälschen könnte. 
+
+Das gleiche gilt für die Bewegung des Autoklavenaufbaus. Die gemessenen Geschwindigkeiten sind zwar deutlich größer als die der Schüssel, aber immer noch zu gering, als dass sie einen merklichen Einfluss auf die Geschwindigkeitsmessung haben.\\
+
+
+Des Weiteren habe ich mich mit fortgeschrittenen Hilfsmitteln der Datenaquisition, wie Interrupts und FIFOs, auseinandergesetzt und damit ein zweites, schnelleres Schwingungsmessystem gebaut. 
+
+Durch die Experimente am Geomatikum wird deutlich, dass es zwar prinzipiell möglich ist, die Bewegung von Messobjekt und Radar zu unterscheiden, dieses aber durch Gerätedrift und den fehleraddierenden Effekt des Integrierens sehr kompliziert ist.
+Hier wäre es interessant, sich noch ausführlicher mit der Datenbearbeitung zu befassen und nach einer passenden Lösung zu suchen. Ein möglicher Ansatzpunkt wäre eventuell die Verwendung eines Kalmanfilters. \citep[vlg.][]{Filieri:2012kx}
+
+Komplett unbeachtet ist bisher auch die Tatsache, dass sich das Radar auch seitlich bewegt und kippt. Um diese Effekte zu berücksichtigen, müsste ein geometrisches Modell des Zielobjektes entworfen werden. Beide Schwingungsmesser nehmen alle 3 Komponenten der Beschleunigung im Raum auf.
+
+
 
 \clearpage
 \newpage
@@ -1182,6 +1376,23 @@ bessere Zeitstempel, nicht nur 3 Mal pro Sekunde
 \bibliography{bachelor}
 
 
+
+
+\clearpage
+
+\noindent
+\textbf{Erkl"arung}
+
+Hiermit best"atige ich, dass die vorliegende Arbeit von mir selbst"andig verfasst wurde und ich keine anderen als die angegebenen Hilfsmittel - insbesondere keine im Quellenverzeichnis nicht benannten Internet-Quellen - benutzt habe und die Arbeit von mir vorher nicht in einem anderen Pr"ufungsverfahren eingereicht wurde. Die eingereichte schriftliche Fassung entspricht der auf dem elektronischen Speichermedium.\\
+
+Ich bin damit einverstanden, dass die Bachelorarbeit ver"offentlicht wird.\\
+
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+\vspace{\baselineskip}
+Hamburg, den 25. September 2012\\
+
+Sebastian Beyer
 
 
 

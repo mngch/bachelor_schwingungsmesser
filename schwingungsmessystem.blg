@@ -4,47 +4,47 @@ The top-level auxiliary file: schwingungsmessystem.aux
 The style file: plainnat.bst
 Database file #1: bachelor.bib
 Warning--entry type for ":2012vn" isn't style-file defined
---line 138 of file bachelor.bib
+--line 160 of file bachelor.bib
 Warning--there's a number but no series in Tietze:2002fk
-You've used 19 entries,
+You've used 21 entries,
             2773 wiz_defined-function locations,
-            716 strings with 7661 characters,
-and the built_in function-call counts, 7343 in all, are:
-= -- 625
-> -- 400
-< -- 16
-+ -- 142
-- -- 123
-* -- 552
-:= -- 1167
-add.period$ -- 57
-call.type$ -- 19
-change.case$ -- 93
-chr.to.int$ -- 19
-cite$ -- 39
-duplicate$ -- 371
-empty$ -- 626
-format.name$ -- 144
-if$ -- 1521
+            728 strings with 8123 characters,
+and the built_in function-call counts, 8180 in all, are:
+= -- 701
+> -- 451
+< -- 17
++ -- 159
+- -- 138
+* -- 621
+:= -- 1302
+add.period$ -- 63
+call.type$ -- 21
+change.case$ -- 105
+chr.to.int$ -- 21
+cite$ -- 43
+duplicate$ -- 407
+empty$ -- 690
+format.name$ -- 163
+if$ -- 1694
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 16
-newline$ -- 101
-num.names$ -- 76
-pop$ -- 210
+missing$ -- 17
+newline$ -- 111
+num.names$ -- 84
+pop$ -- 227
 preamble$ -- 1
-purify$ -- 79
+purify$ -- 88
 quote$ -- 0
-skip$ -- 265
+skip$ -- 294
 stack$ -- 0
-substring$ -- 138
-swap$ -- 44
+substring$ -- 163
+swap$ -- 45
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 184
+type$ -- 206
 warning$ -- 1
-while$ -- 63
+while$ -- 70
 width$ -- 0
-write$ -- 247
+write$ -- 273
 (There were 2 warnings)

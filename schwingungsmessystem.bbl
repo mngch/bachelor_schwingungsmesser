@@ -1,4 +1,4 @@
-\begin{thebibliography}{19}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -6,29 +6,36 @@
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
 \bibitem[ADXL05(1996)]{Devices:1996pd}
-Datasheet ADXL05.
-\newblock \emph{1g to 5g Single Chip Accelerometer with Signal Conditioning},
-  1996.
+Analog Devices.
+\newblock \emph{1g to 5g Single Chip Accelerometer with Signal Conditioning}.
+\newblock Datasheet, 1996.
 
 \bibitem[Arduino(2012)]{:2012vn}
 Arduino.
-\newblock Arduino wire library, 2012.
+\newblock Arduino wire library, 2012.\\
 \newblock URL \url{http://www.arduino.cc/en/Reference/Wire}.
 
-\bibitem[Bronstein et~al.(1995)Bronstein, Semendjajew, Musiol, and
+\bibitem[Bronstein et~al.(1995)Bronstein, Semendjajew, Musiol, und
   M{\"u}hlig]{Bronstein:1995fk}
 I.N. Bronstein, K.A. Semendjajew, G.~Musiol, and H.~M{\"u}hlig.
 \newblock \emph{Taschenbuch der Mathematik}.
 \newblock Verlag Harri Deutsch, Frankfurt am Main, 2. {\"u}berarbeitete und
-  erweiterte auflage edition, 1995.
+  erweiterte Auflage, 1995.
 
-\bibitem[Hort et~al.(2003)Hort, Seyfried, and V{\"o}ge]{Hort:2003fk}
-Matthias Hort, R.~Seyfried, and Malte V{\"o}ge.
-\newblock Radar doppler velocimetry of volcanic eruptions: theoretical
+\bibitem[Filieri and Melchiotti(2012)]{Filieri:2012kx}
+Antonio Filieri und Rossella Melchiotti.
+\newblock \emph{Position recovery from accelerometric sensors algorithms analysis and
+  implementation issues.}
+\newblock Technical report, Dipartimento di Elettronica e Informazione,
+  Politecnico di Milano, Milan, Italy, 2012.
+
+\bibitem[Hort et~al.(2003)Hort, Seyfried, und V{\"o}ge]{Hort:2003fk}
+Matthias Hort, R.~Seyfried, und Malte V{\"o}ge.
+\newblock \emph{Radar doppler velocimetry of volcanic eruptions: theoretical
   considerations and quantitative documentation of changes in eruptive
-  behaviour at stromboli volcano, italy.
+  behaviour at Stromboli volcano, italy}.
 \newblock \emph{Geophysical Journal International}, 154\penalty0 (2):\penalty0
-  515--532, August 2003 2003.
+  515--532, August 2003.
 
 \bibitem[Kanda(1991)]{Kanda:1991gf}
 Yozo Kanda.
@@ -40,51 +47,58 @@ Yozo Kanda.
 Lasse Klingbeil.
 \newblock \emph{Entwicklung eines modularen und skalierbaren Sensorsystems zur
   Erfassung von Position und Orientierung bewegter Objekte}.
-\newblock PhD thesis, Universit{\"a}t Bonn, 2006.
+\newblock Dissertation, Universit{\"a}t Bonn, 2006.
 
 \bibitem[Meschede(2001)]{Meschede:2001fk}
-D.~Meschede.
+Dieter. Meschede.
 \newblock \emph{Gerthsen Physik}.
-\newblock Springer Berlin Heidelberg, 12. auflage edition, September 2001.
+\newblock Springer Berlin Heidelberg, 12. Auflage, September 2001.
 
 \bibitem[Miller(2006)]{Miller:2006fk}
 Jonathan Miller.
 \newblock \emph{The benefits of autocalibration}.
-\newblock Diamond Systems, 2006.
+\newblock manual. Diamond Systems, 2006.
+
+\bibitem[Neitzel et~al.(2007)Neitzel, Schwanebeck, und Schwarz]{Neitzel:2007vn}
+Frank Neitzel, Thomas Schwanebeck und Willfried Schwarz.
+\newblock \emph{Zur Genauigkeit von Schwingwegmessungen mit Hilfe von
+  Beschleunigungs- und Geschwindigkeitssensoren.}
+\newblock \emph{Allgemeine Vermessungsnachrichten}, 114\penalty0 (6):\penalty0
+  202--211, 2007.
 
 \bibitem[NXP(2012)]{:2012fj}
 NXP.
 \newblock \emph{UM10204 I2C-bus specification and user manual}.
-\newblock NXP, rev4 edition, February 2012.
+\newblock manual, NXP, rev4, February 2012.
 
-\bibitem[Scharff et~al.(2007)Scharff, Gerst, Ziemen, Hort, and
+\bibitem[Scharff et~al.(2007)Scharff, Gerst, Ziemen, Hort, und
   Johnson]{Scharff:2007uq}
-Lea Scharff, Alexander Gerst, Florian Ziemen, Matthias Hort, and Jeffrey~B.
+Lea Scharff, Alexander Gerst, Florian Ziemen, Matthias Hort, und Jeffrey~B.
   Johnson.
-\newblock The dynamics of explosions at santiaguito volcano, guatemala
-  (v31e-0718).
+\newblock \emph{The dynamics of explosions at Santiaguito volcano, Guatemala
+  (v31e-0718).}
 \newblock In \emph{Fall Meeting 2007}. American Geophysical Union, 2007.
 
-\bibitem[Schmidt(2002)]{:2002fk}
-Schmidt.
+\bibitem[Schmidt(2007)]{:2002fk}
+Wolf Dieter Schmidt.
 \newblock \emph{Sensorschaltungstechnik}.
-\newblock Vogel, 2002.
+\newblock Vogel Business Media,3. Auflage, August 2007.
 
 \bibitem[Sengpiel(2001)]{Sengpiel:2001fk}
 Eberhard Sengpiel.
-\newblock Symmetrische und unsymmetrische signal{\"u}bertragung.
+\newblock \emph{Symmetrische und unsymmetrische signal{\"u}bertragung.}
 \newblock Tutorium UdK Berlin, March 2001.
 \newblock URL
-  \url{http://www.sengpielaudio.com/SymmetrischeUndUnsymmetrischeSignaluebertragung.pdf}.
+  \url{http://www.sengpielaudio.com/ \\ SymmetrischeUndUnsymmetrischeSignaluebertragung.pdf}.
 
-\bibitem[Sensortec(2009)]{Sensortec:2009rt}
-Bosch Sensortec.
-\newblock \emph{BMA180 Digital, triaxial acceleration sensor Data sheet}, 2.1
-  edition, December 2009.
+\bibitem[BMA180(2009)]{Sensortec:2009rt}
+BMA180 Bosch Sensortec.
+\newblock \emph{BMA180 Digital, triaxial acceleration sensor Data sheet}, Datasheet 2.1
+  revision, December 2009.
 
 \bibitem[Shannon(1949)]{Shannon:1949uq}
 Claude~E. Shannon.
-\newblock Communication in the presence of noise.
+\newblock \emph{Communication in the presence of noise.}
 \newblock \emph{Proceedings of the IRE}, 37\penalty0 (1):\penalty0 10--21,
   January 1949.
 
@@ -116,6 +130,6 @@ Diamond Systems.
 \bibitem[Tietze and Schenk(2002)]{Tietze:2002fk}
 Ulrich Tietze and Christoph Schenk.
 \newblock \emph{Halbleiter-Schaltungstechnik}.
-\newblock Number 3-540-42849-6. Springer, Berlin, 12 edition, 2002.
+\newblock Springer, Berlin, 12 Auflage, 2002.
 
 \end{thebibliography}
